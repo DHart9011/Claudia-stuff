@@ -1,163 +1,676 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OK Permit Quest 🚗</title>
-  <meta name="description" content="Master Oklahoma driving rules with scenario-based practice. Prepare for your learner's permit the fun way!" />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Road Ready OK — Oklahoma Permit Prep Game</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f1e7;--ink:#14202b;--paper:#fbf7ee;--accent:#d63a2f;--accent-2:#f5b400;--accent-3:#1f6feb;--accent-4:#0a8754;--muted:#6f7b87;--shadow:6px 6px 0 var(--ink);--shadow-sm:3px 3px 0 var(--ink);}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--bg);color:var(--ink);}
+body{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;line-height:1.5;min-height:100vh;background-image:radial-gradient(circle at 20% 10%,rgba(214,58,47,.06),transparent 40%),radial-gradient(circle at 80% 90%,rgba(31,111,235,.06),transparent 40%);}
+.wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:24px 20px 80px;}
+header.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border:2px solid var(--ink);background:var(--paper);padding:14px 18px;box-shadow:var(--shadow);margin-bottom:28px;}
+.logo{display:flex;align-items:center;gap:12px;}
+.logo-mark{width:46px;height:46px;background:var(--accent);color:#fff;display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:900;font-size:22px;border:2px solid var(--ink);transform:rotate(-4deg);box-shadow:var(--shadow-sm);}
+.logo h1{font-family:'Fraunces',serif;font-size:24px;font-weight:900;letter-spacing:-.02em;line-height:1;}
+.logo .tag{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.14em;font-family:'JetBrains Mono',monospace;}
+.stats{display:flex;gap:14px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:12px;}
+.stat{border:2px solid var(--ink);padding:6px 10px;background:#fff;}
+.stat b{font-size:16px;font-family:'Bricolage Grotesque',sans-serif;}
+.stat.red{background:var(--accent);color:#fff;}.stat.yellow{background:var(--accent-2);}
+.hero{border:2px solid var(--ink);background:var(--ink);color:var(--paper);padding:36px 28px;box-shadow:var(--shadow);margin-bottom:28px;position:relative;overflow:hidden;}
+.hero::after{content:"";position:absolute;right:-40px;bottom:-60px;width:220px;height:220px;background:repeating-linear-gradient(45deg,var(--accent-2) 0 14px,var(--ink) 14px 28px);border-radius:50%;border:4px solid var(--paper);opacity:.9;}
+.hero h2{font-family:'Fraunces',serif;font-size:clamp(34px,6vw,60px);line-height:.95;font-weight:900;letter-spacing:-.03em;max-width:720px;position:relative;z-index:2;}
+.hero h2 em{font-style:italic;color:var(--accent-2);}
+.hero p{margin-top:14px;max-width:560px;font-size:17px;color:#d6d3cb;position:relative;z-index:2;}
+.hero .cta-row{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:2;}
+button,.btn{font-family:inherit;font-weight:600;cursor:pointer;padding:12px 18px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);box-shadow:var(--shadow-sm);transition:transform .08s,box-shadow .08s;font-size:15px;display:inline-flex;align-items:center;gap:8px;}
+button:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink);}
+button:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink);}
+button.primary{background:var(--accent);color:#fff;}button.yellow{background:var(--accent-2);}
+button.green{background:var(--accent-4);color:#fff;}button.blue{background:var(--accent-3);color:#fff;}
+button:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:28px;}
+.mode-card{border:2px solid var(--ink);background:var(--paper);padding:20px;box-shadow:var(--shadow);cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:8px;}
+.mode-card:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink);}
+.mode-card .icon{width:38px;height:38px;border:2px solid var(--ink);display:grid;place-items:center;font-weight:900;font-size:18px;background:var(--accent-2);}
+.mode-card.red .icon{background:var(--accent);color:#fff;}.mode-card.blue .icon{background:var(--accent-3);color:#fff;}.mode-card.green .icon{background:var(--accent-4);color:#fff;}
+.mode-card h3{font-family:'Fraunces',serif;font-size:22px;font-weight:900;line-height:1.05;}
+.mode-card p{font-size:14px;color:var(--muted);}
+section.panel{border:2px solid var(--ink);background:var(--paper);padding:28px;box-shadow:var(--shadow);margin-bottom:28px;}
+section.panel h2.section-title{font-family:'Fraunces',serif;font-size:28px;font-weight:900;letter-spacing:-.02em;margin-bottom:6px;}
+section.panel .subtitle{color:var(--muted);font-size:14px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.14em;margin-bottom:22px;}
+.progress{height:14px;border:2px solid var(--ink);background:#fff;margin-bottom:16px;overflow:hidden;}
+.progress>div{height:100%;background:var(--accent-4);width:0%;transition:width .3s;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.25) 0 8px,transparent 8px 16px);}
+.qmeta{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);margin-bottom:14px;text-transform:uppercase;letter-spacing:.12em;}
+.scenario-box{border:2px solid var(--ink);background:var(--accent-2);padding:14px 16px;margin-bottom:16px;font-size:15px;line-height:1.45;font-style:italic;}
+.scenario-box b{font-style:normal;font-family:'Fraunces',serif;}
+.qcard{border:2px solid var(--ink);background:#fff;padding:22px;margin-bottom:18px;}
+.qcard .chip{display:inline-block;font-size:11px;font-family:'JetBrains Mono',monospace;background:var(--ink);color:var(--paper);padding:3px 8px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px;}
+.qcard .question{font-family:'Fraunces',serif;font-size:22px;font-weight:700;line-height:1.2;margin-bottom:18px;}
+.opts{display:flex;flex-direction:column;gap:10px;}
+.opt{border:2px solid var(--ink);background:var(--paper);padding:14px 16px;cursor:pointer;display:flex;align-items:center;gap:12px;text-align:left;font-size:16px;transition:transform .08s,background .15s;}
+.opt:hover:not(.locked){background:#fffdf3;transform:translateX(3px);}
+.opt .marker{width:28px;height:28px;border:2px solid var(--ink);display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-weight:700;background:#fff;flex-shrink:0;}
+.opt.correct{background:#d4f0d8;}.opt.correct .marker{background:var(--accent-4);color:#fff;}
+.opt.wrong{background:#fad6d3;}.opt.wrong .marker{background:var(--accent);color:#fff;}
+.opt.locked{cursor:default;}
+.explain{margin-top:16px;padding:14px 16px;background:var(--accent-2);border:2px solid var(--ink);font-size:15px;line-height:1.45;}
+.explain b{font-family:'Fraunces',serif;}
+.qnav{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;}
+.xp-pop{position:fixed;pointer-events:none;font-family:'Fraunces',serif;font-weight:900;font-size:28px;color:var(--accent-4);text-shadow:2px 2px 0 var(--ink);z-index:999;animation:xpfloat 1.2s ease-out forwards;}
+@keyframes xpfloat{0%{opacity:1;transform:translateY(0);}100%{opacity:0;transform:translateY(-80px);}}
+.result{text-align:center;padding:36px 20px;}
+.score-circle{width:180px;height:180px;border:4px solid var(--ink);border-radius:50%;display:grid;place-items:center;margin:0 auto 20px;font-family:'Fraunces',serif;font-weight:900;background:var(--accent-2);box-shadow:var(--shadow);}
+.score-circle .num{font-size:64px;line-height:1;}.score-circle .pct{font-size:14px;font-family:'JetBrains Mono',monospace;margin-top:6px;}
+.score-circle.pass{background:#b6e7b9;}.score-circle.fail{background:#f5b1ab;}
+.verdict{font-family:'Fraunces',serif;font-size:32px;font-weight:900;margin-bottom:8px;}
+.level-bar-wrap{border:2px solid var(--ink);background:#fff;height:18px;margin:10px 0;overflow:hidden;}
+.level-bar{height:100%;background:var(--accent-3);background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.3) 0 8px,transparent 8px 16px);transition:width .5s;}
+.flashcard-deck{perspective:1200px;margin:0 auto;max-width:640px;}
+.flashcard{position:relative;width:100%;min-height:320px;transition:transform .6s;transform-style:preserve-3d;cursor:pointer;}
+.flashcard.flipped{transform:rotateY(180deg);}
+.face{position:absolute;inset:0;backface-visibility:hidden;border:2px solid var(--ink);box-shadow:var(--shadow);padding:30px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;}
+.face.front{background:var(--paper);}.face.back{background:var(--ink);color:var(--paper);transform:rotateY(180deg);}
+.face .label{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.16em;margin-bottom:14px;color:var(--muted);}
+.face.back .label{color:var(--accent-2);}
+.face .term{font-family:'Fraunces',serif;font-size:30px;font-weight:900;line-height:1.1;}
+.face .def{font-size:17px;line-height:1.5;}
+.flip-tip{text-align:center;margin-top:14px;color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.12em;}
+.sign-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;}
+.sign-card{border:2px solid var(--ink);background:var(--paper);padding:14px;text-align:center;box-shadow:var(--shadow-sm);}
+.sign-visual{width:100%;aspect-ratio:1;margin-bottom:10px;display:grid;place-items:center;background:#fff;border:2px solid var(--ink);}
+.sign-card h4{font-family:'Fraunces',serif;font-size:16px;font-weight:800;margin-bottom:4px;}
+.sign-card p{font-size:13px;color:var(--muted);line-height:1.35;}
+.topic-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;}
+.topic-card{border:2px solid var(--ink);background:#fff;padding:18px;box-shadow:var(--shadow-sm);cursor:pointer;text-align:left;width:100%;}
+.topic-card:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink);}
+.topic-card .num{font-family:'Fraunces',serif;font-size:32px;font-weight:900;line-height:1;color:var(--accent);}
+.topic-card h4{font-family:'Fraunces',serif;font-size:19px;font-weight:800;margin:4px 0 8px;}
+.topic-card p{font-size:14px;color:var(--muted);}
+.topic-content{border:2px solid var(--ink);background:#fff;padding:24px;margin-top:18px;}
+.topic-content h3{font-family:'Fraunces',serif;font-size:24px;font-weight:900;margin-bottom:14px;border-bottom:2px solid var(--ink);padding-bottom:8px;}
+.topic-content h4{font-family:'Fraunces',serif;font-size:18px;font-weight:800;margin:18px 0 8px;color:var(--accent-3);}
+.topic-content p{margin-bottom:12px;}.topic-content ul,.topic-content ol{margin:10px 0 14px 22px;}.topic-content li{margin-bottom:6px;}
+.topic-content .callout{border-left:4px solid var(--accent);background:#fff5f4;padding:12px 16px;margin:14px 0;font-size:15px;}
+.topic-content .callout.yellow{border-color:var(--accent-2);background:#fffaeb;}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;}
+.chip-btn{padding:6px 12px;border:2px solid var(--ink);background:#fff;cursor:pointer;font-size:13px;font-weight:600;box-shadow:var(--shadow-sm);}
+.chip-btn.active{background:var(--ink);color:var(--paper);}
+footer{text-align:center;margin-top:40px;color:var(--muted);font-size:12px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.14em;}
+footer .accent{color:var(--accent);}
+.hidden{display:none!important;}
+.sign-stop{width:78%;height:78%;background:#d63a2f;color:#fff;clip-path:polygon(30% 0%,70% 0%,100% 30%,100% 70%,70% 100%,30% 100%,0% 70%,0% 30%);display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:900;font-size:22px;letter-spacing:.05em;}
+.sign-yield{width:0;height:0;border-left:50px solid transparent;border-right:50px solid transparent;border-top:84px solid #d63a2f;position:relative;}
+.sign-yield::after{content:"YIELD";position:absolute;top:-78px;left:-22px;color:#fff;font-weight:900;font-size:13px;font-family:'Fraunces',serif;}
+.sign-warning{width:70%;aspect-ratio:1;background:#f5b400;transform:rotate(45deg);border:3px solid #14202b;display:grid;place-items:center;}
+.sign-warning span{transform:rotate(-45deg);font-family:'Fraunces',serif;font-weight:900;font-size:22px;}
+.sign-railroad{width:80%;aspect-ratio:1;border-radius:50%;background:#f5b400;display:grid;place-items:center;border:3px solid #14202b;font-family:'Fraunces',serif;font-weight:900;font-size:32px;letter-spacing:.4em;}
+.sign-construction{width:70%;aspect-ratio:1;background:#f08a1e;transform:rotate(45deg);border:3px solid #14202b;display:grid;place-items:center;}
+.sign-construction span{transform:rotate(-45deg);font-family:'Fraunces',serif;font-weight:900;text-align:center;font-size:12px;line-height:1;color:#fff;}
+.sign-school{width:65%;background:#d8e35a;border:3px solid #14202b;display:grid;place-items:center;aspect-ratio:1;clip-path:polygon(50% 0%,100% 30%,100% 100%,0% 100%,0% 30%);font-family:'Fraunces',serif;font-weight:900;font-size:14px;text-align:center;}
+.sign-guide{width:78%;aspect-ratio:1.4;background:#0a8754;color:#fff;border:3px solid #14202b;display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:900;font-size:14px;text-align:center;}
+.sign-service{width:70%;aspect-ratio:1;background:#1f6feb;color:#fff;border:3px solid #14202b;display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:900;font-size:28px;}
+.sign-noenter{width:70%;aspect-ratio:1;background:#d63a2f;border-radius:50%;border:3px solid #14202b;display:grid;place-items:center;color:#fff;font-family:'Fraunces',serif;font-weight:900;font-size:13px;text-align:center;line-height:1.1;}
+.sign-noenter span{background:#fff;color:#d63a2f;padding:1px 6px;}
+@media(max-width:600px){.hero{padding:28px 20px;}section.panel{padding:18px;}.qcard{padding:16px;}.qcard .question{font-size:18px;}body{font-size:16px;}}
+</style>
 </head>
 <body>
-
-  <!-- ═══════════════════════════════════════════════════════════════════
-       WELCOME SCREEN
-  ════════════════════════════════════════════════════════════════════ -->
-  <div id="welcome-screen" class="screen active">
-    <div class="welcome-badge">🚗</div>
-
-    <h1 class="welcome-title">OK Permit Quest</h1>
-    <p class="welcome-tagline">Master Oklahoma Roads Before You Hit Them</p>
-
-    <span id="welcome-xp" class="welcome-xp-badge"></span>
-
-    <div class="welcome-instructions">
-      <strong>How to Play:</strong>
-      <ul>
-        <li>Choose one of <strong>6 zones</strong> on the map</li>
-        <li>Read each driving scenario carefully</li>
-        <li>Pick the correct answer to earn <strong>100 XP</strong></li>
-        <li>Review explanations and Oklahoma-specific tips</li>
-        <li>Complete all zones to get your <strong>permit readiness grade</strong></li>
-      </ul>
-    </div>
-
-    <button id="start-btn" class="start-btn">Start Game 🚦</button>
+<div class="wrap">
+<header class="topbar">
+  <div class="logo">
+    <div class="logo-mark">OK</div>
+    <div><h1>Road Ready OK</h1><div class="tag">Oklahoma Permit Prep · Class D</div></div>
   </div>
-
-
-  <!-- ═══════════════════════════════════════════════════════════════════
-       MAP SCREEN
-  ════════════════════════════════════════════════════════════════════ -->
-  <div id="map-screen" class="screen hidden">
-    <div class="map-header">
-      <h2>Choose a <span>Zone</span></h2>
-      <div id="map-xp" class="map-xp-badge">⭐ 0 XP</div>
-    </div>
-
-    <div class="map-actions">
-      <button id="map-back-btn" class="btn-outline">← Back</button>
-      <button id="map-final-btn" class="btn-primary" style="display:none">🏆 Final Results</button>
-    </div>
-
-    <div id="zone-grid"></div>
+  <div class="stats" id="stats">
+    <div class="stat">XP: <b id="stat-xp">0</b></div>
+    <div class="stat yellow">Level: <b id="stat-level">Student Driver</b></div>
+    <div class="stat red">Streak: <b id="stat-streak">0</b></div>
   </div>
+</header>
 
-
-  <!-- ═══════════════════════════════════════════════════════════════════
-       SCENARIO SCREEN
-  ════════════════════════════════════════════════════════════════════ -->
-  <div id="scenario-screen" class="screen hidden">
-    <div class="scenario-header">
-      <button id="scenario-back-btn" class="back-btn">← Map</button>
-      <span id="scenario-zone-label" class="scenario-zone-label"></span>
-      <div class="xp-display" id="xp-display">
-        ⭐ 0 XP
-        <span id="xp-earned-pop" class="xp-pop"></span>
-      </div>
-    </div>
-
-    <div class="progress-bar-wrap">
-      <div class="progress-fill" id="progress-fill"></div>
-    </div>
-    <div class="progress-text" id="progress-text">Question 1 of 5</div>
-
-    <div class="scenario-card">
-      <div class="scenario-icon-row">
-        <div class="scenario-icon-badge" id="scenario-icon">🚗</div>
-        <h2 class="scenario-title" id="scenario-title">Loading…</h2>
-      </div>
-      <p class="scenario-situation" id="scenario-situation"></p>
-      <div class="scenario-question" id="scenario-question"></div>
-    </div>
-
-    <div class="choices-container" id="choices-container"></div>
-
-    <div class="feedback-box" id="feedback-box">
-      <div class="feedback-header">
-        <span class="feedback-icon" id="feedback-icon"></span>
-        <span class="feedback-label" id="feedback-text"></span>
-      </div>
-      <p class="feedback-explain" id="feedback-explain"></p>
-    </div>
-
-    <div class="tip-box" id="tip-box">
-      <span id="tip-text"></span>
-    </div>
-
-    <button class="next-btn" id="next-btn">Next Question →</button>
-  </div>
-
-
-  <!-- ═══════════════════════════════════════════════════════════════════
-       ZONE COMPLETE OVERLAY
-  ════════════════════════════════════════════════════════════════════ -->
-  <div id="zone-complete-overlay" class="zone-complete-overlay" style="display:none">
-    <div class="zone-complete-card">
-      <div class="zone-complete-star">⭐</div>
-      <div class="zone-complete-name" id="zone-complete-name">Zone Complete!</div>
-      <div class="zone-complete-score" id="zone-complete-score">5 / 5 correct</div>
-      <div class="zone-complete-pct" id="zone-complete-pct">100% accuracy</div>
-      <div class="zone-complete-btns">
-        <button id="zone-continue-btn" class="btn-green">Continue to Map 🗺️</button>
-        <button id="zone-results-btn" class="btn-blue">View All Results 🏆</button>
-      </div>
+<!-- HOME -->
+<section id="view-home">
+  <div class="hero">
+    <h2>Pass your permit. <em>The first time.</em></h2>
+    <p>Real questions straight from the Oklahoma Driver Manual — wrapped in a game so it actually sticks. Earn XP, level up, and walk into Service Oklahoma ready.</p>
+    <div class="cta-row">
+      <button class="primary" onclick="show('view-quiz');startQuiz('all',25)">Start Full Practice Test →</button>
+      <button class="yellow" onclick="show('view-flash')">🎴 Flashcards</button>
+      <button class="blue" onclick="show('view-signs')">🚦 Sign Trainer</button>
     </div>
   </div>
-
-
-  <!-- ═══════════════════════════════════════════════════════════════════
-       RESULTS SCREEN
-  ════════════════════════════════════════════════════════════════════ -->
-  <div id="results-screen" class="screen hidden">
-    <div class="results-header">
-      <div class="results-trophy">🏆</div>
-      <h2>Your Results</h2>
-    </div>
-
-    <div class="results-stats">
-      <div class="stat-card">
-        <div class="stat-value" id="result-xp">0</div>
-        <div class="stat-label">Total XP</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value" id="result-pct">0%</div>
-        <div class="stat-label">Accuracy</div>
-      </div>
-      <div class="stat-card">
-        <div class="grade-letter grade-A" id="result-grade">—</div>
-        <div class="stat-label">Grade</div>
-      </div>
-    </div>
-
-    <div class="result-message-card" id="result-message"></div>
-
-    <div class="zone-breakdown">
-      <h3>Zone Breakdown</h3>
-      <div id="zone-breakdown"></div>
-    </div>
-
-    <div class="results-actions">
-      <button id="review-btn" class="btn-large btn-blue" style="display:none">
-        📝 Review My Mistakes
+  <section class="panel">
+    <h2 class="section-title">Pick your zone</h2>
+    <div class="subtitle">Each zone = one topic area from the real test</div>
+    <div class="modes">
+      <button class="mode-card" onclick="show('view-quiz');startQuiz('license',14)">
+        <div class="icon">🪪</div><h3>License HQ</h3><p>Permits, GDL rules, insurance minimums, points. 14 questions.</p>
       </button>
-      <button id="play-again-btn" class="btn-large btn-orange">
-        🔄 Play Again
+      <button class="mode-card blue" onclick="show('view-quiz');startQuiz('signs',14)">
+        <div class="icon">🚦</div><h3>Sign City</h3><p>Colors, shapes, signals, pavement markings. 14 questions.</p>
+      </button>
+      <button class="mode-card green" onclick="show('view-quiz');startQuiz('rules',22)">
+        <div class="icon">🛣️</div><h3>Road Rules</h3><p>Right-of-way, lanes, speed limits, parking, railroad. 22 questions.</p>
+      </button>
+      <button class="mode-card red" onclick="show('view-quiz');startQuiz('safety',22)">
+        <div class="icon">✅</div><h3>Safety Check</h3><p>Following distance, DUI laws, weather, crashes. 22 questions.</p>
       </button>
     </div>
-  </div>
+  </section>
+  <section class="panel">
+    <h2 class="section-title">More study modes</h2>
+    <div class="subtitle">Use all four to lock in the material</div>
+    <div class="modes" style="margin:0">
+      <button class="mode-card red" onclick="show('view-quiz');startQuiz('all',25)">
+        <div class="icon">25</div><h3>Full Practice Exam</h3><p>25 mixed questions. Pass at 80% to feel ready for the real thing.</p>
+      </button>
+      <button class="mode-card" onclick="show('view-quiz');startQuiz('all',10)">
+        <div class="icon">⚡</div><h3>Quick 10</h3><p>Ten random questions for a fast warm-up between classes.</p>
+      </button>
+      <button class="mode-card blue" onclick="show('view-study')">
+        <div class="icon" style="background:var(--accent-3);color:#fff">📖</div><h3>Study Guide</h3><p>10 condensed chapters from the Oklahoma manual.</p>
+      </button>
+      <button class="mode-card green" onclick="show('view-signs')">
+        <div class="icon" style="background:var(--accent-4);color:#fff">🚸</div><h3>Sign Library</h3><p>Every shape and color, explained with CSS drawings.</p>
+      </button>
+    </div>
+  </section>
+  <section class="panel">
+    <h2 class="section-title">Your progress</h2>
+    <div class="subtitle">Every question earns XP — keep going</div>
+    <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-bottom:12px;">
+      <div style="font-family:'Fraunces',serif;font-size:40px;font-weight:900" id="home-xp">0 XP</div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em">Current Level</div>
+        <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:900" id="home-level">Student Driver 🚗</div>
+      </div>
+    </div>
+    <div class="level-bar-wrap"><div class="level-bar" id="home-level-bar" style="width:0%"></div></div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted)" id="home-level-next"></div>
+    <p style="margin-top:16px;font-size:14px;color:var(--muted)">🏆 Permit Master at 1,401 XP · Best score: <b id="home-best">—</b></p>
+  </section>
+</section>
 
+<!-- QUIZ -->
+<section id="view-quiz" class="hidden">
+  <button onclick="show('view-home')" style="margin-bottom:18px">← Back home</button>
+  <section class="panel" id="quiz-active">
+    <div class="qmeta"><span id="q-counter">Question 1 of 25</span><span id="q-score">Correct: 0</span></div>
+    <div class="progress"><div id="q-progress"></div></div>
+    <div class="scenario-box" id="q-scenario"><b>Scenario:</b> </div>
+    <div class="qcard">
+      <span class="chip" id="q-chip">Rules of the Road</span>
+      <div class="question" id="q-text"></div>
+      <div class="opts" id="q-opts"></div>
+      <div class="explain hidden" id="q-explain"></div>
+    </div>
+    <div class="qnav">
+      <button id="next-btn" class="primary hidden" onclick="nextQuestion()">Next question →</button>
+      <button onclick="quitQuiz()">Quit quiz</button>
+    </div>
+  </section>
+  <section class="panel hidden" id="quiz-result">
+    <div class="result">
+      <div class="score-circle" id="score-circle"><div><div class="num" id="result-num">0</div><div class="pct" id="result-pct">0%</div></div></div>
+      <div class="verdict" id="result-verdict"></div>
+      <p id="result-msg" style="margin-bottom:16px;max-width:520px;margin-left:auto;margin-right:auto;color:var(--muted)"></p>
+      <div style="font-family:'Fraunces',serif;font-size:20px;font-weight:900;margin-bottom:20px" id="result-xp"></div>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button class="primary" onclick="reviewMistakes()">📝 Review mistakes</button>
+        <button class="yellow" onclick="startQuiz(currentCategory,currentTotal)">↻ Retake</button>
+        <button onclick="show('view-home')">🏠 Home</button>
+      </div>
+    </div>
+  </section>
+  <section class="panel hidden" id="quiz-review">
+    <h2 class="section-title">Mistake Review</h2>
+    <div class="subtitle">Learn from what you missed</div>
+    <div id="review-list"></div>
+    <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="primary" onclick="startQuiz(currentCategory,currentTotal)">↻ Try again</button>
+      <button onclick="show('view-home')">🏠 Home</button>
+    </div>
+  </section>
+</section>
 
-  <script src="scenarios.js"></script>
-  <script src="game.js"></script>
+<!-- FLASHCARDS -->
+<section id="view-flash" class="hidden">
+  <button onclick="show('view-home')" style="margin-bottom:18px">← Back home</button>
+  <section class="panel">
+    <h2 class="section-title">Flashcards</h2>
+    <div class="subtitle">Tap the card to flip · <span id="flash-counter">1 / 1</span></div>
+    <div class="filters" id="flash-filters"></div>
+    <div class="flashcard-deck">
+      <div class="flashcard" id="flashcard" onclick="flipCard()">
+        <div class="face front"><div class="label">Term / Question</div><div class="term" id="flash-front"></div></div>
+        <div class="face back"><div class="label">Answer</div><div class="def" id="flash-back"></div></div>
+      </div>
+    </div>
+    <div class="flip-tip">Click card to flip</div>
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap">
+      <button onclick="prevCard()">← Previous</button>
+      <button class="yellow" onclick="shuffleCards()">🔀 Shuffle</button>
+      <button class="primary" onclick="nextCard()">Next →</button>
+    </div>
+  </section>
+</section>
+
+<!-- SIGNS -->
+<section id="view-signs" class="hidden">
+  <button onclick="show('view-home')" style="margin-bottom:18px">← Back home</button>
+  <section class="panel">
+    <h2 class="section-title">Sign Library</h2>
+    <div class="subtitle">Shape + color = meaning, even when a sign is damaged</div>
+    <p style="margin-bottom:18px;max-width:680px">Even when a sign is dirty or damaged, you should recognize it from its <b>shape</b> and <b>color</b>. Here's the full system from the Oklahoma manual.</p>
+    <div class="sign-grid" id="sign-grid"></div>
+  </section>
+  <section class="panel">
+    <h2 class="section-title">Color cheat sheet</h2>
+    <div class="subtitle">Memorize these — guaranteed test material</div>
+    <ul style="margin-left:22px;line-height:2">
+      <li><b style="color:#d63a2f">RED</b> — Stop or "Not Allowed"</li>
+      <li><b style="color:#f08a1e">ORANGE</b> — Construction / maintenance / work zone</li>
+      <li><b style="color:#c39800">YELLOW</b> — General warning (hazard ahead)</li>
+      <li><b style="color:#9bbf2e">FLUORESCENT YELLOW-GREEN</b> — Schools, pedestrians, bicycles</li>
+      <li><b>WHITE/BLACK</b> — Regulations &amp; instructions</li>
+      <li><b style="color:#0a8754">GREEN</b> — Guide / direction signs</li>
+      <li><b style="color:#1f6feb">BLUE</b> — Driver services (gas, food, lodging, hospitals)</li>
+      <li><b style="color:#7a4a26">BROWN</b> — Recreation, cultural, historical</li>
+    </ul>
+  </section>
+</section>
+
+<!-- STUDY GUIDE -->
+<section id="view-study" class="hidden">
+  <button onclick="show('view-home')" style="margin-bottom:18px">← Back home</button>
+  <section class="panel">
+    <h2 class="section-title">Study Guide</h2>
+    <div class="subtitle">Tap a topic to read the essentials</div>
+    <div class="topic-list" id="topic-list"></div>
+    <div id="topic-detail" class="hidden"></div>
+  </section>
+</section>
+
+<footer>
+  <p>Road Ready OK · Unofficial study tool · Source: <span class="accent">Oklahoma Driver Manual</span></p>
+  <p style="margin-top:6px">Always verify current laws on Service Oklahoma's official site before testing.</p>
+</footer>
+</div>
+<script>
+const QUESTIONS=[
+{cat:"license",q:"What is the minimum age to apply for a Class D Learner Permit in Oklahoma if you are taking an approved driver education course?",options:["14","15","15½","16"],answer:1,explain:"You may apply for a Class D Learner Permit at age 15 if you are taking or have passed an approved driver education course."},
+{cat:"license",q:"How long must you hold a Class D Learner Permit before taking the driving test if you got the permit at age 15?",options:["30 days","60 days","180 days","1 year"],answer:2,explain:"Learner Permits issued under 16 require holding the permit at least 180 days (about 6 months) before the driving test."},
+{cat:"license",q:"When you have a Learner Permit, who must be in the front seat with you?",options:["Any licensed driver","A licensed driver age 18 or older","A licensed driver age 21 or older","A driving instructor only"],answer:2,explain:"Under Oklahoma's Restriction 9, you must be accompanied by a licensed driver age 21 or older in the front seat."},
+{cat:"license",q:"What time restrictions apply to a Graduated Driver License (Restriction T) intermediate license?",options:["Driving allowed only 7 a.m. to 7 p.m.","Driving allowed 5 a.m. to 10 p.m. (with school/work/church exceptions)","No driving after dark, period","No restrictions on driving hours"],answer:1,explain:"Restriction T limits driving to 5 a.m.–10 p.m. unless going to/from school, church, work, or with a licensed driver 21+."},
+{cat:"license",q:"How many passengers can an intermediate GDL license holder carry?",options:["No passengers at all","One passenger, unless they live in the same household or a licensed adult 21+ is in the front seat","Up to three friends","Unlimited if all are minors"],answer:1,explain:"GDL limits intermediate-license teens to one passenger unless all passengers are household members, or a licensed driver 21+ is up front."},
+{cat:"license",q:"If you move, how many days do you have to notify Service Oklahoma of your new address?",options:["3 days","10 days","30 days","60 days"],answer:1,explain:"Oklahoma law requires you to notify Service Oklahoma within 10 days of moving."},
+{cat:"license",q:"If you fail the written test, how long must you wait before retesting?",options:["You can retake immediately","At least 1 day","7 days","30 days"],answer:1,explain:"By law, you must wait at least one day before retaking the written test if you fail."},
+{cat:"license",q:"Until what age is your Oklahoma driver license considered 'probationary'?",options:["16","17","18","21"],answer:2,explain:"Until you turn 18, your license is probationary — Service Oklahoma can cancel or suspend it for any unlawful act or misconduct while driving."},
+{cat:"license",q:"What is Oklahoma's minimum required liability insurance for property damage?",options:["$10,000","$15,000","$25,000","$50,000"],answer:2,explain:"Oklahoma requires a minimum of $25,000 property damage coverage per accident."},
+{cat:"license",q:"What is the minimum liability coverage for injury/death of one person in Oklahoma?",options:["$15,000","$25,000","$50,000","$100,000"],answer:1,explain:"Oklahoma requires $25,000 minimum for injury or death of one person, and $50,000 for two or more."},
+{cat:"license",q:"What can happen if you can't show proof of insurance to a law enforcement officer?",options:["Just a warning","$50 fine only","Fine up to $250, up to 30 days in jail, plus suspension of license and registration","Vehicle is impounded permanently"],answer:2,explain:"Failing to provide proof of insurance can mean a fine up to $250, 30 days in jail, AND suspension of your license and registration."},
+{cat:"license",q:"How many points within 5 years will get your license suspended in Oklahoma?",options:["6","8","10","15"],answer:2,explain:"Accumulate 10 or more points within 5 years and your license will be suspended."},
+{cat:"license",q:"How many points are you assessed for reckless driving?",options:["1","2","3","4"],answer:3,explain:"Reckless driving = 4 points on your driving record."},
+{cat:"license",q:"How many points are deducted for each 12-month period without a pointable conviction?",options:["1","2","3","5"],answer:1,explain:"Two points are deducted for every 12 months with no pointable convictions; record clears to zero after 3 consecutive clean years."},
+{cat:"safety",q:"Until what age must a child in Oklahoma be in a properly used child passenger restraint system?",options:["Under 4","Under 6","Under 8","Under 10"],answer:2,explain:"Children under 8 must be properly secured in a child passenger restraint system."},
+{cat:"safety",q:"Until what age must a child be in a rear-facing car seat in Oklahoma?",options:["Until age 1","Until age 2","Until age 4","Until age 6"],answer:1,explain:"Child restraints must be rear-facing until the child is 2 years old or hits the seat's manufacturer height/weight max."},
+{cat:"safety",q:"A child between 4 and 8 years old who is shorter than 4'9\" must use what?",options:["Just a regular seat belt","Nothing — they're old enough","A child passenger restraint system or a seat belt (properly secured)","A booster seat in the front seat only"],answer:2,explain:"Children 4–8 who are under 4'9\" must be properly secured in a child passenger restraint system or seat belt."},
+{cat:"signs",q:"What does an octagonal RED sign always mean?",options:["Yield to traffic","Construction zone","Stop completely","Speed limit ahead"],answer:2,explain:"A red octagon is always a STOP sign. Even if it's faded or covered, the shape alone means STOP."},
+{cat:"signs",q:"What color signals a construction or maintenance work zone?",options:["Yellow","Orange","Red","Green"],answer:1,explain:"ORANGE signs mean a construction or maintenance work zone — slow down, fines double when workers are present."},
+{cat:"signs",q:"A yellow diamond-shaped sign means:",options:["A regulation you must follow","Driver service (food, gas, lodging)","A general warning of conditions ahead","Recreation or historical site"],answer:2,explain:"Yellow diamond signs are warning signs — they alert you to road conditions or hazards ahead."},
+{cat:"signs",q:"What does a fluorescent yellow-green sign indicate?",options:["Hospital ahead","Schools, pedestrians, or bicyclists","Construction zone","Wildlife crossing"],answer:1,explain:"Fluorescent yellow-green is reserved for high-emphasis signs about schools, pedestrians, and bicycles."},
+{cat:"signs",q:"Blue rectangular signs typically tell you about:",options:["Speed limits","Driver services like gas, food, lodging, hospitals","Historical sites","Detours"],answer:1,explain:"Blue signs guide you to driver services — gas stations, restaurants, motels, hospitals."},
+{cat:"signs",q:"Brown signs are used for:",options:["Road work","Recreation, cultural, and historical sites","Hazardous waste areas","Bicycle routes"],answer:1,explain:"Brown signs point out parks, historical markers, and cultural attractions."},
+{cat:"signs",q:"A red circle with a line through it means:",options:["Caution","Construction","DO NOT or NOT ALLOWED","Hospital ahead"],answer:2,explain:"A red circle with a slash means the action shown inside is prohibited."},
+{cat:"signs",q:"When you see a flashing YELLOW traffic light, you should:",options:["Stop completely","Speed up to clear the intersection","Slow down, look both ways, and proceed with caution","Treat it like a red light"],answer:2,explain:"Flashing yellow = caution. Slow down, look both ways, drive through carefully."},
+{cat:"signs",q:"A flashing RED traffic light means:",options:["Stop, then go when it's safe (same as a stop sign)","Slow down and yield","The light is broken — proceed normally","Stop and remain stopped"],answer:0,explain:"Flashing red means the same as a stop sign — come to a complete stop, then go when the way is clear."},
+{cat:"signs",q:"A solid yellow line on YOUR side of the road means:",options:["Passing is permitted","Do NOT pass","Two-way traffic ahead","Lane is closed"],answer:1,explain:"A solid yellow line in your lane means you cannot legally pass."},
+{cat:"signs",q:"Yellow broken (dashed) lines on a two-lane road mean:",options:["No passing in either direction","Two-way traffic; passing permitted when safe","One-way traffic only","Lane closed ahead"],answer:1,explain:"Yellow dashed center lines indicate two-way traffic where passing is allowed when safe."},
+{cat:"signs",q:"What does a flashing RED arrow signal mean?",options:["Make the turn carefully","All turns in the direction of the arrow are prohibited — wait for green","Yield to oncoming traffic, then turn","Same as a stop sign — stop then go"],answer:1,explain:"Flashing red arrow generally means turns in that direction are prohibited; wait for a green signal."},
+{cat:"signs",q:"A flashing yellow arrow for a left turn means:",options:["Stop, you must wait for green","Turn now — you have right-of-way","Reduce speed and turn cautiously after yielding to oncoming traffic and pedestrians","Lane is closed"],answer:2,explain:"Flashing yellow arrow = proceed cautiously AFTER yielding to oncoming traffic and pedestrians."},
+{cat:"signs",q:"What signal shape and color means YIELD?",options:["Red octagon","Yellow diamond","Red and white downward-pointing triangle","Orange rectangle"],answer:2,explain:"A YIELD sign is a downward-pointing red and white triangle."},
+{cat:"rules",q:"At a four-way stop, when two cars arrive at the same time, who has the right of way?",options:["The car on the LEFT","The car on the RIGHT","The bigger vehicle","Whichever car honks first"],answer:1,explain:"When two vehicles arrive simultaneously, the driver on the LEFT must yield to the driver on the right."},
+{cat:"rules",q:"How far from a blind pedestrian (with a white cane or guide dog) must a vehicle stop?",options:["5 feet","10 feet","15 feet","25 feet"],answer:2,explain:"Vehicles must stop at least 15 feet from a blind person in the roadway or at an intersection."},
+{cat:"rules",q:"When is it OK to NOT stop for a school bus with red flashing loading lights?",options:["Whenever you're in a hurry","When the bus is on the opposite side of a divided highway","When you don't see any kids","On any two-lane road"],answer:1,explain:"You don't have to stop for a school bus on a divided highway when it's on the opposite roadway. Otherwise, you MUST stop."},
+{cat:"rules",q:"What's the consequence for failing to stop for a school bus with flashing red lights?",options:["Just a warning","Small fine only","Mandatory revocation of driver license for one year","Points on your record only"],answer:2,explain:"Mandatory revocation of driver license for ONE YEAR for failing to stop for a school bus with red lights flashing."},
+{cat:"rules",q:"Under Oklahoma's Move Over Law, what must you do when approaching a stationary vehicle with flashing lights on the side of the road?",options:["Honk to alert them","Move over a lane if safe; otherwise slow down and use caution","Stop completely until they leave","Continue at normal speed"],answer:1,explain:"Move over a lane if safe to do so. If you can't safely change lanes, slow down and proceed with caution."},
+{cat:"rules",q:"When a funeral procession enters an intersection, you should:",options:["Honk and proceed","Yield right-of-way and let the entire procession pass","Squeeze in if there's a gap","Pass on the right"],answer:1,explain:"Motorists must yield to a funeral procession. The whole procession may follow the lead vehicle through the intersection."},
+{cat:"rules",q:"When making a left turn, you must:",options:["Honk first to claim right-of-way","Yield to all oncoming traffic","Turn quickly to beat oncoming cars","Always have right-of-way"],answer:1,explain:"Drivers turning left must yield to all oncoming traffic and pedestrians."},
+{cat:"rules",q:"When passing another vehicle on a two-lane road, how much clear roadway should you check ahead?",options:["100 feet","150 feet","200 feet of clear roadway with no No Passing Zone","500 feet"],answer:2,explain:"Check ahead for at least 200 feet of clear roadway with no No Passing Zone before pulling out to pass."},
+{cat:"rules",q:"Within how many feet of an obstructed view is passing prohibited?",options:["50 feet","100 feet","200 feet","500 feet"],answer:1,explain:"Do not pass within 100 feet of an obstructed view, or near bridges, tunnels, intersections, railroad crossings, or crosswalks."},
+{cat:"rules",q:"You must signal your intention to turn at least how far before turning?",options:["50 feet or 1/4 of a block","100 feet or 1/3 of a block","200 feet","When the car ahead clears"],answer:1,explain:"Signal at least 100 feet (about 1/3 of a city block) before turning, slowing, or stopping."},
+{cat:"rules",q:"When entering an expressway, you should:",options:["Stop at the end of the ramp and wait","Use the acceleration lane to match traffic speed, then merge when safe","Cut across all lanes immediately","Stay slow so others can see you"],answer:1,explain:"Use the acceleration lane to match traffic speed, then signal and merge when safe. You yield to vehicles already on the expressway."},
+{cat:"rules",q:"When passing a bicycle, how much space must Oklahoma drivers leave?",options:["1 foot","2 feet","Not less than 3 feet","5 feet"],answer:2,explain:"Oklahoma law requires at least 3 feet of clearance when passing a bicycle going the same direction."},
+{cat:"rules",q:"On a road with two or more lanes in your direction, where should slower traffic drive?",options:["Wherever it wants","In the right-hand lane","In the left-hand lane","In the center lane only"],answer:1,explain:"Use the right-hand lane when driving slower than other traffic; use middle/left lanes for faster traffic or to pass."},
+{cat:"rules",q:"A center lane marked with solid yellow lines on each side and dashed yellow inside is for:",options:["Passing only","Left turns only — not for passing","High-speed travel","Emergency vehicles only"],answer:1,explain:"That center lane is reserved for left turns from either direction. It is NOT to be used for passing."},
+{cat:"rules",q:"Unless otherwise posted, what is the default speed limit on Oklahoma turnpikes?",options:["65 mph","70 mph","75 mph","80 mph"],answer:3,explain:"Oklahoma turnpikes default to 80 mph unless posted otherwise."},
+{cat:"rules",q:"Default speed limit on undivided state highways in Oklahoma:",options:["55 mph","60 mph","65 mph","70 mph"],answer:2,explain:"Undivided state highways default to 65 mph unless otherwise posted."},
+{cat:"rules",q:"Default speed in a properly marked school zone on a highway outside a municipality:",options:["15 mph","20 mph","25 mph","30 mph"],answer:2,explain:"School zones on highways outside a municipality default to 25 mph in properly marked zones."},
+{cat:"rules",q:"Speed limit on county roads in Oklahoma (unless posted otherwise):",options:["45 mph","50 mph","55 mph","65 mph"],answer:2,explain:"County roads default to 55 mph unless otherwise posted."},
+{cat:"rules",q:"What happens to speeding fines in a construction zone when workers or equipment are present?",options:["They stay the same","They are doubled","They are tripled","Only license points are added"],answer:1,explain:"Speeding fines are DOUBLED in construction and maintenance zones when workers or equipment are present. Same goes for school zones."},
+{cat:"rules",q:"When parking parallel, your vehicle must be within how many inches of the curb?",options:["6 inches","12 inches","18 inches","24 inches"],answer:2,explain:"Park within 18 inches of the curb when parallel parking."},
+{cat:"rules",q:"How far from a fire hydrant can you legally park?",options:["10 feet","15 feet","20 feet","25 feet"],answer:1,explain:"It's illegal to park within 15 feet of a fire hydrant."},
+{cat:"rules",q:"How far from a railroad crossing must you not park?",options:["20 feet","30 feet","50 feet","100 feet"],answer:2,explain:"Parking within 50 feet of the nearest rail of a railroad crossing is illegal."},
+{cat:"rules",q:"When parking facing downhill on a street with a curb, you should turn your wheels:",options:["Away from the curb","Toward the curb","Straight ahead","Doesn't matter"],answer:1,explain:"Facing downhill = turn wheels TOWARD the curb so the curb stops the car if it rolls."},
+{cat:"rules",q:"When parking facing uphill on a street with a curb, you should turn your wheels:",options:["Away from the curb","Toward the curb","Straight ahead","It doesn't matter"],answer:0,explain:"Facing uphill with a curb = turn wheels AWAY from the curb, then back up so the tire rests against the curb."},
+{cat:"rules",q:"When approaching a railroad crossing where you must stop, you must stop within what distance from the nearest rail?",options:["Anywhere is fine","Within 50 feet, but not less than 15 feet","Within 100 feet","Exactly 25 feet"],answer:1,explain:"Stop within 50 feet but not less than 15 feet from the nearest rail when warning devices, gates, or a train are present."},
+{cat:"rules",q:"If your vehicle stalls on railroad tracks with no warning lights yet, you should:",options:["Stay in the vehicle and try to restart it","Get out immediately and call 911 plus the ENS number on the crossing","Push the car off the tracks yourself","Wait for help in the car"],answer:1,explain:"GET OUT, get away (run at 45° toward the train's direction), then call 911 and the ENS number posted at the crossing."},
+{cat:"safety",q:"What's the recommended following distance rule on dry pavement?",options:["1-second rule","2-second rule","3-second rule","5-second rule"],answer:2,explain:"Use the 3-second rule: pick a fixed point and count one-thousand-one, two, three. If you pass before three seconds, you're too close."},
+{cat:"safety",q:"In bad weather or on slick roads, your following distance should be:",options:["Same as dry pavement","Increased to at least 4 seconds","Decreased to be safer","Doesn't matter"],answer:1,explain:"Increase your following distance to at least 4 seconds in rain, fog, snow, or when behind large vehicles or motorcycles."},
+{cat:"safety",q:"An alternative to the 3-second rule is to allow:",options:["1 car length per 5 mph","1 car length per 10 mph","1 car length per 15 mph","5 car lengths regardless of speed"],answer:1,explain:"Another guide: leave one car length for every 10 mph of speed."},
+{cat:"safety",q:"When braking on ice or snow with STANDARD (non-ABS) brakes, you should:",options:["Slam the brakes hard","Tap the brakes lightly, about one second apart","Use the emergency brake","Pump them as fast as possible"],answer:1,explain:"On slippery surfaces with standard brakes, tap them gently about one second apart. With ABS brakes: apply firm steady pressure."},
+{cat:"safety",q:"If your car starts to skid, you should:",options:["Slam the brakes","Take your foot off the brake and steer in the direction of the skid (when safe)","Pull the parking brake","Steer the opposite way of the skid"],answer:1,explain:"Take your foot off the brake and gently steer in the direction of the skid — but don't steer into oncoming traffic or off the road."},
+{cat:"safety",q:"If a tire blows out, you should:",options:["Slam on the brakes immediately","Take your foot off the gas and apply the brakes cautiously","Speed up to maintain control","Yank the steering wheel"],answer:1,explain:"Take your foot off the gas, hold the wheel firmly, and brake cautiously. Never brake suddenly during a blowout."},
+{cat:"safety",q:"Most vehicles can be swept away in how much running flood water?",options:["6 inches","1 foot","Less than 2 feet (24 inches)","4 feet"],answer:2,explain:"Most vehicles can be swept away by less than 2 feet of running water. Turn around, don't drown!"},
+{cat:"safety",q:"When must you use headlights in Oklahoma?",options:["Only after midnight","From 30 minutes after sunset until 30 minutes before sunrise","Only when raining","Only on highways"],answer:1,explain:"Use headlights from 30 minutes after sunset until 30 minutes before sunrise — also in fog, rain, snow, or when signs require."},
+{cat:"safety",q:"You must dim your high beams within how many feet of an oncoming vehicle?",options:["200 feet","500 feet","1000 feet","2000 feet"],answer:2,explain:"Dim high beams to low within 1000 feet of an oncoming vehicle, or within 600 feet of a vehicle you're following."},
+{cat:"safety",q:"Within how many feet of a vehicle you're following must you dim your high beams?",options:["100 feet","300 feet","600 feet","1000 feet"],answer:2,explain:"Dim your high beams within 600 feet of a vehicle you are following."},
+{cat:"safety",q:"What is the legal BAC limit for adult drivers (21+) in Oklahoma?",options:["0.05","0.08","0.10","0.02"],answer:1,explain:"0.08 BAC is the legal limit for adults. At 0.05–0.08 you can still be charged with impaired driving."},
+{cat:"safety",q:"Under Oklahoma's Zero Tolerance law, what BAC will get a driver under 21 in trouble?",options:["0.08 or higher","0.05 or higher","ANY measurable amount of alcohol","0.02 or higher"],answer:2,explain:"Zero Tolerance: any measurable amount of alcohol in a driver under 21 is illegal."},
+{cat:"safety",q:"If a driver under 21 is convicted under Zero Tolerance for the first time, their license is revoked for:",options:["30 days","90 days","6 months","1 year"],answer:2,explain:"First Zero Tolerance offense = 6 months license revocation. Second offense = 12 months."},
+{cat:"safety",q:"Refusing a breath/blood test under the Implied Consent Law results in:",options:["A small fine only","No consequence if you weren't drinking","Automatic license revocation, even if you weren't drinking","30 days probation"],answer:2,explain:"Refusing the test = automatic revocation of your driving privilege under Implied Consent, regardless of whether you were drinking."},
+{cat:"safety",q:"What is the maximum jail time for a FIRST DUI conviction in Oklahoma?",options:["30 days","6 months","1 year","5 years"],answer:2,explain:"First DUI is a misdemeanor: 10 days to 1 year in jail and a fine up to $1,000."},
+{cat:"safety",q:"A second DUI conviction within 10 years in Oklahoma is classified as:",options:["A misdemeanor","An infraction","A felony","A traffic citation only"],answer:2,explain:"A second DUI within 10 years is a felony — up to 5 years in prison and a fine up to $2,500."},
+{cat:"safety",q:"About what percentage of all highway deaths involve alcohol?",options:["About 1/10","About 1/4","About 1/2","About 3/4"],answer:1,explain:"Alcohol is responsible for about 1/4 of all highway deaths."},
+{cat:"safety",q:"In Oklahoma, texting while driving is:",options:["Legal if stopped at a red light","Legal but discouraged","Illegal","Only illegal for teenagers"],answer:2,explain:"Since 2015, texting while driving is illegal in Oklahoma for all drivers."},
+{cat:"safety",q:"The three main categories of driver distraction are:",options:["Driving, reading, talking","Visual, manual, cognitive","Slow, fast, medium","Highway, city, rural"],answer:1,explain:"Visual (eyes off road), manual (hands off wheel), cognitive (mind off driving)."},
+{cat:"safety",q:"Most car/motorcycle collisions are caused by:",options:["The motorcyclist losing control","The car driver who didn't see the motorcycle and turned in front of it","Bad weather","Mechanical failure"],answer:1,explain:"Two-thirds of car/motorcycle collisions are caused by the car driver who didn't see the motorcycle, often turning left in front of it."},
+{cat:"safety",q:"A truck's rear blind spot extends approximately how far behind it?",options:["20 feet","50 feet","100 feet","Up to 200 feet"],answer:3,explain:"A truck's blind spot can extend up to 200 feet behind. If you can't see the trucker's mirrors, they can't see you."},
+{cat:"safety",q:"If you're in a crash with injury or property damage of $500+ and you don't have insurance, what happens?",options:["Nothing — you just exchange info","Service Oklahoma will suspend your driver license","You get a warning ticket","Insurance is automatically assigned to you"],answer:1,explain:"Service Oklahoma suspends the driver license of an uninsured driver/owner involved in a crash with injury or property damage of $500+."},
+{cat:"safety",q:"After being involved in a crash, you should:",options:["Drive home and call insurance later","Stop, call 911 if needed, exchange information, and wait for police","Apologize and accept blame to settle quickly","Leave if no police are around"],answer:1,explain:"Stop, turn on hazards, get help for injured, exchange info, take photos, don't blame or accept blame, and wait for officers."},
+];
+
+const FLASHCARDS=[
+{cat:"Rules",front:"3-second rule",back:"Pick a fixed point. After the car ahead passes it, count one-thousand-one, two, three before you reach it. Less = too close."},
+{cat:"Rules",front:"Bad weather following distance",back:"Increase to at least 4 seconds in rain, fog, snow, or behind big vehicles."},
+{cat:"Rules",front:"Default turnpike speed",back:"80 mph (unless otherwise posted)."},
+{cat:"Rules",front:"Default state highway speed (undivided)",back:"65 mph unless otherwise posted."},
+{cat:"Rules",front:"Controlled-access highway speed",back:"75 mph unless otherwise posted."},
+{cat:"Rules",front:"Default school zone speed",back:"25 mph in properly marked school zones outside municipalities."},
+{cat:"Rules",front:"Signal distance before turn",back:"At least 100 feet (1/3 of a city block) before turning, slowing, or stopping."},
+{cat:"Rules",front:"Passing a bicycle clearance",back:"Not less than 3 feet (Oklahoma Title 47-11-1208-A)."},
+{cat:"Rules",front:"Yellow solid line in your lane",back:"DO NOT PASS."},
+{cat:"Rules",front:"Right-of-way at 4-way stop tie",back:"Driver on the LEFT yields to driver on the RIGHT."},
+{cat:"Rules",front:"Stop distance from blind pedestrian",back:"Stop at least 15 feet from a blind pedestrian in the roadway."},
+{cat:"Rules",front:"Park no closer than ___ to a fire hydrant",back:"15 feet."},
+{cat:"Rules",front:"Park no closer than ___ to a railroad crossing",back:"50 feet from the nearest rail."},
+{cat:"Rules",front:"Parallel park within ___ of curb",back:"18 inches."},
+{cat:"Rules",front:"Stop distance at active railroad crossing",back:"Within 50 feet but not less than 15 feet from the nearest rail."},
+{cat:"Signs",front:"Red octagon",back:"STOP — complete stop. Look every direction before proceeding."},
+{cat:"Signs",front:"Red and white triangle",back:"YIELD — slow down, be ready to stop, give right-of-way."},
+{cat:"Signs",front:"Yellow diamond",back:"General WARNING — hazard or condition ahead."},
+{cat:"Signs",front:"Orange diamond",back:"Construction or maintenance work zone — slow down. Fines double when workers present."},
+{cat:"Signs",front:"Fluorescent yellow-green",back:"School / pedestrian / bicycle zones — high emphasis."},
+{cat:"Signs",front:"Blue rectangle",back:"Driver services — gas, food, lodging, hospitals."},
+{cat:"Signs",front:"Brown signs",back:"Recreation, cultural, historical sites."},
+{cat:"Signs",front:"Green signs",back:"Guide / direction signs."},
+{cat:"Signs",front:"Round yellow with X and R",back:"Railroad crossing AHEAD. Slow down, be ready to stop."},
+{cat:"Signs",front:"Flashing yellow light",back:"Slow down and proceed with caution."},
+{cat:"Signs",front:"Flashing red light",back:"Treat like a STOP sign — stop, then go when safe."},
+{cat:"Signs",front:"Flashing yellow arrow (left turn)",back:"Yield to oncoming traffic and pedestrians, then turn cautiously."},
+{cat:"Safety",front:"Adult BAC legal limit",back:"0.08% BAC. (0.05–0.08 = impaired driving charge possible.)"},
+{cat:"Safety",front:"Zero Tolerance (under 21)",back:"ANY measurable amount of alcohol = automatic violation."},
+{cat:"Safety",front:"First DUI penalty",back:"Misdemeanor: 10 days–1 year jail, up to $1,000 fine, license revoked 180 days."},
+{cat:"Safety",front:"Second DUI within 10 years",back:"Felony: 1–5 years prison, fine up to $2,500, license revoked 1 year."},
+{cat:"Safety",front:"Implied Consent Law",back:"By driving, you consent to BAC testing. Refusal = automatic license revocation."},
+{cat:"Safety",front:"Texting while driving in OK",back:"Illegal since 2015."},
+{cat:"Safety",front:"Headlights required when?",back:"30 min after sunset until 30 min before sunrise; also in fog/rain/snow."},
+{cat:"Safety",front:"Dim high beams within ___ of oncoming car",back:"1000 feet."},
+{cat:"Safety",front:"Dim high beams within ___ of car you're following",back:"600 feet."},
+{cat:"Safety",front:"Failing to stop for school bus = ?",back:"MANDATORY revocation of license for ONE year."},
+{cat:"Safety",front:"Move Over Law (Bernardo-Mills)",back:"Move over a lane for any stopped vehicle with flashing lights, or slow down and use caution."},
+{cat:"Safety",front:"Floodwater that can sweep a car",back:"Less than 2 feet (24 inches) of running water can carry away most vehicles."},
+{cat:"Safety",front:"Most motorcycle crashes caused by",back:"Car drivers who didn't see the motorcycle and turned in front of it."},
+{cat:"Safety",front:"Truck rear blind spot length",back:"Up to 200 feet behind."},
+{cat:"License",front:"Class D Learner Permit min age (with driver ed)",back:"15 years old."},
+{cat:"License",front:"Class D Learner Permit min age (no driver ed)",back:"16 years old."},
+{cat:"License",front:"Probationary period",back:"Until age 18."},
+{cat:"License",front:"Address change deadline",back:"Notify Service Oklahoma within 10 days."},
+{cat:"License",front:"Failed written test wait time",back:"At least 1 day before retesting (by law)."},
+{cat:"License",front:"Min liability — 1 person injury/death",back:"$25,000."},
+{cat:"License",front:"Min liability — 2+ persons injury/death",back:"$50,000."},
+{cat:"License",front:"Min liability — property damage",back:"$25,000."},
+{cat:"License",front:"Points to suspend license",back:"10 points within 5 years."},
+{cat:"License",front:"GDL driving hours",back:"5 a.m. to 10 p.m. unless to school/work/church or with a 21+ licensed driver."},
+{cat:"License",front:"GDL passenger limit",back:"1 passenger (unless household members or licensed adult 21+ in front seat)."},
+];
+
+const SIGNS=[
+{cls:"sign-stop",text:"STOP",title:"Stop sign",note:"Octagon, red. Always means complete stop."},
+{cls:"sign-yield",text:"",title:"Yield sign",note:"Downward triangle, red & white. Slow and give way."},
+{cls:"sign-warning",text:"!",title:"Warning sign",note:"Yellow diamond — hazard ahead."},
+{cls:"sign-construction",text:"WORK ZONE",title:"Construction sign",note:"Orange diamond — slow down, fines doubled."},
+{cls:"sign-railroad",text:"RR",title:"Railroad crossing",note:"Round yellow. Slow, look, listen."},
+{cls:"sign-school",text:"SCHOOL",title:"School zone",note:"Pentagon, fluorescent yellow-green. Watch for kids."},
+{cls:"sign-guide",text:"EXIT 9",title:"Guide sign",note:"Green — direction & distance info."},
+{cls:"sign-service",text:"H",title:"Service sign",note:"Blue — hospital, gas, food, lodging."},
+{cls:"sign-noenter",text:"DO NOT ENTER",title:"Do Not Enter",note:"Red circle — prohibits the action shown."},
+];
+
+const TOPICS=[
+{num:"01",title:"Getting your license",blurb:"Permits, ages, GDL rules, what to bring",body:`<h3>Path to a Class D license in Oklahoma</h3><p>You can apply for a <b>Learner Permit at age 15</b> if enrolled in or completed an approved driver education course. Otherwise wait until age 16. The permit must be held for <b>at least 180 days</b> if issued under age 16, or 30 days if issued at 16+.</p><p>While on a Learner Permit, a <b>licensed driver age 21+</b> must always sit in the front passenger seat — that's Restriction 9.</p><h4>GDL — Restriction T</h4><ul><li>Driving allowed only between <b>5 a.m. and 10 p.m.</b></li><li>Exceptions: travel to/from school, church, work, or with a licensed driver 21+ in the front seat.</li><li><b>One passenger max</b> — unless they live in your household or a licensed adult 21+ is up front.</li><li>Restriction T disappears at age 18.</li></ul><div class="callout"><b>Probationary license:</b> Until you turn 18, Service Oklahoma can cancel or suspend your license for any unlawful act or misconduct while driving.</div>`},
+{num:"02",title:"Insurance & responsibility",blurb:"Required minimums, penalties without it",body:`<h3>Compulsory liability insurance</h3><p>Every Oklahoma driver must carry:</p><ul><li><b>$25,000</b> — injury or death of one person</li><li><b>$50,000</b> — injury or death of two or more</li><li><b>$25,000</b> — property damage</li></ul><div class="callout">Carry your <b>security verification form</b> in the car at all times. Show it to officers on request.</div><h4>Penalty for no insurance</h4><p>Up to <b>$250 fine</b>, <b>30 days in jail</b>, AND suspension of your license and registration.</p><h4>Crash without insurance</h4><p>Service Oklahoma suspends your driver license for any crash with injury or property damage of $500+, even if you weren't at fault.</p>`},
+{num:"03",title:"Signs, signals & markings",blurb:"Colors, shapes, and what they mean",body:`<h3>Sign colors</h3><ul><li><b style="color:#d63a2f">RED</b> — Stop or Not Allowed</li><li><b style="color:#f08a1e">ORANGE</b> — Construction/work zone</li><li><b style="color:#c39800">YELLOW</b> — General warning</li><li><b style="color:#9bbf2e">FLUORESCENT YELLOW-GREEN</b> — Schools, pedestrians, bikes</li><li><b>WHITE/BLACK</b> — Regulations</li><li><b style="color:#0a8754">GREEN</b> — Guide/direction</li><li><b style="color:#1f6feb">BLUE</b> — Driver services</li><li><b style="color:#7a4a26">BROWN</b> — Recreation/historical</li></ul><h3>Shapes</h3><ul><li><b>Octagon</b> — STOP (always)</li><li><b>Triangle (point down)</b> — YIELD</li><li><b>Diamond</b> — Warning</li><li><b>Pentagon</b> — School zone</li><li><b>Round</b> — Railroad crossing</li></ul><h3>Signals</h3><ul><li><b>Solid red</b> — Stop. Right turn on red usually allowed after full stop.</li><li><b>Solid yellow</b> — Prepare to stop.</li><li><b>Flashing red</b> — Same as STOP sign.</li><li><b>Flashing yellow</b> — Slow, proceed with caution.</li><li><b>Flashing yellow arrow</b> — Yield, then turn left.</li><li><b>Flashing red arrow</b> — Turn prohibited, wait for green.</li></ul>`},
+{num:"04",title:"Right-of-way",blurb:"Who goes first at intersections and special situations",body:`<h3>You must yield to:</h3><ul><li>Pedestrians in any crosswalk (marked or not)</li><li>Blind pedestrians (white cane or guide dog) — <b>stop at least 15 feet away</b></li><li>Emergency vehicles — pull right and stop</li><li>Funeral processions — let the whole line pass</li><li>All oncoming traffic when turning left</li></ul><h3>4-way stops</h3><p>First to arrive goes first. If two arrive at the same time, the driver on the <b>LEFT yields to the driver on the RIGHT</b>.</p><div class="callout">Failing to stop for a school bus with red flashing lights = <b>MANDATORY one-year license revocation</b>. Exception: divided highway, opposite roadway.</div><h3>Move Over Law</h3><p>Move over a lane for any stopped vehicle with flashing lights. If you can't move over safely, slow down and use caution.</p>`},
+{num:"05",title:"Lane usage, passing & turns",blurb:"How to change lanes, pass safely, and turn correctly",body:`<h3>Changing lanes</h3><ol><li>Check rearview and side mirrors</li><li>Signal</li><li>Look over your shoulder for blind spots</li><li>Move smoothly when clear</li></ol><h3>Passing on the left</h3><ul><li>Need at least <b>200 feet of clear roadway</b> with no No Passing Zone.</li><li>Don't pass within <b>100 feet</b> of an obstructed view, intersection, railroad, bridge, or tunnel.</li><li>Don't exceed the speed limit to pass.</li></ul><h3>Turning</h3><p>Signal at least <b>100 feet (1/3 of a city block)</b> before turning. Keep wheels straight while waiting for a left turn — if rear-ended, you won't be pushed into oncoming traffic.</p><h3>Expressways</h3><ul><li>Use acceleration lane to match traffic speed, then merge.</li><li>You yield to vehicles already on the highway.</li><li>Signal exits at least 100 feet ahead; slow down only in the deceleration lane.</li></ul>`},
+{num:"06",title:"Speed & stopping",blurb:"Speed limits, the basic speed rule, stopping distances",body:`<h3>Default speed limits</h3><ul><li><b>Turnpikes:</b> 80 mph</li><li><b>Controlled-access highways:</b> 75 mph</li><li><b>Undivided state highways:</b> 65 mph</li><li><b>County roads:</b> 55 mph</li><li><b>School zones (highway, outside city):</b> 25 mph</li></ul><div class="callout yellow">Fines DOUBLE in school zones and construction zones when workers or equipment are present.</div><h3>The Basic Speed Rule</h3><p>Your speed must be reasonable for conditions — weather, visibility, traffic. The posted limit is a maximum under ideal conditions.</p><h3>Stopping distance at 60 mph: 252–372 feet</h3><p>Three parts: perception (~0.5 sec), reaction (~0.66 sec), and braking. At 80 mph it's up to 603 feet — longer than a football field.</p><h3>Emergency maneuvers</h3><ul><li><b>Blowout:</b> ease off gas, brake gently.</li><li><b>Skid:</b> off the brake, steer toward the skid.</li><li><b>Ice + standard brakes:</b> tap one second apart. ABS: firm steady pressure.</li></ul>`},
+{num:"07",title:"Sharing the road",blurb:"Pedestrians, bikes, motorcycles, trucks, trains",body:`<h3>Pedestrians</h3><p>Yield to pedestrians in any crosswalk. Stop at least 15 feet from a blind pedestrian with a cane or guide dog.</p><h3>Bicycles</h3><ul><li>Pass with at least <b>3 feet</b> of clearance.</li><li>Cyclists may take the full lane when needed.</li></ul><h3>Motorcycles</h3><p>Two-thirds of car/motorcycle crashes are caused by drivers who didn't see the bike. Always look twice. Give a 3-second following distance. Never share a lane with a motorcycle.</p><h3>Trucks</h3><ul><li>Blind spots: directly in front, both sides, up to <b>200 feet behind</b>.</li><li>If you can't see the trucker's mirror, they can't see you.</li><li>Never squeeze between a turning truck and the curb.</li></ul><div class="callout">A train at 55 mph takes over a mile to stop. ALWAYS yield to trains. Never race a train.</div><p>Stuck on tracks? <b>GET OUT</b>, run at 45° toward the train, call 911 and the ENS number on the crossing post.</p>`},
+{num:"08",title:"Alcohol, drugs & DUI",blurb:"Oklahoma is tough — penalties and Zero Tolerance",body:`<h3>Implied Consent Law</h3><p>By driving in Oklahoma, you've already agreed to BAC testing. <b>Refusing = automatic license revocation</b>, even if you weren't drinking.</p><h3>BAC limits</h3><ul><li><b>Adults 21+:</b> 0.08% legal limit</li><li><b>Under 21 (Zero Tolerance):</b> ANY measurable amount is illegal</li></ul><h3>DUI penalties</h3><ul><li><b>1st (misdemeanor):</b> 10 days–1 year jail, up to $1,000 fine, revoked 180 days</li><li><b>2nd within 10 years (felony):</b> 1–5 years prison, up to $2,500 fine, revoked 1 year</li><li><b>3rd+:</b> 1–10 years prison, up to $5,000 fine, revoked 2 years</li></ul><h3>Zero Tolerance (under 21)</h3><ul><li>1st conviction: revoked 6 months, $100–$500 fine</li><li>2nd: revoked 12 months</li></ul><div class="callout">Alcohol causes about <b>1/4 of all highway deaths</b>. Plan a sober ride every time.</div>`},
+{num:"09",title:"Driving tips & emergencies",blurb:"Headlights, distractions, weather, crashes",body:`<h3>Headlights</h3><ul><li>Required from 30 minutes after sunset until 30 minutes before sunrise</li><li>Also in fog, rain, snow, dust storms</li><li>Dim high beams within <b>1000 feet</b> of oncoming vehicle or <b>600 feet</b> of vehicle you're following</li></ul><h3>Distracted driving</h3><p>Three categories: <b>visual</b> (eyes off road), <b>manual</b> (hands off wheel), <b>cognitive</b> (mind off driving). <b>Texting while driving is illegal in Oklahoma</b> since 2015.</p><div class="callout"><b>Floods:</b> Just 2 feet of running water can sweep away most vehicles. 6 inches can knock a person off their feet. Turn around — don't drown.</div><h3>If you're in a crash</h3><ol><li>Stop. Turn on hazards.</li><li>Call 911 if injury or significant damage.</li><li>Don't move injured people unless absolutely necessary.</li><li>Exchange names, addresses, license numbers, plates, insurance.</li><li>Take photos. Don't accept or assign blame.</li></ol>`},
+{num:"10",title:"Violations & points",blurb:"How to keep your license clean",body:`<h3>Point system</h3><p><b>10+ points in 5 years = license suspension.</b></p><ul><li>Reckless driving: <b>4 pts</b></li><li>Failing to stop for school bus: <b>4 pts</b></li><li>Speeding 25+ mph over limit: <b>3 pts</b></li><li>Careless driving / following too close / failure to yield: <b>2 pts</b></li><li>Most other violations: <b>1 pt</b></li></ul><h3>Reducing points</h3><ul><li>2 points off per 12 clean months</li><li>Record clears to zero after 3 consecutive clean years</li><li>Approved Defensive Driving course = 2 pts off (max once every 24 months)</li></ul><h3>Mandatory revocations include:</h3><ul><li>DUI conviction</li><li>Hit and run with injury or death</li><li>Any measurable BAC for under-21 driver</li><li>Any felony involving a motor vehicle</li></ul><div class="callout">Using or buying a fake ID in Oklahoma is a <b>felony</b> — up to <b>7 years in prison</b> and a <b>$10,000 fine</b>.</div>`},
+];
+
+// Scenario framing
+function getScenario(q){
+  const t=q.q.toLowerCase();
+  if(q.cat==="license"){
+    if(t.includes("age")||t.includes("minimum"))return"You just turned 15 and stopped by the Service Oklahoma office to ask about getting your learner permit.";
+    if(t.includes("passenger")||t.includes("gdl"))return"Your friend texts asking if they can ride with you since you just got your GDL intermediate license.";
+    if(t.includes("insurance"))return"An officer pulls you over and asks for your proof of insurance.";
+    if(t.includes("point"))return"You got a speeding ticket last month and want to know how it affects your license.";
+    if(t.includes("wait")||t.includes("fail"))return"You just got your results back and didn't pass the written knowledge test.";
+    return"You're at the Service Oklahoma office filling out paperwork for your Class D license.";
+  }
+  if(q.cat==="signs"){
+    if(t.includes("school"))return"You're driving near an elementary school in the morning when you spot a sign ahead.";
+    if(t.includes("railroad"))return"You're approaching a railroad crossing on a rural county road.";
+    if(t.includes("flashing"))return"You approach an intersection and notice the traffic light is flashing.";
+    if(t.includes("yellow line")||t.includes("dashed"))return"You glance down at the road markings as you drive on a two-lane highway.";
+    if(t.includes("arrow"))return"You pull into a left-turn lane at a busy intersection and look at the signal.";
+    return"You're driving when you notice a sign ahead and need to know what to do.";
+  }
+  if(q.cat==="rules"){
+    if(t.includes("school bus"))return"You're driving on a two-lane residential road when you see flashing red lights ahead.";
+    if(t.includes("four-way")||t.includes("4-way"))return"You approach a quiet 4-way stop at the same time as another car.";
+    if(t.includes("pass"))return"You're stuck behind a slow tractor on a two-lane country road.";
+    if(t.includes("expressway")||t.includes("ramp"))return"You're approaching the on-ramp to the interstate for the first time.";
+    if(t.includes("bicycle"))return"You're on a residential street when you see a cyclist pedaling ahead.";
+    if(t.includes("park")||t.includes("curb"))return"You're looking for a parking spot on a hilly downtown street.";
+    if(t.includes("railroad")||t.includes("track")||t.includes("stall"))return"Your car stalls on railroad tracks while crossing on a quiet road.";
+    if(t.includes("funeral"))return"A long line of cars with headlights on and a police escort is entering the intersection.";
+    if(t.includes("speed")||t.includes("mph"))return"Your driving instructor asks you to recall the speed limits for different Oklahoma road types.";
+    return"You're driving on an Oklahoma road and need to make a decision.";
+  }
+  if(q.cat==="safety"){
+    if(t.includes("follow")||t.includes("second")||t.includes("distance"))return"You're cruising down the highway when your instructor asks about safe following distance.";
+    if(t.includes("skid")||t.includes("ice")||t.includes("snow"))return"It's January and the roads are icy after last night's winter storm.";
+    if(t.includes("blowout")||t.includes("tire"))return"You feel a sudden thumping and your car starts pulling sharply to the right.";
+    if(t.includes("flood")||t.includes("water"))return"Heavy rain has been falling for an hour and the road ahead looks flooded.";
+    if(t.includes("headlight")||t.includes("dim")||t.includes("high beam"))return"You're driving on a dark rural highway at night and see headlights approaching.";
+    if(t.includes("bac")||t.includes("dui")||t.includes("alcohol")||t.includes("drink"))return"You're at a party and someone offers you a drink before you drive home.";
+    if(t.includes("text")||t.includes("distract")||t.includes("phone"))return"Your phone buzzes with a message while you're driving to school.";
+    if(t.includes("motorcycle"))return"You're making a left turn at an intersection and scanning for oncoming traffic.";
+    if(t.includes("truck")||t.includes("blind spot"))return"You're driving on the interstate and need to pass an 18-wheeler.";
+    if(t.includes("crash")||t.includes("collision"))return"You hear a loud crunch — another car just ran a stop sign and bumped your bumper.";
+    if(t.includes("child")||t.includes("seat")||t.includes("restraint"))return"You're about to drive your little cousin somewhere and need to check the car seat.";
+    return"You're driving and need to make an important safety decision.";
+  }
+  return"You're behind the wheel and need to make a decision.";
+}
+
+// State
+let gState={xp:0,studied:0,best:null,streak:0};
+function loadState(){try{const s=localStorage.getItem("rrok2");if(s)gState={...gState,...JSON.parse(s)};}catch(e){}renderStats();}
+function saveState(){try{localStorage.setItem("rrok2",JSON.stringify(gState));}catch(e){}renderStats();}
+const LEVELS=[{xp:0,name:"Student Driver",icon:"🚗"},{xp:201,name:"Permit Rookie",icon:"🛞"},{xp:501,name:"Road Scholar",icon:"📚"},{xp:901,name:"Highway Expert",icon:"🛣️"},{xp:1401,name:"Permit Master",icon:"🏆"}];
+function getLevel(x){let l=LEVELS[0];for(const v of LEVELS)if(x>=v.xp)l=v;return l;}
+function getNextLevel(x){for(const v of LEVELS)if(x<v.xp)return v;return null;}
+function renderStats(){
+  const lvl=getLevel(gState.xp),next=getNextLevel(gState.xp);
+  document.getElementById("stat-xp").textContent=gState.xp;
+  document.getElementById("stat-level").textContent=lvl.name;
+  document.getElementById("stat-streak").textContent=gState.streak;
+  document.getElementById("home-xp").textContent=gState.xp+" XP";
+  document.getElementById("home-level").textContent=lvl.name+" "+lvl.icon;
+  document.getElementById("home-best").textContent=gState.best===null?"—":gState.best+"%";
+  if(next){
+    const p=Math.round(((gState.xp-lvl.xp)/(next.xp-lvl.xp))*100);
+    document.getElementById("home-level-bar").style.width=p+"%";
+    document.getElementById("home-level-next").textContent=(next.xp-gState.xp)+" XP until "+next.name+" "+next.icon;
+  }else{
+    document.getElementById("home-level-bar").style.width="100%";
+    document.getElementById("home-level-next").textContent="Max level reached — Permit Master! 🏆";
+  }
+}
+
+// Views
+function show(id){
+  ["view-home","view-quiz","view-flash","view-signs","view-study"].forEach(v=>document.getElementById(v).classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+  window.scrollTo({top:0,behavior:"smooth"});
+  if(id==="view-flash")renderFlashFilters();
+  if(id==="view-signs")renderSigns();
+  if(id==="view-study")renderTopics();
+}
+
+// Quiz
+let currentQuestions=[],currentIndex=0,currentScore=0,currentCategory="all",currentTotal=25,mistakes=[],sessionXP=0;
+function shuffle(arr){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function startQuiz(cat,total){
+  currentCategory=cat;currentTotal=total;sessionXP=0;
+  let pool=QUESTIONS.filter(q=>cat==="all"||q.cat===cat);
+  pool=shuffle(pool).slice(0,Math.min(total,pool.length));
+  currentQuestions=pool.map(q=>{const s=shuffle([0,1,2,3]);return{...q,options:s.map(i=>q.options[i]),answer:s.indexOf(q.answer)};});
+  currentIndex=0;currentScore=0;mistakes=[];
+  document.getElementById("quiz-active").classList.remove("hidden");
+  document.getElementById("quiz-result").classList.add("hidden");
+  document.getElementById("quiz-review").classList.add("hidden");
+  renderQuestion();
+}
+function quitQuiz(){if(confirm("Quit this quiz?"))show("view-home");}
+function renderQuestion(){
+  const q=currentQuestions[currentIndex],total=currentQuestions.length;
+  document.getElementById("q-counter").textContent="Question "+(currentIndex+1)+" of "+total;
+  document.getElementById("q-score").textContent="Correct: "+currentScore;
+  document.getElementById("q-progress").style.width=((currentIndex/total)*100)+"%";
+  const labels={signs:"Signs & Signals",rules:"Rules of the Road",safety:"Safety & DUI",license:"License & Insurance"};
+  const colors={signs:"var(--accent-3)",rules:"var(--accent-4)",safety:"var(--accent)",license:"var(--ink)"};
+  const chip=document.getElementById("q-chip");chip.textContent=labels[q.cat]||q.cat;chip.style.background=colors[q.cat]||"var(--ink)";
+  document.getElementById("q-scenario").innerHTML="<b>Scenario:</b> "+getScenario(q);
+  document.getElementById("q-text").textContent=q.q;
+  const opts=document.getElementById("q-opts");opts.innerHTML="";
+  ["A","B","C","D"].forEach((ltr,i)=>{
+    const btn=document.createElement("button");btn.className="opt";
+    btn.innerHTML='<span class="marker">'+ltr+'</span><span>'+q.options[i]+'</span>';
+    btn.onclick=()=>answerQuestion(i);opts.appendChild(btn);
+  });
+  document.getElementById("q-explain").classList.add("hidden");
+  document.getElementById("next-btn").classList.add("hidden");
+}
+function answerQuestion(choice){
+  const q=currentQuestions[currentIndex];
+  document.querySelectorAll("#q-opts .opt").forEach((el,i)=>{
+    el.classList.add("locked");el.onclick=null;
+    if(i===q.answer)el.classList.add("correct");
+    if(i===choice&&i!==q.answer)el.classList.add("wrong");
+  });
+  if(choice===q.answer){currentScore++;sessionXP+=100;gState.xp+=100;gState.studied++;saveState();showXPPop("+100 XP");}
+  else{gState.studied++;mistakes.push({q,chose:choice});saveState();}
+  document.getElementById("q-score").textContent="Correct: "+currentScore;
+  const ex=document.getElementById("q-explain");
+  ex.innerHTML="<b>"+(choice===q.answer?"✓ Correct!":"✗ Not quite.")+"</b> "+q.explain;
+  ex.classList.remove("hidden");ex.style.background=choice===q.answer?"#d4f0d8":"var(--accent-2)";
+  const nb=document.getElementById("next-btn");nb.classList.remove("hidden");
+  nb.textContent=currentIndex+1>=currentQuestions.length?"See results →":"Next question →";
+}
+function showXPPop(text){
+  const el=document.createElement("div");el.className="xp-pop";el.textContent=text;
+  el.style.left=(Math.random()*60+20)+"%";el.style.top="40%";
+  document.body.appendChild(el);setTimeout(()=>el.remove(),1300);
+}
+function nextQuestion(){currentIndex++;if(currentIndex>=currentQuestions.length)showResults();else renderQuestion();}
+function showResults(){
+  document.getElementById("quiz-active").classList.add("hidden");
+  document.getElementById("quiz-result").classList.remove("hidden");
+  const total=currentQuestions.length,pct=Math.round((currentScore/total)*100);
+  document.getElementById("result-num").textContent=currentScore+"/"+total;
+  document.getElementById("result-pct").textContent=pct+"%";
+  document.getElementById("score-circle").className="score-circle"+(pct>=80?" pass":" fail");
+  document.getElementById("result-xp").textContent="+"+sessionXP+" XP earned this session";
+  const v=document.getElementById("result-verdict"),m=document.getElementById("result-msg");
+  if(pct>=90){v.textContent="🏆 Permit-ready!";m.textContent="Outstanding. You've got the material down. Take one more practice test to lock it in, then book your appointment.";gState.streak++;}
+  else if(pct>=80){v.textContent="✅ You'd pass.";m.textContent="That's above the 80% pass threshold. Review the questions you missed and try one more.";gState.streak++;}
+  else if(pct>=60){v.textContent="📚 Keep studying.";m.textContent="You're getting there. Spend time in the Study Guide and Flashcards on weak areas, then come back.";gState.streak=0;}
+  else{v.textContent="🚧 Hit the books.";m.textContent="Don't stress — start with the Study Guide and Sign Library. Then do Quick 10 quizzes to build up.";gState.streak=0;}
+  if(gState.best===null||pct>gState.best)gState.best=pct;
+  saveState();
+}
+function reviewMistakes(){
+  document.getElementById("quiz-result").classList.add("hidden");
+  const review=document.getElementById("quiz-review");review.classList.remove("hidden");
+  const list=document.getElementById("review-list");list.innerHTML="";
+  if(!mistakes.length){list.innerHTML='<div class="qcard"><div class="question">🎉 Perfect score — no mistakes to review!</div></div>';return;}
+  mistakes.forEach(({q,chose})=>{
+    const card=document.createElement("div");card.className="qcard";
+    let opts=q.options.map((o,i)=>'<div class="'+(i===q.answer?"opt locked correct":i===chose?"opt locked wrong":"opt locked")+'"><span class="marker">'+["A","B","C","D"][i]+'</span><span>'+o+'</span></div>').join("");
+    card.innerHTML='<span class="chip">'+q.cat+'</span><div class="question">'+q.q+'</div><div class="opts">'+opts+'</div><div class="explain"><b>Why:</b> '+q.explain+'</div>';
+    list.appendChild(card);
+  });
+}
+
+// Flashcards
+let flashFilter="All",flashCards=[],flashIndex=0,flashFlipped=false;
+function renderFlashFilters(){
+  const cats=["All",...new Set(FLASHCARDS.map(c=>c.cat))];
+  const wrap=document.getElementById("flash-filters");wrap.innerHTML="";
+  cats.forEach(c=>{
+    const b=document.createElement("button");b.className="chip-btn"+(flashFilter===c?" active":"");b.textContent=c;
+    b.onclick=()=>{flashFilter=c;flashIndex=0;rebuildFlash();renderFlashFilters();};wrap.appendChild(b);
+  });
+  rebuildFlash();
+}
+function rebuildFlash(){flashCards=flashFilter==="All"?[...FLASHCARDS]:FLASHCARDS.filter(c=>c.cat===flashFilter);flashIndex=Math.max(0,Math.min(flashIndex,flashCards.length-1));renderFlash();}
+function renderFlash(){if(!flashCards.length)return;const c=flashCards[flashIndex];document.getElementById("flash-front").textContent=c.front;document.getElementById("flash-back").textContent=c.back;document.getElementById("flash-counter").textContent=(flashIndex+1)+" / "+flashCards.length;flashFlipped=false;document.getElementById("flashcard").classList.remove("flipped");}
+function flipCard(){flashFlipped=!flashFlipped;document.getElementById("flashcard").classList.toggle("flipped",flashFlipped);}
+function nextCard(){flashIndex=(flashIndex+1)%flashCards.length;renderFlash();}
+function prevCard(){flashIndex=(flashIndex-1+flashCards.length)%flashCards.length;renderFlash();}
+function shuffleCards(){flashCards=shuffle(flashCards);flashIndex=0;renderFlash();}
+
+// Signs
+function renderSigns(){
+  const grid=document.getElementById("sign-grid");if(grid.dataset.rendered)return;grid.dataset.rendered="1";grid.innerHTML="";
+  const innerMap={"sign-stop":t=>'<div class="sign-stop">'+t+'</div>',"sign-yield":()=>'<div class="sign-yield"></div>',"sign-warning":t=>'<div class="sign-warning"><span>'+t+'</span></div>',"sign-construction":t=>'<div class="sign-construction"><span>'+t+'</span></div>',"sign-railroad":t=>'<div class="sign-railroad">'+t+'</div>',"sign-school":t=>'<div class="sign-school">'+t+'</div>',"sign-guide":t=>'<div class="sign-guide">'+t+'</div>',"sign-service":t=>'<div class="sign-service">'+t+'</div>',"sign-noenter":t=>'<div class="sign-noenter"><span>'+t+'</span></div>'};
+  SIGNS.forEach(s=>{const card=document.createElement("div");card.className="sign-card";card.innerHTML='<div class="sign-visual">'+(innerMap[s.cls]?innerMap[s.cls](s.text):"")+'</div><h4>'+s.title+'</h4><p>'+s.note+'</p>';grid.appendChild(card);});
+}
+
+// Study guide
+function renderTopics(){
+  const list=document.getElementById("topic-list");if(list.dataset.rendered)return;list.dataset.rendered="1";list.innerHTML="";
+  TOPICS.forEach((t,i)=>{const card=document.createElement("button");card.className="topic-card";card.innerHTML='<div class="num">'+t.num+'</div><h4>'+t.title+'</h4><p>'+t.blurb+'</p>';card.onclick=()=>showTopic(i);list.appendChild(card);});
+}
+function showTopic(i){
+  const t=TOPICS[i],detail=document.getElementById("topic-detail");detail.classList.remove("hidden");
+  detail.innerHTML='<div class="topic-content"><div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px"><span style="font-family:JetBrains Mono,monospace;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.14em">Topic '+t.num+' — '+t.title+'</span><button onclick="document.getElementById(\'topic-detail\').classList.add(\'hidden\');window.scrollTo({top:0,behavior:\'smooth\'})">Close ✕</button></div>'+t.body+'</div>';
+  detail.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+loadState();
+</script>
 </body>
 </html>
