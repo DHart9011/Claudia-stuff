@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OK Permit Quest 🚗</title>
+  <meta name="description" content="Master Oklahoma driving rules with scenario-based practice. Prepare for your learner's permit the fun way!" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       WELCOME SCREEN
+  ════════════════════════════════════════════════════════════════════ -->
+  <div id="welcome-screen" class="screen active">
+    <div class="welcome-badge">🚗</div>
+
+    <h1 class="welcome-title">OK Permit Quest</h1>
+    <p class="welcome-tagline">Master Oklahoma Roads Before You Hit Them</p>
+
+    <span id="welcome-xp" class="welcome-xp-badge"></span>
+
+    <div class="welcome-instructions">
+      <strong>How to Play:</strong>
+      <ul>
+        <li>Choose one of <strong>6 zones</strong> on the map</li>
+        <li>Read each driving scenario carefully</li>
+        <li>Pick the correct answer to earn <strong>100 XP</strong></li>
+        <li>Review explanations and Oklahoma-specific tips</li>
+        <li>Complete all zones to get your <strong>permit readiness grade</strong></li>
+      </ul>
+    </div>
+
+    <button id="start-btn" class="start-btn">Start Game 🚦</button>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       MAP SCREEN
+  ════════════════════════════════════════════════════════════════════ -->
+  <div id="map-screen" class="screen hidden">
+    <div class="map-header">
+      <h2>Choose a <span>Zone</span></h2>
+      <div id="map-xp" class="map-xp-badge">⭐ 0 XP</div>
+    </div>
+
+    <div class="map-actions">
+      <button id="map-back-btn" class="btn-outline">← Back</button>
+      <button id="map-final-btn" class="btn-primary" style="display:none">🏆 Final Results</button>
+    </div>
+
+    <div id="zone-grid"></div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SCENARIO SCREEN
+  ════════════════════════════════════════════════════════════════════ -->
+  <div id="scenario-screen" class="screen hidden">
+    <div class="scenario-header">
+      <button id="scenario-back-btn" class="back-btn">← Map</button>
+      <span id="scenario-zone-label" class="scenario-zone-label"></span>
+      <div class="xp-display" id="xp-display">
+        ⭐ 0 XP
+        <span id="xp-earned-pop" class="xp-pop"></span>
+      </div>
+    </div>
+
+    <div class="progress-bar-wrap">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="progress-text" id="progress-text">Question 1 of 5</div>
+
+    <div class="scenario-card">
+      <div class="scenario-icon-row">
+        <div class="scenario-icon-badge" id="scenario-icon">🚗</div>
+        <h2 class="scenario-title" id="scenario-title">Loading…</h2>
+      </div>
+      <p class="scenario-situation" id="scenario-situation"></p>
+      <div class="scenario-question" id="scenario-question"></div>
+    </div>
+
+    <div class="choices-container" id="choices-container"></div>
+
+    <div class="feedback-box" id="feedback-box">
+      <div class="feedback-header">
+        <span class="feedback-icon" id="feedback-icon"></span>
+        <span class="feedback-label" id="feedback-text"></span>
+      </div>
+      <p class="feedback-explain" id="feedback-explain"></p>
+    </div>
+
+    <div class="tip-box" id="tip-box">
+      <span id="tip-text"></span>
+    </div>
+
+    <button class="next-btn" id="next-btn">Next Question →</button>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       ZONE COMPLETE OVERLAY
+  ════════════════════════════════════════════════════════════════════ -->
+  <div id="zone-complete-overlay" class="zone-complete-overlay" style="display:none">
+    <div class="zone-complete-card">
+      <div class="zone-complete-star">⭐</div>
+      <div class="zone-complete-name" id="zone-complete-name">Zone Complete!</div>
+      <div class="zone-complete-score" id="zone-complete-score">5 / 5 correct</div>
+      <div class="zone-complete-pct" id="zone-complete-pct">100% accuracy</div>
+      <div class="zone-complete-btns">
+        <button id="zone-continue-btn" class="btn-green">Continue to Map 🗺️</button>
+        <button id="zone-results-btn" class="btn-blue">View All Results 🏆</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       RESULTS SCREEN
+  ════════════════════════════════════════════════════════════════════ -->
+  <div id="results-screen" class="screen hidden">
+    <div class="results-header">
+      <div class="results-trophy">🏆</div>
+      <h2>Your Results</h2>
+    </div>
+
+    <div class="results-stats">
+      <div class="stat-card">
+        <div class="stat-value" id="result-xp">0</div>
+        <div class="stat-label">Total XP</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="result-pct">0%</div>
+        <div class="stat-label">Accuracy</div>
+      </div>
+      <div class="stat-card">
+        <div class="grade-letter grade-A" id="result-grade">—</div>
+        <div class="stat-label">Grade</div>
+      </div>
+    </div>
+
+    <div class="result-message-card" id="result-message"></div>
+
+    <div class="zone-breakdown">
+      <h3>Zone Breakdown</h3>
+      <div id="zone-breakdown"></div>
+    </div>
+
+    <div class="results-actions">
+      <button id="review-btn" class="btn-large btn-blue" style="display:none">
+        📝 Review My Mistakes
+      </button>
+      <button id="play-again-btn" class="btn-large btn-orange">
+        🔄 Play Again
+      </button>
+    </div>
+  </div>
+
+
+  <script src="scenarios.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
