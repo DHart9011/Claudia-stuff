@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Your Intro Flight — Rebel Red's Gyros</title>
+
+  <!--
+  ============================================================
+  SETUP INSTRUCTIONS — READ BEFORE PUBLISHING
+  ============================================================
+
+  STEP 1: CREATE YOUR CALENDLY ACCOUNT
+  - Go to calendly.com and sign up using matt@rebelredsgyros.com
+  - Choose the "Standard" plan or higher (required for payment integration)
+  - Your event URL will be: https://calendly.com/rebelredsgyros/intro-flight
+  - If your username differs, update the data-url attribute in the
+    Calendly widget div below
+
+  STEP 2: CREATE THE "INTRO FLIGHT" EVENT TYPE
+  - In Calendly dashboard → "Create Event Type"
+  - Name: Intro Gyroplane Flight
+  - Duration: 2 hours (plan for ground briefing + flight + debrief)
+  - Location: In-person at 1744 County Rd N, Lamesa TX 79331
+  - Add description:
+      "Your intro flight includes a full ground briefing, pre-flight
+      walkthrough, flight time in the aircraft, and post-flight debrief.
+      $275 total. Look for the red hangar."
+
+  STEP 3: SET AVAILABLE TIME SLOTS
+  - In Event Type settings → "When can people book this event?"
+  - Set your actual available days and times
+  - Recommend: block out at least 2 hours per booking (set buffer time)
+  - Set minimum notice: 24 hours (so same-day bookings don't catch you off guard)
+  - Enable "Limit future bookings" to prevent bookings too far in advance if needed
+
+  STEP 4: STRIPE INTEGRATION FOR $275 DEPOSIT
+  - In Calendly → Integrations → Payment → Connect Stripe
+  - Set up a Stripe account at stripe.com if you don't have one
+  - Once connected, go back to your Intro Flight event type
+  - Under "Collect Payment" → enable, set amount to $275.00
+  - Currency: USD
+  - Label: "Intro Flight Deposit — Rebel Red's Gyros"
+  - Note: Decide whether $275 is the deposit or the total.
+    If total paid at booking, mark "Full payment collected online."
+    If it's a deposit, note the balance and refund policy in the event description.
+
+  STEP 5: CONFIRMATION EMAIL — COPY BELOW
+  In Calendly → Event Type → Notifications → Email Confirmation:
+  ---------------------------------------------------------------
+  Subject: You're booked — Rebel Red's Gyros Intro Flight
+
+  [See full email copy in /rebel-reds/booking/email-confirmation-copy.md]
+  Copy the "Email 1: Booking Confirmed" body text into Calendly's
+  confirmation email editor. Replace [DATE/TIME PLACEHOLDER] with
+  Calendly's dynamic tags: {event_date_time}
+
+  STEP 6: 24-HOUR REMINDER EMAIL — COPY BELOW
+  In Calendly → Event Type → Notifications → Add Reminder → Email:
+  Timing: 24 hours before event
+  ---------------------------------------------------------------
+  Subject: See you tomorrow — Rebel Red's Gyros
+
+  [See full email copy in /rebel-reds/booking/email-confirmation-copy.md]
+  Copy the "Email 2: 24-Hour Reminder" body text into Calendly's
+  reminder email editor.
+
+  ============================================================
+  END SETUP INSTRUCTIONS
+  ============================================================
+  -->
+
+  <style>
+    /* ==============================
+       REBEL RED'S GYROS COLOR SYSTEM
+       ============================== */
+    :root {
+      --color-bg: #F8F5F0;
+      --color-card: #FFFFFF;
+      --color-red: #8B1A1A;
+      --color-gold: #8A6A00;
+      --color-text: #0E0C0A;
+      --color-text-muted: #6B6560;
+      --color-border: #E2DDD8;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+    }
+
+    /* ==============================
+       PAGE HEADER
+       ============================== */
+    .booking-header {
+      background-color: var(--color-red);
+      color: #FFFFFF;
+      text-align: center;
+      padding: 48px 24px 40px;
+    }
+
+    .booking-header h1 {
+      font-size: clamp(24px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+
+    .booking-header p {
+      font-size: clamp(16px, 2vw, 20px);
+      opacity: 0.88;
+      max-width: 560px;
+      margin: 0 auto 20px;
+    }
+
+    .price-badge {
+      display: inline-block;
+      background-color: var(--color-gold);
+      color: #FFFFFF;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 10px 28px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ==============================
+       TRUST BAR
+       ============================== */
+    .trust-bar {
+      background-color: var(--color-text);
+      color: #FFFFFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      padding: 16px 24px;
+      flex-wrap: wrap;
+    }
+
+    .trust-bar span {
+      font-size: 13px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    .trust-bar span::before {
+      content: "✓ ";
+      color: var(--color-gold);
+      font-weight: 700;
+    }
+
+    /* ==============================
+       CALENDLY EMBED WRAPPER
+       ============================== */
+    .booking-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    .calendly-section {
+      background-color: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(14, 12, 10, 0.06);
+    }
+
+    /* Calendly inline widget */
+    .calendly-inline-widget {
+      min-width: 320px;
+      height: 700px;
+    }
+
+    @media (max-width: 600px) {
+      .calendly-inline-widget {
+        height: 900px;
+      }
+    }
+
+    /* ==============================
+       NOSCRIPT FALLBACK
+       ============================== */
+    .noscript-fallback {
+      display: none;
+      background-color: var(--color-card);
+      border: 2px solid var(--color-red);
+      border-radius: 8px;
+      padding: 40px 32px;
+      text-align: center;
+      margin: 48px auto;
+      max-width: 520px;
+    }
+
+    .noscript-fallback h2 {
+      color: var(--color-red);
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .noscript-fallback p {
+      color: var(--color-text-muted);
+      margin-bottom: 24px;
+      font-size: 16px;
+    }
+
+    .phone-cta {
+      display: inline-block;
+      background-color: var(--color-red);
+      color: #FFFFFF;
+      font-size: 20px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+    }
+
+    .phone-cta:hover {
+      background-color: #6E1414;
+    }
+
+    /* ==============================
+       BELOW-WIDGET DETAILS
+       ============================== */
+    .booking-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .detail-card {
+      background-color: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 28px 24px;
+    }
+
+    .detail-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-gold);
+      margin-bottom: 12px;
+    }
+
+    .detail-card p,
+    .detail-card li {
+      font-size: 15px;
+      color: var(--color-text);
+      line-height: 1.7;
+    }
+
+    .detail-card ul {
+      padding-left: 18px;
+    }
+
+    .detail-card li {
+      margin-bottom: 4px;
+    }
+
+    /* ==============================
+       FOOTER CONTACT
+       ============================== */
+    .booking-footer {
+      text-align: center;
+      padding: 40px 24px 56px;
+      border-top: 1px solid var(--color-border);
+      margin-top: 48px;
+    }
+
+    .booking-footer p {
+      color: var(--color-text-muted);
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .booking-footer a {
+      color: var(--color-red);
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .booking-footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .trust-bar {
+        gap: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 24px;
+      }
+
+      .booking-header {
+        padding: 36px 20px 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE HEADER -->
+  <header class="booking-header">
+    <h1>Book Your Intro Gyroplane Flight</h1>
+    <p>One-on-one with Matt Snell, CFI — out of Lamesa, TX. No experience needed.</p>
+    <span class="price-badge">$275 — All-Inclusive</span>
+  </header>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <span>MagniGyro Certified</span>
+    <span>CFI &amp; CFII Instructor</span>
+    <span>Family Owned</span>
+    <span>West Texas Based</span>
+  </div>
+
+  <!-- MAIN BOOKING WRAPPER -->
+  <main class="booking-wrapper">
+
+    <!-- CALENDLY INLINE WIDGET -->
+    <div class="calendly-section">
+      <div
+        class="calendly-inline-widget"
+        data-url="https://calendly.com/rebelredsgyros/intro-flight"
+        data-primary-color="8B1A1A"
+        data-text-color="0E0C0A"
+        data-background-color="FFFFFF"
+        data-hide-landing-page-details="0"
+        data-hide-gdpr-banner="1"
+      ></div>
+    </div>
+
+    <!-- NOSCRIPT FALLBACK: shown only when JavaScript is disabled -->
+    <noscript>
+      <div class="noscript-fallback" style="display:block;">
+        <h2>Online Booking Unavailable</h2>
+        <p>Your browser has JavaScript disabled, which is required for the booking calendar. Call Matt directly to schedule your intro flight:</p>
+        <a href="tel:4325170693" class="phone-cta">Call Matt: 432-517-0693</a>
+      </div>
+    </noscript>
+
+    <!-- DETAIL CARDS BELOW WIDGET -->
+    <div class="booking-details">
+
+      <div class="detail-card">
+        <h3>What's Included</h3>
+        <ul>
+          <li>Ground briefing — how gyroplanes work</li>
+          <li>Pre-flight walkthrough of the aircraft</li>
+          <li>Flight time with Matt as your CFI</li>
+          <li>Post-flight debrief</li>
+        </ul>
+      </div>
+
+      <div class="detail-card">
+        <h3>What to Wear</h3>
+        <ul>
+          <li>Closed-toe shoes (required)</li>
+          <li>Comfortable clothes you can move in</li>
+          <li>Sunglasses</li>
+          <li>No large hats — they won't stay on</li>
+          <li>No loose scarves or open-toe footwear</li>
+        </ul>
+      </div>
+
+      <div class="detail-card">
+        <h3>Location</h3>
+        <p>1744 County Rd N<br />Lamesa, TX 79331</p>
+        <p style="margin-top: 10px; color: var(--color-text-muted); font-size: 14px;">Look for the red hangar. If you need help finding us, call Matt the morning of your flight.</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Questions?</h3>
+        <p>Call or text Matt directly:</p>
+        <p style="margin-top: 8px; font-size: 18px; font-weight: 700;">
+          <a href="tel:4325170693" style="color: var(--color-red); text-decoration: none;">432-517-0693</a>
+        </p>
+        <p style="margin-top: 8px; font-size: 14px; color: var(--color-text-muted);">Or email: matt@rebelredsgyros.com</p>
+      </div>
+
+    </div>
+
+    <!-- FOOTER CONTACT -->
+    <footer class="booking-footer">
+      <p>Prefer to book by phone?</p>
+      <a href="tel:4325170693">Call Matt at 432-517-0693</a>
+      <p style="margin-top: 24px; font-size: 13px;">Rebel Red's Gyros · Lamesa, TX · <a href="https://rebelredsgyros.com" style="color: var(--color-text-muted); font-size: 13px; font-weight: 400;">rebelredsgyros.com</a></p>
+    </footer>
+
+  </main>
+
+  <!-- CALENDLY SCRIPT — loads the inline widget -->
+  <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+</body>
+</html>
