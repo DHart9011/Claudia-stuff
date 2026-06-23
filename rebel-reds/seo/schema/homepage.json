@@ -1,0 +1,68 @@
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Rebel Red's Gyros",
+  "description": "MagniGyro certified gyroplane dealer and flight instruction in Lamesa, Texas. New Magni gyroplane sales, intro flights, and FAA-certified flight training.",
+  "url": "https://www.rebelredsgyros.com",
+  "telephone": "+14325170693",
+  "email": "matt@rebelredsgyros.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1744 County Rd N",
+    "addressLocality": "Lamesa",
+    "addressRegion": "TX",
+    "postalCode": "79331",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "32.7401",
+    "longitude": "-101.9534"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "08:00",
+      "closes": "18:00"
+    }
+  ],
+  "priceRange": "$$$$",
+  "image": "https://www.rebelredsgyros.com/images/rebel-reds-gyros-hangar-exterior.jpg",
+  "logo": "https://www.rebelredsgyros.com/images/rebel-reds-gyros-logo.png",
+  "sameAs": [
+    "https://www.facebook.com/rebelredsgyros",
+    "https://www.instagram.com/rebelredsgyros"
+  ],
+  "hasMap": "https://maps.google.com/?q=1744+County+Rd+N,+Lamesa,+TX+79331",
+  "knowsAbout": [
+    "gyroplanes",
+    "autogyros",
+    "rotorcraft",
+    "Magni gyroplane",
+    "MagniGyro",
+    "gyroplane flight instruction",
+    "gyroplane sales",
+    "FAA sport pilot certificate",
+    "FAA private pilot certificate",
+    "gyroplane maintenance",
+    "West Texas aviation",
+    "gyroplane intro flights"
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Matt Snell",
+    "jobTitle": "FAA Certified Flight Instructor, MagniGyro Certified Dealer"
+  },
+  "areaServed": {
+    "@type": "State",
+    "name": "Texas"
+  }
+}

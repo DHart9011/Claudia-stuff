@@ -1,0 +1,79 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Matt Snell",
+  "jobTitle": "FAA Certified Flight Instructor, MagniGyro Certified Dealer",
+  "description": "Matt Snell is the owner of Rebel Red's Gyros in Lamesa, Texas. He holds FAA CFI, CFII, and Sport Pilot CFI certificates and is MagniGyro factory certified, making him one of the few dedicated gyroplane flight instructors and dealers in Texas.",
+  "image": "https://www.rebelredsgyros.com/images/matt-snell-cfi-portrait.jpg",
+  "email": "matt@rebelredsgyros.com",
+  "telephone": "+14325170693",
+  "worksFor": {
+    "@type": "LocalBusiness",
+    "name": "Rebel Red's Gyros",
+    "url": "https://www.rebelredsgyros.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1744 County Rd N",
+      "addressLocality": "Lamesa",
+      "addressRegion": "TX",
+      "postalCode": "79331",
+      "addressCountry": "US"
+    }
+  },
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "FAA Certified Flight Instructor (CFI)",
+      "credentialCategory": "FAA Certificate",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Federal Aviation Administration"
+      }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "FAA Certified Flight Instructor Instrument (CFII)",
+      "credentialCategory": "FAA Certificate",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Federal Aviation Administration"
+      }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Sport Pilot Certified Flight Instructor",
+      "credentialCategory": "FAA Certificate",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Federal Aviation Administration"
+      }
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "MagniGyro Factory Certified Dealer",
+      "credentialCategory": "Manufacturer Certification",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Magni Gyro"
+      }
+    }
+  ],
+  "knowsAbout": [
+    "gyroplane flight instruction",
+    "Magni gyroplane sales",
+    "autogyro",
+    "rotorcraft",
+    "FAA sport pilot training",
+    "FAA private pilot training",
+    "gyroplane maintenance",
+    "MagniGyro M16",
+    "MagniGyro M22",
+    "MagniGyro M24",
+    "MagniGyro M26",
+    "West Texas aviation"
+  ],
+  "spouse": {
+    "@type": "Person",
+    "name": "Pam Snell"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EducationalOrganization",
+      "name": "Rebel Red's Gyros — Gyroplane Flight Training",
+      "description": "FAA-approved gyroplane flight training in Lamesa, Texas. Earn your Sport Pilot or Private Pilot gyroplane certificate with CFI Matt Snell. Transition training also available for licensed pilots.",
+      "url": "https://www.rebelredsgyros.com/flight-training",
+      "telephone": "+14325170693",
+      "email": "matt@rebelredsgyros.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1744 County Rd N",
+        "addressLocality": "Lamesa",
+        "addressRegion": "TX",
+        "postalCode": "79331",
+        "addressCountry": "US"
+      },
+      "instructor": {
+        "@type": "Person",
+        "name": "Matt Snell",
+        "jobTitle": "FAA Certified Flight Instructor",
+        "hasCredential": [
+          "FAA CFI",
+          "FAA CFII",
+          "Sport Pilot CFI",
+          "MagniGyro Factory Certified"
+        ]
+      },
+      "hasCourse": [
+        {
+          "@type": "Course",
+          "name": "Sport Pilot Gyroplane Certificate",
+          "description": "Complete FAA Sport Pilot certificate training in a gyroplane with CFI Matt Snell in Lamesa, TX. Covers preflight, ground operations, basic maneuvers, cross-country flight, and emergency procedures. Minimum 20 flight hours required by FAA.",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Rebel Red's Gyros"
+          },
+          "instructor": {
+            "@type": "Person",
+            "name": "Matt Snell"
+          },
+          "educationalCredentialAwarded": "FAA Sport Pilot Certificate — Gyroplane",
+          "url": "https://www.rebelredsgyros.com/flight-training",
+          "courseMode": "In-person",
+          "locationCreated": {
+            "@type": "Place",
+            "name": "Lamesa, TX"
+          }
+        },
+        {
+          "@type": "Course",
+          "name": "Private Pilot Gyroplane Certificate",
+          "description": "Full FAA Private Pilot certificate training in a gyroplane. Includes instrument fundamentals, cross-country navigation, night operations, and all FAA required maneuvers. Taught by CFI/CFII Matt Snell in Lamesa, TX.",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Rebel Red's Gyros"
+          },
+          "instructor": {
+            "@type": "Person",
+            "name": "Matt Snell"
+          },
+          "educationalCredentialAwarded": "FAA Private Pilot Certificate — Gyroplane",
+          "url": "https://www.rebelredsgyros.com/flight-training",
+          "courseMode": "In-person",
+          "locationCreated": {
+            "@type": "Place",
+            "name": "Lamesa, TX"
+          }
+        },
+        {
+          "@type": "Course",
+          "name": "Gyroplane Transition Training",
+          "description": "Already a licensed fixed-wing or helicopter pilot? Transition training with CFI Matt Snell at Rebel Red's Gyros gives licensed pilots the skills and endorsement needed to safely fly gyroplanes. Customized to your existing experience.",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Rebel Red's Gyros"
+          },
+          "instructor": {
+            "@type": "Person",
+            "name": "Matt Snell"
+          },
+          "educationalCredentialAwarded": "Gyroplane Category Add-On / Transition Endorsement",
+          "url": "https://www.rebelredsgyros.com/flight-training",
+          "courseMode": "In-person",
+          "locationCreated": {
+            "@type": "Place",
+            "name": "Lamesa, TX"
+          }
+        }
+      ]
+    }
+  ]
+}
