@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gyroplane FAQ | Rebel Red's Gyros | Lamesa, Texas</title>
+  <meta name="description" content="Answers to the most common questions about gyroplanes, Magni models, buying, flight training, and intro flights. Rebel Red's Gyros in Lamesa, TX — call 432-517-0693." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+    ============================================================ */
+    :root {
+      --color-bg: #F8F5F0;
+      --color-card: #FFFFFF;
+      --color-inset: #EDEAE4;
+      --color-border: #D8D2C8;
+      --color-text: #0E0C0A;
+      --color-text-sub: #3A3530;
+      --color-text-mute: #6A6058;
+      --color-gold: #8A6A00;
+      --color-gold-bg: #F5EED8;
+      --color-red: #8B1A1A;
+      --color-red-bg: #FDF0F0;
+      --color-green: #1A5C2A;
+
+      --font-display: Georgia, 'Times New Roman', serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+
+      --radius: 8px;
+      --radius-lg: 14px;
+      --shadow: 0 2px 8px rgba(14,12,10,0.10);
+      --shadow-md: 0 4px 18px rgba(14,12,10,0.13);
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      line-height: 1.2;
+    }
+
+    a { color: inherit; }
+
+    /* ============================================================
+       UTILITY
+    ============================================================ */
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .container--wide {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .section { padding: 4.5rem 0; }
+
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-headline {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      color: var(--color-text);
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--color-text-sub);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+
+    .btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-red {
+      background: var(--color-red);
+      color: #FFFFFF;
+    }
+
+    .btn-gold {
+      background: var(--color-gold);
+      color: #FFFFFF;
+    }
+
+    /* ============================================================
+       PAGE HEADER
+    ============================================================ */
+    .page-header {
+      background: var(--color-text);
+      background-image:
+        radial-gradient(ellipse at 60% 50%, rgba(139,26,26,0.22) 0%, transparent 60%),
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255,255,255,0.015) 0px,
+          rgba(255,255,255,0.015) 1px,
+          transparent 1px,
+          transparent 14px
+        );
+      color: #FFFFFF;
+      padding: 5rem 0 4rem;
+    }
+
+    .page-header-eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.50);
+      margin-bottom: 1rem;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2rem, 5.5vw, 3rem);
+      color: #FFFFFF;
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      color: rgba(255,255,255,0.72);
+      max-width: 580px;
+    }
+
+    /* ============================================================
+       CATEGORY NAV
+    ============================================================ */
+    .cat-nav {
+      background: var(--color-card);
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 6px rgba(14,12,10,0.07);
+    }
+
+    .cat-nav-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .cat-nav-inner::-webkit-scrollbar { display: none; }
+
+    .cat-link {
+      display: block;
+      padding: 0.85rem 1.1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--color-text-mute);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .cat-link:hover {
+      color: var(--color-red);
+      border-bottom-color: var(--color-red);
+    }
+
+    /* ============================================================
+       FAQ CATEGORY SECTION
+    ============================================================ */
+    .faq-category {
+      padding: 4rem 0 1rem;
+    }
+
+    .faq-category + .faq-category {
+      padding-top: 3.5rem;
+    }
+
+    .cat-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--color-border);
+    }
+
+    .cat-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--color-border);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .cat-header h2 {
+      font-size: clamp(1.3rem, 3.5vw, 1.75rem);
+      color: var(--color-text);
+    }
+
+    /* ============================================================
+       FAQ ACCORDION (CSS-only checkbox hack)
+    ============================================================ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+    }
+
+    .faq-item {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .faq-toggle {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+    }
+
+    .faq-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.1rem 1.4rem;
+      cursor: pointer;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--color-text);
+      user-select: none;
+      transition: background 0.15s;
+      line-height: 1.35;
+    }
+
+    .faq-label:hover { background: var(--color-inset); }
+
+    .faq-q-num {
+      flex-shrink: 0;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--color-text-mute);
+      font-family: var(--font-body);
+      letter-spacing: 0.04em;
+      margin-top: 0.2rem;
+      min-width: 24px;
+    }
+
+    .faq-q-text { flex: 1; }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 1.35rem;
+      height: 1.35rem;
+      border-radius: 50%;
+      background: var(--color-inset);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      color: var(--color-red);
+      line-height: 1;
+      transition: transform 0.2s, background 0.15s;
+      margin-top: 0.05rem;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.32s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 1.4rem 1.2rem 3.1rem;
+      font-size: 0.96rem;
+      color: var(--color-text-sub);
+      line-height: 1.72;
+    }
+
+    .faq-toggle:checked ~ .faq-label .faq-icon {
+      transform: rotate(45deg);
+      background: var(--color-red-bg);
+    }
+
+    .faq-toggle:checked ~ .faq-answer {
+      max-height: 800px;
+    }
+
+    /* ============================================================
+       DIVIDER
+    ============================================================ */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--color-border);
+      margin: 0;
+    }
+
+    /* ============================================================
+       STILL HAVE QUESTIONS CTA
+    ============================================================ */
+    .still-questions {
+      background: var(--color-red);
+      padding: 5rem 0;
+      text-align: center;
+    }
+
+    .still-questions h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      color: #FFFFFF;
+      margin-bottom: 0.75rem;
+    }
+
+    .still-questions p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.80);
+      max-width: 520px;
+      margin: 0 auto 2rem;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .btn-white-red {
+      background: #FFFFFF;
+      color: var(--color-red);
+    }
+
+    .btn-outline-white {
+      background: transparent;
+      color: #FFFFFF;
+      border: 2px solid rgba(255,255,255,0.45);
+    }
+
+    .btn-outline-white:hover { background: rgba(255,255,255,0.08); }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 600px) {
+      .page-header { padding: 3.5rem 0 3rem; }
+      .faq-category { padding: 3rem 0 0.5rem; }
+      .faq-answer-inner { padding-left: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       PAGE HEADER
+  ============================================================ -->
+  <header class="page-header">
+    <div class="container">
+      <span class="page-header-eyebrow">Rebel Red's Gyros · Lamesa, Texas</span>
+      <h1>Gyroplane FAQ</h1>
+      <p>Everything you want to know about gyroplanes, flying them, training for them, and buying one — answered straight by Matt Snell.</p>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       STICKY CATEGORY NAV
+  ============================================================ -->
+  <nav class="cat-nav" aria-label="FAQ categories">
+    <div class="container--wide">
+      <div class="cat-nav-inner">
+        <a href="#cat-what-is" class="cat-link">What Is a Gyroplane?</a>
+        <a href="#cat-buying" class="cat-link">Buying a Gyroplane</a>
+        <a href="#cat-training" class="cat-link">Learning to Fly</a>
+        <a href="#cat-intro-flight" class="cat-link">The Intro Flight</a>
+        <a href="#cat-owning" class="cat-link">Owning &amp; Maintaining</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       MAIN CONTENT
+  ============================================================ -->
+  <main>
+    <div class="container">
+
+      <!-- ====================================================
+           CATEGORY 1: WHAT IS A GYROPLANE?
+      ==================================================== -->
+      <section class="faq-category" id="cat-what-is">
+        <div class="cat-header">
+          <span class="cat-number">01</span>
+          <h2>What Is a Gyroplane?</h2>
+        </div>
+
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q01" />
+            <label class="faq-label" for="q01">
+              <span class="faq-q-num">Q1</span>
+              <span class="faq-q-text">What exactly is a gyroplane?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                A gyroplane — also called an autogyro or gyrocopter — is a rotorcraft that uses a freely spinning, unpowered rotor for lift and a conventional propeller (driven by an engine) for forward thrust. Unlike a helicopter, the rotor is never powered directly by the engine; instead, it spins from the airflow created as the aircraft moves forward, a phenomenon called autorotation. The result is an aircraft that can fly slowly, land in very short distances, and is resistant to the aerodynamic stall that affects fixed-wing aircraft.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q02" />
+            <label class="faq-label" for="q02">
+              <span class="faq-q-num">Q2</span>
+              <span class="faq-q-text">How is a gyroplane different from a helicopter?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                The biggest difference is the rotor drive system. A helicopter's rotor is powered by the engine — that's what gives it the ability to hover and fly backwards. A gyroplane's rotor is never engine-driven in flight; it spins freely from airflow alone, which means a gyroplane cannot hover (it must always be moving forward). Because of this, gyroplanes are mechanically much simpler than helicopters, substantially less expensive to buy and maintain, and in many ways safer — since the rotor is always in autorotation, an engine failure is handled exactly the same way as normal flight.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q03" />
+            <label class="faq-label" for="q03">
+              <span class="faq-q-num">Q3</span>
+              <span class="faq-q-text">How does the rotor work without an engine driving it?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                The rotor blades are set at a slightly negative pitch angle — meaning airflow passing upward through the rotor from below causes the blades to spin and generate lift, the same physics as a maple seed falling from a tree. As long as the aircraft is moving through the air (which it always is in forward flight), the rotor keeps spinning and keeps generating lift. This is called autorotation. There's no mechanical coupling to the engine at all — if the engine stops, nothing about the rotor's behavior changes, and you simply descend in a controlled glide to landing.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q04" />
+            <label class="faq-label" for="q04">
+              <span class="faq-q-num">Q4</span>
+              <span class="faq-q-text">Can a gyroplane stall and fall out of the sky?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                No — and this is one of the most important things to understand about gyroplanes. A traditional aerodynamic stall (where a wing loses lift by exceeding its critical angle of attack) simply doesn't apply to a freewheeling rotor. The rotor blades are always producing lift through autorotation as long as there's airflow, and the design of the rotor disk prevents the kind of sudden lift loss you can get with a fixed wing. This doesn't mean gyroplanes are invulnerable to bad pilot decisions, but the specific failure mode of a stall-and-spin that has killed so many fixed-wing pilots doesn't exist in a properly designed and operated gyroplane.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q05" />
+            <label class="faq-label" for="q05">
+              <span class="faq-q-num">Q5</span>
+              <span class="faq-q-text">What is the safety record of gyroplanes?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Modern certified gyroplanes, particularly the Magni series, have a strong safety record when flown by trained pilots. Early gyroplane accident statistics were skewed heavily by poorly designed homebuilt aircraft and untrained pilots — problems the modern certified aircraft and FAA training requirements have largely addressed. The gyroplane's inherent autorotation characteristic means engine failures are among the most manageable of any aircraft type. As with any aviation activity, the pilot's training and judgment remain the most important safety factors.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- ====================================================
+           CATEGORY 2: BUYING A GYROPLANE
+      ==================================================== -->
+      <section class="faq-category" id="cat-buying">
+        <div class="cat-header">
+          <span class="cat-number">02</span>
+          <h2>Buying a Gyroplane</h2>
+        </div>
+
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q06" />
+            <label class="faq-label" for="q06">
+              <span class="faq-q-num">Q6</span>
+              <span class="faq-q-text">How much does a new Magni gyroplane cost?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Magni gyroplane pricing varies by model and configuration — the entry-level single-seat M16 starts considerably lower than the two-seat M24 or the enclosed M26. [VERIFY: current pricing for M16, M22, M24, M26 with Matt before publishing.] As your local Magni dealer, I can walk you through exactly what each model costs, what's standard, and what options are worth adding for your intended use. Call me and we'll go through it together.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q07" />
+            <label class="faq-label" for="q07">
+              <span class="faq-q-num">Q7</span>
+              <span class="faq-q-text">What's the difference between the M16, M22, M24, and M26?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                The <strong>M16</strong> is Magni's single-seat open-frame model — the most affordable and mechanically simple entry point into the Magni lineup, ideal for the pilot who wants to fly solo. The <strong>M22</strong> is a two-seat tandem-configuration aircraft, the workhorse of the line and the aircraft most commonly used for flight instruction. The <strong>M24</strong> is a side-by-side two-seater, which some pilots prefer for the more car-like seating arrangement and ease of conversation with a passenger. The <strong>M26</strong> is Magni's enclosed cabin model, giving you wind and weather protection that the open-frame models don't provide. Each has different payload, performance, and price characteristics — contact us and we'll help you figure out which is right for you.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q08" />
+            <label class="faq-label" for="q08">
+              <span class="faq-q-num">Q8</span>
+              <span class="faq-q-text">Can I finance a gyroplane purchase?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Aircraft financing is available through several lenders who specialize in light sport and experimental aircraft. The options available to you will depend on your credit profile and the aircraft's registered category. [VERIFY: confirm any preferred financing partners or in-house financing options with Matt.] This is worth a direct conversation — call me and I can point you toward the options that have worked for other buyers.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q09" />
+            <label class="faq-label" for="q09">
+              <span class="faq-q-num">Q9</span>
+              <span class="faq-q-text">What's included in a new gyroplane purchase from Rebel Red's?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                As a MagniGyro factory-certified dealer, I sell new Magni gyroplanes complete with the standard factory equipment package, documentation, and warranty. Beyond the aircraft itself, I can provide transition training so you're actually proficient in your new machine before you fly it home — which is something I strongly recommend for every new owner. [VERIFY: confirm exact what's-included list for a new aircraft purchase with Matt, including PDI process and delivery logistics.]
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q10" />
+            <label class="faq-label" for="q10">
+              <span class="faq-q-num">Q10</span>
+              <span class="faq-q-text">How long does it take to receive a new gyroplane after ordering?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Lead times on new Magni aircraft vary based on factory production schedules and model demand. [VERIFY: current lead time estimates from the factory with Matt before publishing.] Order lead times can range from several months to over a year depending on the model and configuration you choose. The sooner you start the process, the sooner you'll be flying — give me a call and I can check on current availability for the model you're interested in.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- ====================================================
+           CATEGORY 3: LEARNING TO FLY
+      ==================================================== -->
+      <section class="faq-category" id="cat-training">
+        <div class="cat-header">
+          <span class="cat-number">03</span>
+          <h2>Learning to Fly</h2>
+        </div>
+
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q11" />
+            <label class="faq-label" for="q11">
+              <span class="faq-q-num">Q11</span>
+              <span class="faq-q-text">Do I need a license to fly a gyroplane?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Yes — the FAA requires a pilot certificate to operate a gyroplane. The most common starting point is the Sport Pilot Certificate, which allows you to fly light sport gyroplanes during the day under visual flight rules. If you want more operating flexibility — night flying, certain airspace, or heavier aircraft — you'd pursue a Private Pilot Certificate with a gyroplane category rating. I can walk you through which certificate fits your goals during a free consultation call.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q12" />
+            <label class="faq-label" for="q12">
+              <span class="faq-q-num">Q12</span>
+              <span class="faq-q-text">How many hours of training does it take to get a sport pilot certificate?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                The FAA minimum is 20 flight hours for a sport pilot certificate in a gyroplane, but real-world averages tend to fall between 25 and 40 hours before a student is genuinely checkride-ready. Every student is different — some pick it up quickly, others need more repetition on specific maneuvers. Flying consistently (two or three times per week when possible) produces much faster progress than monthly sessions. I won't rush anyone toward a checkride before they're ready.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q13" />
+            <label class="faq-label" for="q13">
+              <span class="faq-q-num">Q13</span>
+              <span class="faq-q-text">Do I need any prior flying experience to start training?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                None at all. Most of my students have never operated any aircraft before their first lesson, and that's perfectly fine. We start with how the machine works, how to think about the air around you, and how to develop the habits that make a safe pilot — from lesson one. If you do have prior flight experience in fixed-wing or rotorcraft, that background can accelerate certain parts of training, though the gyroplane has its own flight characteristics you'll need to learn directly.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q14" />
+            <label class="faq-label" for="q14">
+              <span class="faq-q-num">Q14</span>
+              <span class="faq-q-text">What are the age requirements for gyroplane training?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                To solo a gyroplane, you must be at least 16 years old. To apply for a sport pilot certificate, you must be 17. There is no upper age limit — the FAA does not restrict pilot certificates based on age, though you'll need to meet any required medical or driver's license standards. If you're 16 or 17, parental or guardian consent is required to begin training. There's no age too young to be serious about learning to fly correctly.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q15" />
+            <label class="faq-label" for="q15">
+              <span class="faq-q-num">Q15</span>
+              <span class="faq-q-text">How much does gyroplane flight training cost?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Total training cost depends on how many hours you need to reach checkride readiness, which varies by student. [VERIFY: current dual instruction rate and aircraft rental rate with Matt before publishing.] As a general estimate, completing a sport pilot certificate typically runs somewhere between [VERIFY: ballpark range with Matt]. I'd rather give you an honest range after a conversation than a number that turns out to be wrong for your situation — call me and we'll go through it.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- ====================================================
+           CATEGORY 4: THE INTRO FLIGHT
+      ==================================================== -->
+      <section class="faq-category" id="cat-intro-flight">
+        <div class="cat-header">
+          <span class="cat-number">04</span>
+          <h2>The Intro Flight</h2>
+        </div>
+
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q16" />
+            <label class="faq-label" for="q16">
+              <span class="faq-q-num">Q16</span>
+              <span class="faq-q-text">What happens during an intro flight?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                We start with a ground briefing — about 10 minutes talking through how the gyroplane flies, what the controls do, and what you can expect in the air. Then you climb into the front seat of the Magni, I get in behind you, and we taxi out and take off. Once we're airborne, I may hand you the controls so you can feel how the aircraft responds. After 15–20 minutes of actual flight time, we land and debrief. You'll leave with a real sense of what flying a gyroplane is like — not just a story about it.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q17" />
+            <label class="faq-label" for="q17">
+              <span class="faq-q-num">Q17</span>
+              <span class="faq-q-text">How long is the intro flight?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Plan for about 30–45 minutes total from arrival to wheels-stop. That includes the pre-flight briefing, cockpit orientation, taxi, 15–20 minutes of actual flight time, landing, and a post-flight debrief. The flight time itself is genuine stick-time in the air — not just a pattern or two. I want you to actually feel what this machine is capable of, not just take a quick spin and call it done.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q18" />
+            <label class="faq-label" for="q18">
+              <span class="faq-q-num">Q18</span>
+              <span class="faq-q-text">Are there age or weight restrictions for the intro flight?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                The minimum age for an intro flight is 16. If you're under 18, parental or guardian consent is required. [VERIFY: weight limit for the training aircraft with Matt before publishing.] If you have any questions about whether the intro flight is right for your situation physically, just give me a call — I'd rather have that conversation upfront than have anyone make a trip out here for nothing.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q19" />
+            <label class="faq-label" for="q19">
+              <span class="faq-q-num">Q19</span>
+              <span class="faq-q-text">What should I wear for my intro flight?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Closed-toe shoes are required — no sandals or flip-flops. Wear comfortable clothes you can move in. Sunglasses are a good idea. Avoid loose scarves, baggy sleeves, or anything that could catch in the aircraft. If you're flying during summer in West Texas, dress for the heat — it can be warm on the ground, though it's usually more comfortable once we're in the air and moving.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q20" />
+            <label class="faq-label" for="q20">
+              <span class="faq-q-num">Q20</span>
+              <span class="faq-q-text">Can I bring someone to watch my intro flight?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Absolutely. Bring your spouse, your kids, your friends — whoever you want. They can watch from the ground near the aircraft area while you fly. The gyroplane is a two-seater so the flight itself is just you and me, but having people there to see you land tends to make the whole experience better. Fair warning: after people watch someone else do it, they usually want to go up themselves.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <hr class="section-divider" />
+
+      <!-- ====================================================
+           CATEGORY 5: OWNING & MAINTAINING
+      ==================================================== -->
+      <section class="faq-category" id="cat-owning">
+        <div class="cat-header">
+          <span class="cat-number">05</span>
+          <h2>Owning &amp; Maintaining</h2>
+        </div>
+
+        <div class="faq-list">
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q21" />
+            <label class="faq-label" for="q21">
+              <span class="faq-q-num">Q21</span>
+              <span class="faq-q-text">Do I need a hangar for my gyroplane?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                A hangar is strongly recommended but not strictly required. Gyroplanes can be tied down outdoors, but the rotor blades, engine, and avionics will fare significantly better — and last significantly longer — out of the weather. Here in West Texas, sun and wind are the main concerns, and both do real damage to aircraft over time. Hangar space at small local airports is often reasonably priced, and some owners store their gyroplane in a large garage or agricultural building on their property.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q22" />
+            <label class="faq-label" for="q22">
+              <span class="faq-q-num">Q22</span>
+              <span class="faq-q-text">What does an annual inspection involve?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                An annual inspection on a Magni gyroplane covers the airframe, rotor system, engine, flight controls, fuel system, and avionics — essentially a top-to-bottom review of the entire aircraft against manufacturer and FAA standards. It must be performed by an FAA-certificated mechanic with an Inspection Authorization (IA). [VERIFY: confirm whether Matt performs or facilitates annual inspections, and if there's a recommended IA in the area.] The inspection is required to keep the aircraft legally airworthy, and it's also a good opportunity to address any squawks that have accumulated over the year.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q23" />
+            <label class="faq-label" for="q23">
+              <span class="faq-q-num">Q23</span>
+              <span class="faq-q-text">How much does annual maintenance cost?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Annual operating costs for a Magni gyroplane are substantially lower than for a helicopter and comparable to a light fixed-wing aircraft. The engine is a Rotax 912 series (or similar), which has a well-established maintenance network and relatively affordable parts. [VERIFY: typical annual inspection cost and oil change interval with Matt.] Owners typically budget somewhere in the range of $1,500–$3,500 per year for routine maintenance and the annual inspection, depending on aircraft condition and what comes up. That number can vary — call me and I can give you a more realistic picture based on current experience.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q24" />
+            <label class="faq-label" for="q24">
+              <span class="faq-q-num">Q24</span>
+              <span class="faq-q-text">Are Magni gyroplane parts readily available in the US?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Magni Gyro is an established Italian manufacturer with a well-developed dealer and parts network in North America. Common wear items and service parts are generally available without extended lead times. Rotax engines — used across the Magni lineup — have excellent parts availability and service support throughout the US. For specialty airframe parts or anything requiring factory order, lead times from Italy can vary. As your local Magni dealer, I can help source parts and coordinate with the factory when needed.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <input type="checkbox" class="faq-toggle" id="q25" />
+            <label class="faq-label" for="q25">
+              <span class="faq-q-num">Q25</span>
+              <span class="faq-q-text">What kind of engine does a Magni gyroplane use?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </label>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Magni gyroplanes are powered by Rotax engines — primarily the Rotax 912 ULS (100 hp) across most of the model line, with some configurations using the Rotax 914 turbocharged variant. The Rotax 912 is one of the most widely used light aircraft engines in the world, with an outstanding reliability record and a mature service network across North America. It uses standard automotive unleaded fuel (Mogas) or aviation fuel (Avgas), which gives owners flexibility at the pump. Engine TBO (time between overhaul) for the 912 ULS is 2,000 hours.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div><!-- /.container -->
+  </main>
+
+  <!-- ============================================================
+       STILL HAVE QUESTIONS CTA
+  ============================================================ -->
+  <section class="still-questions">
+    <div class="container">
+      <h2>Still have questions?</h2>
+      <p>Matt picks up the phone. If it's faster, send an email and he'll get back to you the same day.</p>
+      <div class="cta-actions">
+        <a href="tel:4325170693" class="btn btn-white-red">Call Matt: 432-517-0693</a>
+        <a href="mailto:matt@rebelredsgyros.com" class="btn btn-outline-white">matt@rebelredsgyros.com</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       JSON-LD: FAQPage Schema
+  ============================================================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What exactly is a gyroplane?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A gyroplane — also called an autogyro or gyrocopter — is a rotorcraft that uses a freely spinning, unpowered rotor for lift and a conventional propeller (driven by an engine) for forward thrust. Unlike a helicopter, the rotor is never powered directly by the engine; instead, it spins from the airflow created as the aircraft moves forward, a phenomenon called autorotation. The result is an aircraft that can fly slowly, land in very short distances, and is resistant to the aerodynamic stall that affects fixed-wing aircraft."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is a gyroplane different from a helicopter?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The biggest difference is the rotor drive system. A helicopter's rotor is powered by the engine — that's what gives it the ability to hover and fly backwards. A gyroplane's rotor is never engine-driven in flight; it spins freely from airflow alone, which means a gyroplane cannot hover. Gyroplanes are mechanically much simpler than helicopters, substantially less expensive to buy and maintain, and the rotor is always in autorotation, so an engine failure is handled exactly the same way as normal flight."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the rotor work without an engine driving it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The rotor blades are set at a slightly negative pitch angle — meaning airflow passing upward through the rotor from below causes the blades to spin and generate lift, the same physics as a maple seed falling from a tree. As long as the aircraft is moving through the air, the rotor keeps spinning and keeps generating lift. This is called autorotation. There's no mechanical coupling to the engine at all — if the engine stops, nothing about the rotor's behavior changes, and you simply descend in a controlled glide to landing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can a gyroplane stall and fall out of the sky?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. A traditional aerodynamic stall does not apply to a freewheeling rotor. The rotor blades are always producing lift through autorotation as long as there is airflow, and the design of the rotor disk prevents the kind of sudden lift loss you can get with a fixed wing. The specific failure mode of a stall-and-spin that has killed many fixed-wing pilots simply does not exist in a properly designed and operated gyroplane."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the safety record of gyroplanes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Modern certified gyroplanes, particularly the Magni series, have a strong safety record when flown by trained pilots. Early gyroplane accident statistics were skewed by poorly designed homebuilt aircraft and untrained pilots — problems the modern certified aircraft and FAA training requirements have largely addressed. The gyroplane's inherent autorotation characteristic means engine failures are among the most manageable of any aircraft type. The pilot's training and judgment remain the most important safety factors."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does a new Magni gyroplane cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Magni gyroplane pricing varies by model and configuration — the entry-level single-seat M16 starts considerably lower than the two-seat M24 or the enclosed M26. As your local Magni dealer, we can walk you through exactly what each model costs, what's standard, and what options are worth adding for your intended use. Call us at 432-517-0693."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's the difference between the M16, M22, M24, and M26?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The M16 is Magni's single-seat open-frame model — the most affordable entry point. The M22 is a two-seat tandem-configuration aircraft, the workhorse of the line and most commonly used for flight instruction. The M24 is a side-by-side two-seater preferred by pilots who want the more car-like seating arrangement. The M26 is Magni's enclosed cabin model, providing wind and weather protection that open-frame models don't. Each has different payload, performance, and price characteristics."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I finance a gyroplane purchase?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Aircraft financing is available through several lenders who specialize in light sport and experimental aircraft. The options available to you will depend on your credit profile and the aircraft's registered category. Contact us at 432-517-0693 and we can point you toward financing options that have worked for other buyers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's included in a new gyroplane purchase from Rebel Red's Gyros?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "As a MagniGyro factory-certified dealer, we sell new Magni gyroplanes complete with the standard factory equipment package, documentation, and warranty. Beyond the aircraft itself, we can provide transition training so you're proficient in your new machine before you fly it home — which we strongly recommend for every new owner."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to receive a new gyroplane after ordering?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lead times on new Magni aircraft vary based on factory production schedules and model demand. Order lead times can range from several months to over a year depending on the model and configuration you choose. Contact us at 432-517-0693 to check on current availability for the model you're interested in."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a license to fly a gyroplane?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes — the FAA requires a pilot certificate to operate a gyroplane. The most common starting point is the Sport Pilot Certificate, which allows you to fly light sport gyroplanes during the day under visual flight rules. For more operating flexibility — night flying, certain airspace, or heavier aircraft — you'd pursue a Private Pilot Certificate with a gyroplane category rating."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many hours of training does it take to get a sport pilot certificate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The FAA minimum is 20 flight hours for a sport pilot certificate in a gyroplane, but real-world averages tend to fall between 25 and 40 hours before a student is genuinely checkride-ready. Every student is different — some pick it up quickly, others need more repetition on specific maneuvers. Flying consistently (two or three times per week when possible) produces much faster progress than monthly sessions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need any prior flying experience to start training?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "None at all. Most students have never operated any aircraft before their first lesson. We start with how the machine works, how to think about the air around you, and how to develop the habits that make a safe pilot — from lesson one. Prior fixed-wing or rotorcraft experience can accelerate certain parts of training, though the gyroplane has its own flight characteristics you'll need to learn directly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the age requirements for gyroplane training?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To solo a gyroplane, you must be at least 16 years old. To apply for a sport pilot certificate, you must be 17. There is no upper age limit — the FAA does not restrict pilot certificates based on age. If you're 16 or 17, parental or guardian consent is required to begin training."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does gyroplane flight training cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Total training cost depends on how many hours you need to reach checkride readiness, which varies by student. Call us at 432-517-0693 or email matt@rebelredsgyros.com and we'll give you an honest estimate based on your background and goals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens during an intro flight?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We start with a ground briefing — about 10 minutes talking through how the gyroplane flies and what you can expect in the air. Then you climb into the front seat of the Magni, Matt gets in behind you, and you taxi out and take off. Once airborne, Matt may hand you the controls so you can feel how the aircraft responds. After 15-20 minutes of actual flight time, you land and debrief. You'll leave with a real sense of what flying a gyroplane is like."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long is the intro flight?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Plan for about 30-45 minutes total from arrival to wheels-stop. That includes the pre-flight briefing, cockpit orientation, taxi, 15-20 minutes of actual flight time, landing, and a post-flight debrief."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are there age or weight restrictions for the intro flight?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The minimum age for an intro flight is 16. If you're under 18, parental or guardian consent is required. Weight limits apply based on the aircraft's payload — contact us at 432-517-0693 to confirm before booking."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I wear for my intro flight?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Closed-toe shoes are required — no sandals or flip-flops. Wear comfortable clothes you can move in. Sunglasses are a good idea. Avoid loose scarves, baggy sleeves, or anything that could catch in the aircraft."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I bring someone to watch my intro flight?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. Bring your spouse, your kids, your friends — whoever you want. They can watch from the ground near the aircraft area while you fly. The gyroplane is a two-seater so the flight itself is just you and the instructor, but having people there to see you land makes the whole experience better."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a hangar for my gyroplane?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A hangar is strongly recommended but not strictly required. Gyroplanes can be tied down outdoors, but the rotor blades, engine, and avionics will fare significantly better out of the weather. In West Texas, sun and wind do real damage to aircraft over time. Hangar space at small local airports is often reasonably priced, and some owners store their gyroplane in a large garage or agricultural building on their property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does an annual inspection involve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An annual inspection on a Magni gyroplane covers the airframe, rotor system, engine, flight controls, fuel system, and avionics — a top-to-bottom review against manufacturer and FAA standards. It must be performed by an FAA-certificated mechanic with an Inspection Authorization (IA). The inspection is required to keep the aircraft legally airworthy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does annual maintenance cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Annual operating costs for a Magni gyroplane are substantially lower than for a helicopter and comparable to a light fixed-wing aircraft. The Rotax engine has a well-established maintenance network and relatively affordable parts. Owners typically budget somewhere in the range of $1,500 to $3,500 per year for routine maintenance and the annual inspection, depending on aircraft condition. Call 432-517-0693 for a more current estimate."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are Magni gyroplane parts readily available in the US?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Magni Gyro is an established Italian manufacturer with a well-developed dealer and parts network in North America. Common wear items and service parts are generally available without extended lead times. Rotax engines — used across the Magni lineup — have excellent parts availability and service support throughout the US. As your local Magni dealer, we can help source parts and coordinate with the factory when needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What kind of engine does a Magni gyroplane use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Magni gyroplanes are powered by Rotax engines — primarily the Rotax 912 ULS (100 hp) across most of the model line. The Rotax 912 is one of the most widely used light aircraft engines in the world, with an outstanding reliability record and a mature service network across North America. It uses standard automotive unleaded fuel (Mogas) or aviation fuel (Avgas). Engine TBO for the 912 ULS is 2,000 hours."
+        }
+      }
+    ]
+  }
+  </script>
+
+</body>
+</html>
