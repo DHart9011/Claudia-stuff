@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magni M16 Gyroplane | Rebel Red's Gyros — Lamesa, TX</title>
+  <meta name="description" content="The Magni M16 tandem two-seat trainer gyroplane. Open cockpit, dual controls, built for instruction. Available through Rebel Red's Gyros in Lamesa, TX.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* =============================================
+       COLOR SYSTEM
+    ============================================= */
+    :root {
+      --color-bg: #F8F5F0;
+      --color-card: #FFFFFF;
+      --color-inset: #EDEAE4;
+      --color-border: #D8D2C8;
+      --color-text: #0E0C0A;
+      --color-text-sub: #3A3530;
+      --color-text-mute: #6A6058;
+      --color-gold: #8A6A00;
+      --color-gold-bg: #F5EED8;
+      --color-red: #8B1A1A;
+      --color-red-bg: #FDF0F0;
+      --color-green: #1A5C2A;
+    }
+
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--color-text);
+      background: var(--color-bg);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: Georgia, 'Times New Roman', serif;
+      line-height: 1.25;
+    }
+
+    a { color: var(--color-gold); text-decoration: underline; }
+    a:hover { color: var(--color-red); }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* =============================================
+       SITE HEADER / NAV
+    ============================================= */
+    .site-header {
+      background: var(--color-text);
+      padding: 0 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .site-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      gap: 1rem;
+    }
+
+    .site-logo {
+      font-family: Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: normal;
+      color: #FFFFFF;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .site-logo span { color: var(--color-gold); }
+
+    .site-nav {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .site-nav a {
+      color: #C8C0B4;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color 0.15s;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.active { color: #FFFFFF; }
+
+    /* =============================================
+       LAYOUT UTILITIES
+    ============================================= */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section { padding: 4rem 0; }
+    .section-sm { padding: 2.5rem 0; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-heading {
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      color: var(--color-text);
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      color: var(--color-text-sub);
+      max-width: 640px;
+      margin-bottom: 2rem;
+    }
+
+    /* =============================================
+       BUTTONS
+    ============================================= */
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .btn-primary {
+      background: var(--color-red);
+      color: #FFFFFF;
+      border-color: var(--color-red);
+    }
+
+    .btn-primary:hover {
+      background: #6E1414;
+      border-color: #6E1414;
+      color: #FFFFFF;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #FFFFFF;
+      border-color: rgba(255,255,255,0.5);
+    }
+
+    .btn-outline:hover {
+      border-color: #FFFFFF;
+      color: #FFFFFF;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .btn-gold {
+      background: var(--color-gold);
+      color: #FFFFFF;
+      border-color: var(--color-gold);
+    }
+
+    .btn-gold:hover {
+      background: #6E5500;
+      border-color: #6E5500;
+      color: #FFFFFF;
+    }
+
+    /* =============================================
+       SECTION 1: HERO
+    ============================================= */
+    .hero {
+      background: #0E0C0A;
+      color: #FFFFFF;
+      padding: 5rem 0 4rem;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      color: #FFFFFF;
+      margin-bottom: 1rem;
+      font-weight: normal;
+    }
+
+    .hero-descriptor {
+      font-size: 1.05rem;
+      color: #A89E94;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .stat-tile {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+    }
+
+    .stat-tile-value {
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      color: var(--color-gold);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-tile-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #7A7068;
+    }
+
+    /* Hero image placeholder */
+    .hero-image-wrap {
+      position: relative;
+    }
+
+    .image-placeholder {
+      background: rgba(255,255,255,0.04);
+      border: 2px dashed rgba(255,255,255,0.15);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #5A5048;
+      min-height: 300px;
+    }
+
+    .image-placeholder-icon {
+      font-size: 3rem;
+      margin-bottom: 0.75rem;
+      opacity: 0.4;
+    }
+
+    .image-placeholder p {
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: #5A5048;
+    }
+
+    .image-placeholder strong {
+      display: block;
+      color: #7A7068;
+      font-size: 0.875rem;
+      margin-bottom: 0.25rem;
+    }
+
+    /* Light bg image placeholder */
+    .image-placeholder-light {
+      background: var(--color-inset);
+      border: 2px dashed var(--color-border);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 1rem;
+      min-height: 220px;
+      color: var(--color-text-mute);
+    }
+
+    .image-placeholder-light-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.4;
+    }
+
+    .image-placeholder-light strong {
+      display: block;
+      font-size: 0.875rem;
+      margin-bottom: 0.25rem;
+      color: var(--color-text-sub);
+    }
+
+    .image-placeholder-light p {
+      font-size: 0.75rem;
+      line-height: 1.5;
+    }
+
+    /* =============================================
+       SECTION 2: OVERVIEW
+    ============================================= */
+    .overview { background: var(--color-bg); }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .overview-body p {
+      color: var(--color-text-sub);
+      margin-bottom: 1rem;
+    }
+
+    .overview-body p:last-child { margin-bottom: 0; }
+
+    .callout-quote {
+      background: var(--color-gold-bg);
+      border-left: 4px solid var(--color-gold);
+      border-radius: 0 6px 6px 0;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0 0;
+    }
+
+    .callout-quote p {
+      font-family: Georgia, serif;
+      font-size: 1.1rem;
+      color: var(--color-text);
+      font-style: italic;
+      margin: 0 !important;
+      line-height: 1.6;
+    }
+
+    .callout-quote cite {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      font-style: normal;
+      margin-top: 0.75rem;
+    }
+
+    /* Feature pills */
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: var(--color-text-sub);
+      font-size: 0.9rem;
+    }
+
+    .feature-check {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      background: var(--color-gold-bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .feature-check::after {
+      content: '';
+      width: 7px;
+      height: 4px;
+      border-left: 2px solid var(--color-gold);
+      border-bottom: 2px solid var(--color-gold);
+      transform: rotate(-45deg) translateY(-1px);
+    }
+
+    /* =============================================
+       SECTION 3: SPEC TABLE
+    ============================================= */
+    .specs-section { background: var(--color-card); }
+
+    .spec-table-wrap { overflow-x: auto; }
+
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .spec-table th {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      background: var(--color-inset);
+      color: var(--color-text);
+      font-family: Georgia, serif;
+      font-weight: normal;
+      font-size: 1rem;
+      border-bottom: 2px solid var(--color-border);
+    }
+
+    .spec-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--color-border);
+      vertical-align: top;
+    }
+
+    .spec-table tr:last-child td { border-bottom: none; }
+
+    .spec-table td:first-child {
+      font-weight: 500;
+      color: var(--color-text);
+      width: 40%;
+      white-space: nowrap;
+    }
+
+    .spec-table td:last-child { color: var(--color-text-sub); }
+
+    .spec-table tr:nth-child(even) { background: var(--color-inset); }
+
+    .verify-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: #FFF3CD;
+      color: #856404;
+      border: 1px solid #FFEAA7;
+      border-radius: 3px;
+      padding: 1px 5px;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+
+    .spec-note {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--color-text-mute);
+      background: var(--color-inset);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+    }
+
+    /* =============================================
+       SECTION 4: GALLERY
+    ============================================= */
+    .gallery-section { background: var(--color-bg); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* CSS-only lightbox via :target */
+    .gallery-item { position: relative; }
+
+    .gallery-thumb-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      transition: box-shadow 0.15s;
+    }
+
+    .gallery-thumb-link:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+
+    .gallery-caption {
+      padding: 0.75rem;
+      background: var(--color-card);
+    }
+
+    .gallery-caption strong {
+      display: block;
+      font-size: 0.875rem;
+      color: var(--color-text);
+      margin-bottom: 0.2rem;
+    }
+
+    .gallery-caption span {
+      font-size: 0.75rem;
+      color: var(--color-text-mute);
+    }
+
+    /* Lightbox overlay */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 2rem;
+    }
+
+    .lightbox-overlay:target {
+      display: flex;
+    }
+
+    .lightbox-content {
+      max-width: 800px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .lightbox-placeholder {
+      background: rgba(255,255,255,0.04);
+      border: 2px dashed rgba(255,255,255,0.2);
+      border-radius: 8px;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #7A7068;
+      padding: 2rem;
+    }
+
+    .lightbox-close {
+      display: inline-block;
+      margin-top: 1.5rem;
+      color: #A89E94;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-family: 'Inter', sans-serif;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.5rem 1.25rem;
+      border-radius: 4px;
+    }
+
+    .lightbox-close:hover { color: #FFFFFF; border-color: #FFFFFF; }
+
+    .lightbox-caption {
+      color: #A89E94;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    /* =============================================
+       SECTION 5: MODEL COMPARISON
+    ============================================= */
+    .comparison-section { background: var(--color-card); }
+
+    .comparison-wrap { overflow-x: auto; }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      min-width: 600px;
+    }
+
+    .comparison-table th {
+      padding: 1rem 0.75rem;
+      text-align: center;
+      font-family: Georgia, serif;
+      font-size: 1rem;
+      font-weight: normal;
+      border-bottom: 2px solid var(--color-border);
+      background: var(--color-inset);
+    }
+
+    .comparison-table th.current-model {
+      background: var(--color-gold-bg);
+      color: var(--color-gold);
+    }
+
+    .comparison-table th:first-child {
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-mute);
+      background: var(--color-inset);
+    }
+
+    .comparison-table td {
+      padding: 0.75rem;
+      text-align: center;
+      border-bottom: 1px solid var(--color-border);
+      color: var(--color-text-sub);
+    }
+
+    .comparison-table td.current-model {
+      background: var(--color-gold-bg);
+      color: var(--color-text);
+      font-weight: 500;
+    }
+
+    .comparison-table td:first-child {
+      text-align: left;
+      font-weight: 500;
+      color: var(--color-text);
+    }
+
+    .comparison-table tr:last-child td { border-bottom: none; }
+
+    .comparison-table .model-link {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-text-mute);
+      text-decoration: none;
+      margin-top: 0.2rem;
+    }
+
+    .comparison-table th.current-model .model-link { color: var(--color-gold); }
+
+    .comparison-note {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--color-text-mute);
+    }
+
+    /* =============================================
+       SECTION 6: FINANCING
+    ============================================= */
+    .financing-section { background: var(--color-red-bg); }
+
+    .financing-inner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .financing-body p {
+      color: var(--color-text-sub);
+      margin-bottom: 1rem;
+    }
+
+    .financing-body p:last-child { margin-bottom: 0; }
+
+    .financing-contact {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .financing-contact p {
+      font-size: 0.875rem;
+      color: var(--color-text-mute);
+      margin-bottom: 0.5rem;
+    }
+
+    .financing-phone {
+      font-family: Georgia, serif;
+      font-size: 1.75rem;
+      color: var(--color-text);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .financing-phone:hover { color: var(--color-red); }
+
+    .financing-email {
+      font-size: 0.875rem;
+      color: var(--color-gold);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 1.25rem;
+    }
+
+    .financing-email:hover { color: var(--color-red); }
+
+    /* =============================================
+       SECTION 7: QUOTE FORM
+    ============================================= */
+    .form-section { background: var(--color-bg); }
+
+    .form-wrap {
+      max-width: 680px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--color-text-sub);
+    }
+
+    .form-control {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--color-text);
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      padding: 0.65rem 0.85rem;
+      width: 100%;
+      transition: border-color 0.15s;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--color-gold);
+      box-shadow: 0 0 0 3px rgba(138,106,0,0.12);
+    }
+
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-submit-wrap {
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .form-disclaimer {
+      font-size: 0.75rem;
+      color: var(--color-text-mute);
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .site-footer {
+      background: #0E0C0A;
+      color: #7A7068;
+      padding: 3rem 0 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .footer-brand {
+      font-family: Georgia, serif;
+      font-size: 1.1rem;
+      color: #FFFFFF;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-brand span { color: var(--color-gold); }
+
+    .footer-tagline {
+      font-size: 0.8rem;
+      color: #5A5048;
+      line-height: 1.6;
+    }
+
+    .footer-heading {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #5A5048;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .footer-links a {
+      color: #7A7068;
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+
+    .footer-links a:hover { color: #FFFFFF; }
+
+    .footer-contact p {
+      font-size: 0.875rem;
+      color: #7A7068;
+      margin-bottom: 0.25rem;
+    }
+
+    .footer-contact a {
+      color: #A89E94;
+      text-decoration: none;
+    }
+
+    .footer-contact a:hover { color: #FFFFFF; }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 2.5rem auto 0;
+      padding: 1.5rem 1.5rem 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.75rem;
+      color: #3A3530;
+    }
+
+    /* =============================================
+       BREADCRUMB
+    ============================================= */
+    .breadcrumb {
+      background: var(--color-text);
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .breadcrumb-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .breadcrumb a {
+      font-size: 0.75rem;
+      color: #5A5048;
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover { color: #A89E94; }
+
+    .breadcrumb-sep {
+      font-size: 0.75rem;
+      color: #3A3530;
+    }
+
+    .breadcrumb-current {
+      font-size: 0.75rem;
+      color: #A89E94;
+    }
+
+    /* =============================================
+       RESPONSIVE ADJUSTMENTS
+    ============================================= */
+    @media (max-width: 600px) {
+      .hero { padding: 3rem 0 2.5rem; }
+      .section { padding: 2.5rem 0; }
+      .hero-ctas { flex-direction: column; }
+      .btn { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="/" class="site-logo"><span>Rebel Red's</span> Gyros</a>
+      <nav aria-label="Main navigation">
+        <ul class="site-nav">
+          <li><a href="/models">Models</a></li>
+          <li><a href="/intro-flight">Intro Flight</a></li>
+          <li><a href="/training">Training</a></li>
+          <li><a href="/about">About Matt</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="breadcrumb-inner">
+      <a href="/">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <a href="/models">Models</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Magni M16</span>
+    </div>
+  </nav>
+
+  <!-- =============================================
+       SECTION 1: HERO
+  ============================================= -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <p class="hero-eyebrow">MagniGyro Certified Dealer — Lamesa, TX</p>
+        <h1 id="hero-heading">M16 Gyroplane —<br>The Dual-Seat Trainer</h1>
+        <p class="hero-descriptor">Open cockpit. Tandem configuration. Full dual controls. The M16 is built for instruction and the pure, unfiltered feel of open-air flying — the gyroplane Matt trains students in.</p>
+
+        <div class="hero-stats" aria-label="Key specifications">
+          <div class="stat-tile">
+            <span class="stat-tile-value">~140</span>
+            <span class="stat-tile-label">Max Speed (km/h) <span class="verify-badge">VERIFY</span></span>
+          </div>
+          <div class="stat-tile">
+            <span class="stat-tile-value">2</span>
+            <span class="stat-tile-label">Seats (Tandem)</span>
+          </div>
+          <div class="stat-tile">
+            <span class="stat-tile-value">Open</span>
+            <span class="stat-tile-label">Cockpit Type</span>
+          </div>
+        </div>
+
+        <div class="hero-ctas">
+          <a href="#request-quote" class="btn btn-primary">Request a Quote</a>
+          <a href="/intro-flight" class="btn btn-outline">Book a Demo Flight</a>
+        </div>
+      </div>
+
+      <div class="hero-image-wrap">
+        <div class="image-placeholder" role="img" aria-label="Magni M16 gyroplane — front three-quarter view on the ramp at Lamesa, TX">
+          <div class="image-placeholder-icon" aria-hidden="true">✈</div>
+          <strong>Magni M16 Gyroplane</strong>
+          <p>Front three-quarter view<br>
+          Replace with: high-res photo of M16 on ramp<br>
+          Suggested file: m16-hero.jpg</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SECTION 2: OVERVIEW
+  ============================================= -->
+  <section class="overview section" aria-labelledby="overview-heading">
+    <div class="container">
+      <div class="overview-grid">
+        <div class="overview-body">
+          <p class="section-label">Aircraft Overview</p>
+          <h2 id="overview-heading" class="section-heading">Built to Teach. Built to Feel.</h2>
+
+          <p>The Magni M16 is the backbone of gyroplane instruction worldwide — and it's the aircraft Matt Snell uses to take students from their very first flight to Sport Pilot certification. The tandem two-seat layout puts instructor and student in line, exactly like the classic training configuration that maximizes the instructor's visibility and control authority during dual instruction.</p>
+
+          <p>What sets the M16 apart from the rest of the Magni lineup is its open cockpit. There's no windshield between you and the sky. You feel the air, you feel the rotor, and you develop the kind of intuitive feel for the aircraft that's hard to build in an enclosed cabin. If you're coming for training — or if you simply want the most tactile flying experience available — the M16 delivers.</p>
+
+          <p>Compared to the M22 (solo only) and the M24/M26 (enclosed), the M16 occupies the sweet spot: two seats for shared adventure or instruction, and the raw open-air experience that makes gyroplane flying so distinctive.</p>
+
+          <div class="callout-quote">
+            <p>"The M16 is where pilots are made. There's nothing like sitting in open air, hands on the controls, with nothing above you but rotor blades and Texas sky."</p>
+            <cite>— Matt Snell, CFI / MagniGyro Factory Certified</cite>
+          </div>
+        </div>
+
+        <div>
+          <p class="section-label">Why the M16</p>
+          <h3 style="font-family: Georgia, serif; font-size: 1.25rem; color: var(--color-text); margin-bottom: 1.25rem; font-weight: normal;">Key Advantages</h3>
+          <ul class="feature-list" aria-label="M16 key features">
+            <li><span class="feature-check" aria-hidden="true"></span> Full dual controls — instructor and student both fly</li>
+            <li><span class="feature-check" aria-hidden="true"></span> Tandem seating for optimal instructor visibility</li>
+            <li><span class="feature-check" aria-hidden="true"></span> Open cockpit builds natural stick-and-rudder feel</li>
+            <li><span class="feature-check" aria-hidden="true"></span> Rotax 912 ULS — proven, low-maintenance powerplant</li>
+            <li><span class="feature-check" aria-hidden="true"></span> Ideal for Sport Pilot and Gyroplane add-on training</li>
+            <li><span class="feature-check" aria-hidden="true"></span> MagniGyro factory support and parts availability</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SECTION 3: FULL SPEC TABLE
+  ============================================= -->
+  <section class="specs-section section" aria-labelledby="specs-heading">
+    <div class="container">
+      <p class="section-label">Technical Data</p>
+      <h2 id="specs-heading" class="section-heading">M16 Specifications</h2>
+      <p class="section-sub">Specifications sourced from published Magni Gyro data. Values marked VERIFY should be confirmed against the current MagniGyro.com M16 product page before publication.</p>
+
+      <div class="spec-table-wrap">
+        <table class="spec-table" aria-label="Magni M16 full technical specifications">
+          <thead>
+            <tr>
+              <th scope="col">Specification</th>
+              <th scope="col">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Engine</td>
+              <td>Rotax 912 ULS, 100 hp <span class="verify-badge" title="Verify at MagniGyro.com">VERIFY</span></td>
+            </tr>
+            <tr>
+              <td>Rotor Diameter</td>
+              <td>~8.4 m (27.6 ft) <span class="verify-badge" title="Verify at MagniGyro.com">VERIFY</span></td>
+            </tr>
+            <tr>
+              <td>Propeller</td>
+              <td>3-blade ground-adjustable <span class="verify-badge" title="Verify at MagniGyro.com">VERIFY</span></td>
+            </tr>
+            <tr>
+              <td>Empty Weight</td>
+              <td>~280 kg (617 lb) <span class="verify-badge" title="Verify at MagniGyro.com">VERIFY</span></td>
+            </tr>
+            <tr>
+              <td>Max Takeoff Weight</td>
+              <td>~500 kg (1,102 lb) <span class="verify-badge" title="Verify at MagniGyro.com">VERIFY</span></td>
+            </tr>
+            <tr>
+              <td>Useful Load</td>
+              <td>~220 kg (485 lb) <span class="verify-badge" title="Verify at MagniGyro.com">VERIFY</span></td>
+            </tr>
+            <tr>
+              <td>Fuel Capacity</td>
+              <td>~60 L (15.9 gal) <span class="verify-badge" title="Verify at MagniGyro.com">VERIFY</span></td>
+            </tr>
+            <tr>
+              <td>Max Speed (Vne)</td>
+              <td>~140 km/h (75 kts) <span class="verify-badge" title="Verify at MagniGyro.com">VERIFY</span></td>
+            </tr>
+            <tr>
+              <td>Cruise Speed</td>
+              <td>~110 km/h (59 kts) <span class="verify-badge" title="Verify at MagniGyro.com">VERIFY</span></td>
+            </tr>
+            <tr>
+              <td>Stall Speed</td>
+              <td>0 km/h — gyroplanes cannot stall <span class="verify-badge" title="Verify at MagniGyro.com">VERIFY</span></td>
+            </tr>
+            <tr>
+              <td>Range</td>
+              <td>~300 km (162 nm) <span class="verify-badge" title="Verify at MagniGyro.com">VERIFY</span></td>
+            </tr>
+            <tr>
+              <td>Climb Rate</td>
+              <td><span class="verify-badge" title="Verify at MagniGyro.com">VERIFY: source from MagniGyro.com product page</span></td>
+            </tr>
+            <tr>
+              <td>Takeoff Roll</td>
+              <td><span class="verify-badge" title="Verify at MagniGyro.com">VERIFY: source from MagniGyro.com product page</span></td>
+            </tr>
+            <tr>
+              <td>Landing Roll</td>
+              <td><span class="verify-badge" title="Verify at MagniGyro.com">VERIFY: source from MagniGyro.com product page</span></td>
+            </tr>
+            <tr>
+              <td>Seats</td>
+              <td>2 — Tandem (front + rear)</td>
+            </tr>
+            <tr>
+              <td>Cockpit Type</td>
+              <td>Open (no enclosure)</td>
+            </tr>
+            <tr>
+              <td>Configuration</td>
+              <td>Tandem dual controls</td>
+            </tr>
+            <tr>
+              <td>FAA Category</td>
+              <td>Light Sport Aircraft / Gyroplane <span class="verify-badge" title="Verify at MagniGyro.com">VERIFY</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="spec-note"><strong>Note:</strong> All specifications are approximate and based on published general data. Actual figures may vary by configuration and optional equipment. Verify all values at <a href="https://www.magnigyro.com" rel="noopener noreferrer" target="_blank">MagniGyro.com</a> before publishing. Contact Matt Snell at <a href="tel:4325170693">432-517-0693</a> for current pricing and availability.</p>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SECTION 4: PHOTO GALLERY
+  ============================================= -->
+  <section class="gallery-section section" aria-labelledby="gallery-heading">
+    <div class="container">
+      <p class="section-label">Photo Gallery</p>
+      <h2 id="gallery-heading" class="section-heading">M16 Up Close</h2>
+      <p class="section-sub" style="margin-bottom: 2rem;">Click any photo to enlarge. Replace placeholders with actual M16 photographs.</p>
+
+      <div class="gallery-grid">
+
+        <!-- Gallery item 1: Cockpit -->
+        <div class="gallery-item">
+          <a href="#gallery-m16-cockpit" class="gallery-thumb-link" aria-label="View enlarged: M16 cockpit and dual controls">
+            <div class="image-placeholder-light" style="border-radius: 6px 6px 0 0; border-bottom: none;">
+              <div class="image-placeholder-light-icon" aria-hidden="true">🎛</div>
+              <strong>Cockpit View</strong>
+              <p>Replace with: M16 cockpit photo showing dual controls and instrument panel<br>
+              Suggested file: m16-cockpit.jpg</p>
+            </div>
+            <div class="gallery-caption">
+              <strong>Dual-Control Cockpit</strong>
+              <span>Front and rear controls — both seats fully functional</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Gallery item 2: Exterior -->
+        <div class="gallery-item">
+          <a href="#gallery-m16-exterior" class="gallery-thumb-link" aria-label="View enlarged: M16 exterior full aircraft">
+            <div class="image-placeholder-light" style="border-radius: 6px 6px 0 0; border-bottom: none;">
+              <div class="image-placeholder-light-icon" aria-hidden="true">✈</div>
+              <strong>Full Aircraft</strong>
+              <p>Replace with: M16 exterior side profile photo on the ramp<br>
+              Suggested file: m16-exterior.jpg</p>
+            </div>
+            <div class="gallery-caption">
+              <strong>Exterior Side Profile</strong>
+              <span>M16 on the ramp at Lamesa Municipal Airport</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Gallery item 3: In-flight -->
+        <div class="gallery-item">
+          <a href="#gallery-m16-inflight" class="gallery-thumb-link" aria-label="View enlarged: M16 in flight over West Texas">
+            <div class="image-placeholder-light" style="border-radius: 6px 6px 0 0; border-bottom: none;">
+              <div class="image-placeholder-light-icon" aria-hidden="true">🌅</div>
+              <strong>In Flight</strong>
+              <p>Replace with: M16 in-flight photo, West Texas landscape below<br>
+              Suggested file: m16-inflight.jpg</p>
+            </div>
+            <div class="gallery-caption">
+              <strong>M16 In Flight</strong>
+              <span>Cruising over West Texas — nothing between you and the sky</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Gallery item 4: Detail -->
+        <div class="gallery-item">
+          <a href="#gallery-m16-rotor" class="gallery-thumb-link" aria-label="View enlarged: M16 rotor head and mast detail">
+            <div class="image-placeholder-light" style="border-radius: 6px 6px 0 0; border-bottom: none;">
+              <div class="image-placeholder-light-icon" aria-hidden="true">⚙</div>
+              <strong>Rotor Detail</strong>
+              <p>Replace with: close-up of M16 rotor head, blades, and mast<br>
+              Suggested file: m16-rotor.jpg</p>
+            </div>
+            <div class="gallery-caption">
+              <strong>Rotor Head Detail</strong>
+              <span>Magni's robust rotor system — engineered for reliability</span>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Lightbox overlays -->
+    <div id="gallery-m16-cockpit" class="lightbox-overlay" role="dialog" aria-label="Enlarged photo: M16 cockpit" aria-modal="true">
+      <div class="lightbox-content">
+        <div class="lightbox-placeholder" role="img" aria-label="M16 dual-control cockpit — enlarged view">
+          <strong style="color:#7A7068; margin-bottom:0.5rem;">M16 Dual-Control Cockpit</strong>
+          <p style="font-size:0.8rem; color:#5A5048;">Replace with: m16-cockpit.jpg</p>
+        </div>
+        <p class="lightbox-caption">Front and rear controls — both seats fully functional for instruction</p>
+        <a href="#" class="lightbox-close" aria-label="Close photo">✕ Close</a>
+      </div>
+    </div>
+
+    <div id="gallery-m16-exterior" class="lightbox-overlay" role="dialog" aria-label="Enlarged photo: M16 exterior" aria-modal="true">
+      <div class="lightbox-content">
+        <div class="lightbox-placeholder" role="img" aria-label="M16 exterior side profile — enlarged view">
+          <strong style="color:#7A7068; margin-bottom:0.5rem;">M16 Exterior Profile</strong>
+          <p style="font-size:0.8rem; color:#5A5048;">Replace with: m16-exterior.jpg</p>
+        </div>
+        <p class="lightbox-caption">M16 on the ramp at Lamesa Municipal Airport</p>
+        <a href="#" class="lightbox-close" aria-label="Close photo">✕ Close</a>
+      </div>
+    </div>
+
+    <div id="gallery-m16-inflight" class="lightbox-overlay" role="dialog" aria-label="Enlarged photo: M16 in flight" aria-modal="true">
+      <div class="lightbox-content">
+        <div class="lightbox-placeholder" role="img" aria-label="M16 in flight over West Texas — enlarged view">
+          <strong style="color:#7A7068; margin-bottom:0.5rem;">M16 In Flight</strong>
+          <p style="font-size:0.8rem; color:#5A5048;">Replace with: m16-inflight.jpg</p>
+        </div>
+        <p class="lightbox-caption">Cruising over West Texas — nothing between you and the sky</p>
+        <a href="#" class="lightbox-close" aria-label="Close photo">✕ Close</a>
+      </div>
+    </div>
+
+    <div id="gallery-m16-rotor" class="lightbox-overlay" role="dialog" aria-label="Enlarged photo: M16 rotor detail" aria-modal="true">
+      <div class="lightbox-content">
+        <div class="lightbox-placeholder" role="img" aria-label="M16 rotor head detail — enlarged view">
+          <strong style="color:#7A7068; margin-bottom:0.5rem;">M16 Rotor Head Detail</strong>
+          <p style="font-size:0.8rem; color:#5A5048;">Replace with: m16-rotor.jpg</p>
+        </div>
+        <p class="lightbox-caption">Magni's robust rotor system — engineered for reliability</p>
+        <a href="#" class="lightbox-close" aria-label="Close photo">✕ Close</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SECTION 5: MODEL COMPARISON STRIP
+  ============================================= -->
+  <section class="comparison-section section" aria-labelledby="comparison-heading">
+    <div class="container">
+      <p class="section-label">Compare Models</p>
+      <h2 id="comparison-heading" class="section-heading">How the M16 Fits the Lineup</h2>
+      <p class="section-sub" style="margin-bottom: 2rem;">The M16 is highlighted. All four Magni models are available through Rebel Red's Gyros.</p>
+
+      <div class="comparison-wrap">
+        <table class="comparison-table" aria-label="Magni gyroplane model comparison">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col" class="current-model">
+                M16
+                <span class="model-link" aria-current="page">Current Page</span>
+              </th>
+              <th scope="col">
+                M22
+                <a href="/models/m22" class="model-link">View M22 →</a>
+              </th>
+              <th scope="col">
+                M24
+                <a href="/models/m24" class="model-link">View M24 →</a>
+              </th>
+              <th scope="col">
+                M26
+                <a href="/models/m26" class="model-link">View M26 →</a>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Price Range</td>
+              <td class="current-model">~$85,000–$95,000 <span class="verify-badge">VERIFY</span></td>
+              <td>~$70,000–$80,000 <span class="verify-badge">VERIFY</span></td>
+              <td>~$95,000–$110,000 <span class="verify-badge">VERIFY</span></td>
+              <td>~$110,000–$130,000 <span class="verify-badge">VERIFY</span></td>
+            </tr>
+            <tr>
+              <td>Seats</td>
+              <td class="current-model">2 — Tandem</td>
+              <td>1 — Solo</td>
+              <td>2 — Side-by-Side</td>
+              <td>2 — Side-by-Side</td>
+            </tr>
+            <tr>
+              <td>Cockpit Type</td>
+              <td class="current-model">Open</td>
+              <td>Open</td>
+              <td>Enclosed</td>
+              <td>Enclosed</td>
+            </tr>
+            <tr>
+              <td>Best For</td>
+              <td class="current-model">Training, instruction, open-air 2-up flying</td>
+              <td>Solo sport flying, purists</td>
+              <td>Cross-country, passenger comfort, year-round</td>
+              <td>High-performance, long-range touring</td>
+            </tr>
+            <tr>
+              <td>Engine</td>
+              <td class="current-model">Rotax 912 ULS <span class="verify-badge">VERIFY</span></td>
+              <td>Rotax 912 ULS <span class="verify-badge">VERIFY</span></td>
+              <td>Rotax 912 / 914 <span class="verify-badge">VERIFY</span></td>
+              <td>Rotax 914 / 915 <span class="verify-badge">VERIFY</span></td>
+            </tr>
+            <tr>
+              <td>Skill Level</td>
+              <td class="current-model">Student to CFI</td>
+              <td>Sport Pilot and up</td>
+              <td>Sport Pilot and up</td>
+              <td>Experienced Sport Pilot</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="comparison-note">Price ranges are approximate. <strong>Verify all prices with Matt Snell before quoting to customers.</strong> Call <a href="tel:4325170693">432-517-0693</a>.</p>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SECTION 6: FINANCING NOTE
+  ============================================= -->
+  <section class="financing-section section" aria-labelledby="financing-heading">
+    <div class="container">
+      <div class="financing-inner">
+        <div class="financing-body">
+          <p class="section-label">Financing</p>
+          <h2 id="financing-heading" class="section-heading">Owning an M16 Is More Attainable Than You Think</h2>
+
+          <p>Sport aviation financing has come a long way. Several lenders now specialize in light sport and experimental aircraft, with terms comparable to powersports loans — often with down payments in the 10–20% range and repayment periods of 5–15 years. The M16's price point makes it one of the more accessible two-seat aircraft in the Magni lineup, and the dual-control setup means it can double as a revenue-generating training platform if you're pursuing a CFI certificate.</p>
+
+          <p>Matt works with buyers at every stage of the purchase process — from first-time gyroplane pilots deciding whether to buy at all, to experienced aviators adding a second aircraft. He can walk you through what financing options other buyers have used, connect you with the right resources, and make sure you're buying the right model for how you actually intend to fly. There's no pressure, no upsell — just straight answers from a pilot and instructor who flies what he sells.</p>
+        </div>
+
+        <div class="financing-contact">
+          <p>Talk financing with Matt</p>
+          <a href="tel:4325170693" class="financing-phone">432-517-0693</a>
+          <a href="mailto:matt@rebelredsgyros.com" class="financing-email">matt@rebelredsgyros.com</a>
+          <a href="#request-quote" class="btn btn-gold" style="width: 100%; text-align: center;">Request a Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SECTION 7: REQUEST A QUOTE FORM
+  ============================================= -->
+  <!-- SQUARESPACE: Replace this form with a Squarespace Form Block -->
+  <section class="form-section section" id="request-quote" aria-labelledby="form-heading">
+    <div class="container">
+      <p class="section-label">Get in Touch</p>
+      <h2 id="form-heading" class="section-heading">Request a Quote on the M16</h2>
+      <p class="section-sub">Fill out the form below and Matt will get back to you — usually within one business day. No obligation, no pressure.</p>
+
+      <div class="form-wrap">
+        <form action="/contact/quote" method="post" novalidate aria-label="M16 quote request form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="quote-name">Full Name <span aria-hidden="true" style="color:var(--color-red)">*</span></label>
+              <input type="text" id="quote-name" name="name" class="form-control" required autocomplete="name" placeholder="Jane Smith">
+            </div>
+
+            <div class="form-group">
+              <label for="quote-email">Email Address <span aria-hidden="true" style="color:var(--color-red)">*</span></label>
+              <input type="email" id="quote-email" name="email" class="form-control" required autocomplete="email" placeholder="jane@example.com">
+            </div>
+
+            <div class="form-group">
+              <label for="quote-phone">Phone Number</label>
+              <input type="tel" id="quote-phone" name="phone" class="form-control" autocomplete="tel" placeholder="(555) 555-5555">
+            </div>
+
+            <div class="form-group">
+              <label for="quote-model">Model Interest</label>
+              <select id="quote-model" name="model" class="form-control">
+                <option value="M16" selected>Magni M16</option>
+                <option value="M22">Magni M22</option>
+                <option value="M24">Magni M24</option>
+                <option value="M26">Magni M26</option>
+                <option value="not-sure">Not sure yet</option>
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="quote-message">Message</label>
+              <textarea id="quote-message" name="message" class="form-control" placeholder="Tell Matt a little about your flying background, what you're looking for, and any questions you have about the M16..."></textarea>
+            </div>
+          </div>
+
+          <div class="form-submit-wrap">
+            <button type="submit" class="btn btn-primary">Send Quote Request</button>
+            <span class="form-disclaimer">Matt typically responds within 1 business day.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <!-- END SQUARESPACE FORM REPLACEMENT ZONE -->
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <a href="/" class="footer-brand"><span>Rebel Red's</span> Gyros</a>
+        <p class="footer-tagline">MagniGyro Certified Dealer<br>Lamesa, Texas<br>Matt Snell — CFI, CFII, Sport Pilot CFI<br>MagniGyro Factory Certified</p>
+      </div>
+
+      <div>
+        <p class="footer-heading">Models</p>
+        <ul class="footer-links">
+          <li><a href="/models/m16" aria-current="page">Magni M16</a></li>
+          <li><a href="/models/m22">Magni M22</a></li>
+          <li><a href="/models/m24">Magni M24</a></li>
+          <li><a href="/models/m26">Magni M26</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer-heading">Learn &amp; Fly</p>
+        <ul class="footer-links">
+          <li><a href="/intro-flight">Intro Flight</a></li>
+          <li><a href="/training">Training Programs</a></li>
+          <li><a href="/about">About Matt</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <p class="footer-heading">Contact</p>
+        <p><a href="tel:4325170693">432-517-0693</a></p>
+        <p><a href="mailto:matt@rebelredsgyros.com">matt@rebelredsgyros.com</a></p>
+        <p style="margin-top:0.5rem;">1744 County Rd N<br>Lamesa, TX 79331</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Rebel Red's Gyros &mdash; Lamesa, TX &mdash; All rights reserved. Authorized MagniGyro dealer.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
