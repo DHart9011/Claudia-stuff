@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gyroplane Flight Training in Lamesa, Texas | Rebel Red's Gyros</title>
+  <meta name="description" content="FAA-certified gyroplane flight training in Lamesa, TX. Sport Pilot to Private Pilot with CFI Matt Snell on a Magni gyroplane. Call 432-517-0693." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+    ============================================================ */
+    :root {
+      --color-bg: #F8F5F0;
+      --color-card: #FFFFFF;
+      --color-inset: #EDEAE4;
+      --color-border: #D8D2C8;
+      --color-text: #0E0C0A;
+      --color-text-sub: #3A3530;
+      --color-text-mute: #6A6058;
+      --color-gold: #8A6A00;
+      --color-gold-bg: #F5EED8;
+      --color-red: #8B1A1A;
+      --color-red-bg: #FDF0F0;
+      --color-green: #1A5C2A;
+      --color-dark: #0E0C0A;
+
+      --font-display: Georgia, 'Times New Roman', serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+
+      --radius: 8px;
+      --radius-lg: 14px;
+      --shadow: 0 2px 8px rgba(14,12,10,0.10);
+      --shadow-md: 0 4px 18px rgba(14,12,10,0.13);
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      line-height: 1.2;
+    }
+
+    a { color: inherit; }
+
+    /* ============================================================
+       UTILITY
+    ============================================================ */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .section { padding: 5rem 0; }
+
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-label--light {
+      color: rgba(245,238,216,0.80);
+    }
+
+    .section-headline {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      color: var(--color-text);
+      margin-bottom: 1rem;
+    }
+
+    .section-headline--white { color: #FFFFFF; }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--color-text-sub);
+      max-width: 640px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+
+    .btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-white {
+      background: #FFFFFF;
+      color: var(--color-dark);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: rgba(255,255,255,0.85);
+      border: 2px solid rgba(255,255,255,0.40);
+    }
+
+    .btn-ghost:hover { background: rgba(255,255,255,0.08); }
+
+    .btn-gold {
+      background: var(--color-gold);
+      color: #FFFFFF;
+    }
+
+    /* ============================================================
+       HERO — dark texture
+    ============================================================ */
+    .hero {
+      background-color: var(--color-dark);
+      background-image:
+        radial-gradient(ellipse at 70% 40%, rgba(139,26,26,0.18) 0%, transparent 65%),
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255,255,255,0.015) 0px,
+          rgba(255,255,255,0.015) 1px,
+          transparent 1px,
+          transparent 14px
+        );
+      color: #FFFFFF;
+      padding: 6rem 0 5rem;
+    }
+
+    .hero-content { max-width: 740px; }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5.5vw, 3.25rem);
+      color: #FFFFFF;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 2.25rem;
+      max-width: 580px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    /* ============================================================
+       INSTRUCTOR
+    ============================================================ */
+    .instructor {
+      background: var(--color-bg);
+    }
+
+    .instructor-inner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      align-items: start;
+      margin-top: 2.5rem;
+    }
+
+    .instructor-photo-wrap {
+      background: var(--color-inset);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1rem;
+      min-height: 360px;
+    }
+
+    .photo-label {
+      font-size: 0.78rem;
+      color: var(--color-text-mute);
+      line-height: 1.5;
+    }
+
+    .instructor-details h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+      margin-bottom: 0.4rem;
+    }
+
+    .instructor-sub {
+      font-size: 1rem;
+      color: var(--color-text-mute);
+      margin-bottom: 1.75rem;
+    }
+
+    .cred-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .cred-card {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 0.9rem 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .cred-tag {
+      display: inline-block;
+      background: var(--color-red-bg);
+      border: 1px solid #E8C8C8;
+      border-radius: 4px;
+      padding: 0.1rem 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--color-red);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.35rem;
+    }
+
+    .cred-card p {
+      font-size: 0.88rem;
+      color: var(--color-text-sub);
+      line-height: 1.4;
+    }
+
+    .instructor-bio {
+      font-size: 1rem;
+      color: var(--color-text-sub);
+      line-height: 1.75;
+    }
+
+    /* ============================================================
+       TRAINING PATHS
+    ============================================================ */
+    .training-paths {
+      background: var(--color-inset);
+    }
+
+    .paths-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .path-card {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .path-badge {
+      display: inline-block;
+      background: var(--color-gold-bg);
+      border: 1px solid #D4B870;
+      border-radius: 4px;
+      padding: 0.2rem 0.65rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--color-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+      align-self: flex-start;
+    }
+
+    .path-card h3 {
+      font-size: 1.3rem;
+      color: var(--color-text);
+      margin-bottom: 0.75rem;
+    }
+
+    .path-stat-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 1rem 0;
+      padding: 1rem 0;
+      border-top: 1px solid var(--color-inset);
+      border-bottom: 1px solid var(--color-inset);
+    }
+
+    .path-stat {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .path-stat-key {
+      color: var(--color-text-mute);
+      min-width: 110px;
+      flex-shrink: 0;
+    }
+
+    .path-stat-val {
+      color: var(--color-text);
+      font-weight: 500;
+    }
+
+    .path-desc {
+      font-size: 0.93rem;
+      color: var(--color-text-sub);
+      margin-top: 0.5rem;
+      flex: 1;
+    }
+
+    .best-for {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--color-text-mute);
+      display: flex;
+      gap: 0.4rem;
+      align-items: flex-start;
+    }
+
+    .best-for-label {
+      font-weight: 600;
+      color: var(--color-text-sub);
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+       CURRICULUM
+    ============================================================ */
+    .curriculum {
+      background: var(--color-bg);
+    }
+
+    .phases {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 2.5rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .phase {
+      background: var(--color-card);
+      border-bottom: 1px solid var(--color-border);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0;
+    }
+
+    .phase:last-child { border-bottom: none; }
+
+    .phase-num-col {
+      background: var(--color-red);
+      color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 1.75rem 1.25rem;
+      min-width: 70px;
+    }
+
+    .phase-num {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .phase-label-vert {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.60);
+      margin-top: 0.5rem;
+    }
+
+    .phase-content {
+      padding: 1.75rem 2rem;
+    }
+
+    .phase-content h3 {
+      font-size: 1.15rem;
+      color: var(--color-text);
+      margin-bottom: 0.75rem;
+    }
+
+    .phase-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .phase-items li {
+      font-size: 0.93rem;
+      color: var(--color-text-sub);
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .phase-items li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--color-text-mute);
+    }
+
+    /* ============================================================
+       SCHEDULING & PRICING
+    ============================================================ */
+    .pricing {
+      background: var(--color-inset);
+    }
+
+    .pricing-inner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .pricing-block {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .pricing-block h3 {
+      font-size: 1.15rem;
+      color: var(--color-text);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--color-inset);
+    }
+
+    .pricing-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--color-inset);
+      font-size: 0.93rem;
+    }
+
+    .pricing-row:last-child { border-bottom: none; }
+
+    .pricing-key {
+      color: var(--color-text-mute);
+    }
+
+    .pricing-val {
+      color: var(--color-text);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .action-note {
+      background: var(--color-gold-bg);
+      border: 1px solid #D4B870;
+      border-radius: var(--radius);
+      padding: 0.9rem 1rem;
+      font-size: 0.88rem;
+      color: var(--color-gold);
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+
+    .avail-note {
+      font-size: 0.9rem;
+      color: var(--color-text-sub);
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--color-inset);
+    }
+
+    .avail-note:last-of-type { border-bottom: none; }
+
+    .avail-icon {
+      color: var(--color-green);
+      margin-right: 0.4rem;
+    }
+
+    /* ============================================================
+       FAQ ACCORDION (CSS-only checkbox hack)
+    ============================================================ */
+    .faq-section {
+      background: var(--color-bg);
+    }
+
+    .faq-list {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .faq-item {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .faq-toggle {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+    }
+
+    .faq-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.15rem 1.5rem;
+      cursor: pointer;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--color-text);
+      user-select: none;
+      transition: background 0.15s;
+    }
+
+    .faq-label:hover { background: var(--color-inset); }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 1.4rem;
+      height: 1.4rem;
+      border-radius: 50%;
+      background: var(--color-inset);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--color-red);
+      line-height: 1;
+      transition: transform 0.2s, background 0.15s;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 1.5rem 1.25rem;
+      font-size: 0.97rem;
+      color: var(--color-text-sub);
+      line-height: 1.7;
+    }
+
+    .faq-toggle:checked ~ .faq-label .faq-icon {
+      transform: rotate(45deg);
+      background: var(--color-red-bg);
+    }
+
+    .faq-toggle:checked ~ .faq-answer {
+      max-height: 600px;
+    }
+
+    /* ============================================================
+       START YOUR TRAINING CTA
+    ============================================================ */
+    .start-training {
+      background: var(--color-red);
+      padding: 5rem 0;
+    }
+
+    .start-training-inner {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .start-training-inner h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: #FFFFFF;
+      margin-bottom: 0.75rem;
+    }
+
+    .start-training-inner p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.80);
+      max-width: 560px;
+      margin: 0 auto 2rem;
+    }
+
+    .start-phone {
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .start-phone a {
+      color: rgba(255,255,255,0.90);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .start-phone a:hover { text-decoration: underline; }
+
+    .booking-widget-wrap {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      overflow: hidden;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 600px) {
+      .section { padding: 3.5rem 0; }
+      .hero { padding: 4rem 0 3.5rem; }
+      .phase { grid-template-columns: 1fr; }
+      .phase-num-col {
+        flex-direction: row;
+        gap: 0.75rem;
+        padding: 1rem 1.25rem;
+        min-width: auto;
+      }
+      .phase-label-vert {
+        writing-mode: horizontal-tb;
+        transform: none;
+        font-size: 0.72rem;
+        margin-top: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-eyebrow">Rebel Red's Gyros · Lamesa, Texas</span>
+        <h1>Gyroplane Flight Training in Lamesa, Texas</h1>
+        <p class="hero-sub">Sport Pilot to Private Pilot — train with an FAA-certified instructor on a Magni gyroplane.</p>
+        <div class="hero-actions">
+          <a href="#start-training" class="btn btn-white">Start Your Training</a>
+          <a href="/intro-flight" class="btn btn-ghost">Book an Intro Flight First &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       YOUR INSTRUCTOR
+  ============================================================ -->
+  <section class="section instructor">
+    <div class="container">
+      <span class="section-label">Your Instructor</span>
+      <h2 class="section-headline">Train With Someone Who Does This Every Week</h2>
+
+      <div class="instructor-inner">
+
+        <div class="instructor-photo-wrap">
+          <!-- IMAGE: matt-snell-cfii-portrait.jpg | alt: "Matt Snell CFI gyroplane flight instructor Lamesa Texas" -->
+          <p class="photo-label">[IMAGE: matt-snell-cfii-portrait.jpg<br>alt: "Matt Snell CFI gyroplane flight instructor Lamesa Texas"]</p>
+        </div>
+
+        <div class="instructor-details">
+          <h2>Matt Snell</h2>
+          <p class="instructor-sub">CFI · CFII · Sport Pilot CFI · MagniGyro Factory Certified</p>
+
+          <div class="cred-grid">
+            <div class="cred-card">
+              <div class="cred-tag">CFI</div>
+              <p>Certified Flight Instructor — Rotorcraft/Gyroplane</p>
+            </div>
+            <div class="cred-card">
+              <div class="cred-tag">CFII</div>
+              <p>Certified Flight Instructor, Instrument</p>
+            </div>
+            <div class="cred-card">
+              <div class="cred-tag">Sport CFI</div>
+              <p>Sport Pilot Certified Flight Instructor</p>
+            </div>
+            <div class="cred-card">
+              <div class="cred-tag">Factory</div>
+              <p>MagniGyro Factory Certified Instructor &amp; Dealer</p>
+            </div>
+          </div>
+
+          <p style="font-size: 0.88rem; color: var(--color-text-mute); margin-bottom: 1.25rem;">[VERIFY: Matt's total years in aviation]</p>
+
+          <p class="instructor-bio">
+            I came to gyroplanes after years in aviation because no other aircraft gives you that combination of stability, visibility, and pure enjoyment in a small, affordable package. West Texas is an incredible place to fly — wide open, few obstacles, and some of the best weather in the country for a student pilot to rack up hours. My teaching style is straightforward: I explain the why behind everything, I push students to think like pilots rather than just follow checklists, and I never rush anyone to a solo or a checkride before they're genuinely ready. If you're serious about earning your certificate, I'll be there every step of the way.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TRAINING PATHS
+  ============================================================ -->
+  <section class="section training-paths">
+    <div class="container">
+      <span class="section-label">Training Options</span>
+      <h2 class="section-headline">Choose Your Path</h2>
+      <p class="section-sub">Every student's situation is different. Here are the three most common training paths — we'll talk through which is right for you.</p>
+
+      <div class="paths-grid">
+
+        <!-- Card 1 -->
+        <div class="path-card">
+          <span class="path-badge">Most Popular</span>
+          <h3>Sport Pilot Certificate</h3>
+          <p class="path-desc">The lightest regulatory path to a gyroplane certificate. No medical required — a valid driver's license is sufficient. You'll learn to fly during daytime VFR conditions and will be legal to carry one passenger.</p>
+          <div class="path-stat-row">
+            <div class="path-stat">
+              <span class="path-stat-key">Est. Hours</span>
+              <span class="path-stat-val">20–40 flight hours</span>
+            </div>
+            <div class="path-stat">
+              <span class="path-stat-key">What you can fly</span>
+              <span class="path-stat-val">Light sport aircraft, daytime VFR</span>
+            </div>
+            <div class="path-stat">
+              <span class="path-stat-key">Medical required</span>
+              <span class="path-stat-val">Valid driver's license</span>
+            </div>
+          </div>
+          <p class="best-for"><span class="best-for-label">Best for:</span> First-time pilots, recreational flyers who want to keep things simple</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="path-card">
+          <span class="path-badge">Full Certificate</span>
+          <h3>Private Pilot — Gyroplane</h3>
+          <p class="path-desc">The full private pilot certificate with gyroplane as your aircraft category. More flexibility on where and when you can fly, and a foundation for additional ratings down the road.</p>
+          <div class="path-stat-row">
+            <div class="path-stat">
+              <span class="path-stat-key">Est. Hours</span>
+              <span class="path-stat-val">40+ flight hours minimum</span>
+            </div>
+            <div class="path-stat">
+              <span class="path-stat-key">What you can fly</span>
+              <span class="path-stat-val">Greater flexibility, passengers, some night VFR</span>
+            </div>
+            <div class="path-stat">
+              <span class="path-stat-key">Medical required</span>
+              <span class="path-stat-val">FAA 3rd Class Medical</span>
+            </div>
+          </div>
+          <p class="best-for"><span class="best-for-label">Best for:</span> Serious pilots, those planning to own an aircraft and fly frequently</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="path-card">
+          <span class="path-badge">Transition</span>
+          <h3>Transition Training</h3>
+          <p class="path-desc">Already hold a fixed-wing or helicopter certificate? Transition training lets you add gyroplane to your existing certificate. Hours vary based on your background — fixed-wing pilots tend to adapt quickly.</p>
+          <div class="path-stat-row">
+            <div class="path-stat">
+              <span class="path-stat-key">Est. Hours</span>
+              <span class="path-stat-val">Typically 10–20 hrs (varies)</span>
+            </div>
+            <div class="path-stat">
+              <span class="path-stat-key">What you get</span>
+              <span class="path-stat-val">Gyroplane added to existing certificate</span>
+            </div>
+            <div class="path-stat">
+              <span class="path-stat-key">Prerequisite</span>
+              <span class="path-stat-val">Existing pilot certificate</span>
+            </div>
+          </div>
+          <p class="best-for"><span class="best-for-label">Best for:</span> Current pilots expanding their ratings and aircraft options</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CURRICULUM — PHASE BY PHASE
+  ============================================================ -->
+  <section class="section curriculum">
+    <div class="container">
+      <span class="section-label">The Curriculum</span>
+      <h2 class="section-headline">Phase by Phase — What You'll Learn</h2>
+      <p class="section-sub">Training follows the FAA Practical Test Standards for gyroplane. Here's how it breaks down from first lesson to checkride.</p>
+
+      <div class="phases">
+
+        <div class="phase">
+          <div class="phase-num-col">
+            <span class="phase-num">1</span>
+            <span class="phase-label-vert">Ground &amp; Preflight</span>
+          </div>
+          <div class="phase-content">
+            <h3>Phase 1: Ground School &amp; Preflight</h3>
+            <ul class="phase-items">
+              <li>Gyroplane aerodynamics — how the rotor works, why it can't stall, what autorotation means for you</li>
+              <li>Aircraft systems — engine, rotor, flight controls, fuel, instruments</li>
+              <li>Aviation weather interpretation and go/no-go decision making</li>
+              <li>FAA regulations applicable to gyroplane operations</li>
+              <li>Preflight inspection: every item on the aircraft, why it matters, what you're looking for</li>
+              <li>Cockpit familiarization, checklists, and emergency procedures on the ground</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="phase-num-col">
+            <span class="phase-num">2</span>
+            <span class="phase-label-vert">Basic Maneuvers</span>
+          </div>
+          <div class="phase-content">
+            <h3>Phase 2: Basic Flight Maneuvers</h3>
+            <ul class="phase-items">
+              <li>Rotor pre-rotation and takeoff procedure</li>
+              <li>Climbs, straight-and-level flight, coordinated turns</li>
+              <li>Descents and controlled approach to landing</li>
+              <li>Normal landings and go-arounds</li>
+              <li>Traffic pattern work — entry, downwind, base, final</li>
+              <li>Low-speed flight and recognition of power-off descent characteristics</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="phase-num-col">
+            <span class="phase-num">3</span>
+            <span class="phase-label-vert">Solo Prep</span>
+          </div>
+          <div class="phase-content">
+            <h3>Phase 3: Solo Preparation</h3>
+            <ul class="phase-items">
+              <li>Emergency procedure drills: engine-out, forced landing, partial power</li>
+              <li>Autorotation practice — the gyroplane's inherent safety feature</li>
+              <li>Short-field and soft-field takeoff and landing techniques</li>
+              <li>Pre-solo written exam and oral evaluation</li>
+              <li>First solo flight — a milestone you'll remember</li>
+              <li>Post-solo currency building and refining consistency</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase">
+          <div class="phase-num-col">
+            <span class="phase-num">4</span>
+            <span class="phase-label-vert">Checkride Prep</span>
+          </div>
+          <div class="phase-content">
+            <h3>Phase 4: Cross-Country &amp; Checkride Preparation</h3>
+            <ul class="phase-items">
+              <li>VFR navigation, sectional charts, and cross-country flight planning</li>
+              <li>Dual and solo cross-country flights building to required distance thresholds</li>
+              <li>Oral exam preparation — we cover every ACS/PTS topic until you can teach it</li>
+              <li>Practical Test Standards (PTS) maneuver review to checkride tolerances</li>
+              <li>Mock checkride with full debrief before scheduling the real thing</li>
+              <li>Coordination with DPE (designated pilot examiner) for checkride scheduling</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SCHEDULING & PRICING
+  ============================================================ -->
+  <section class="section pricing">
+    <div class="container">
+      <span class="section-label">Scheduling &amp; Pricing</span>
+      <h2 class="section-headline">Rates &amp; Availability</h2>
+
+      <div class="pricing-inner">
+
+        <div class="pricing-block">
+          <h3>Instruction Rates</h3>
+
+          <div class="pricing-row">
+            <span class="pricing-key">Dual instruction (flight)</span>
+            <span class="pricing-val">[MATT ACTION REQUIRED:<br>confirm current dual rate]</span>
+          </div>
+          <div class="pricing-row">
+            <span class="pricing-key">Ground instruction</span>
+            <span class="pricing-val">[MATT ACTION REQUIRED:<br>confirm ground rate]</span>
+          </div>
+          <div class="pricing-row">
+            <span class="pricing-key">Solo flight time</span>
+            <span class="pricing-val">[MATT ACTION REQUIRED:<br>confirm solo rate]</span>
+          </div>
+          <div class="pricing-row">
+            <span class="pricing-key">Block packages</span>
+            <span class="pricing-val">[MATT ACTION REQUIRED:<br>confirm if offered]</span>
+          </div>
+
+          <div class="action-note">
+            Rates are best discussed directly with Matt — he'll give you an honest estimate based on your background and goals. Call <strong>432-517-0693</strong> or email matt@rebelredsgyros.com.
+          </div>
+        </div>
+
+        <div class="pricing-block">
+          <h3>Scheduling &amp; Availability</h3>
+
+          <div class="avail-note">
+            <span class="avail-icon">✓</span> Morning and afternoon slots available Monday through Saturday
+          </div>
+          <div class="avail-note">
+            <span class="avail-icon">✓</span> Training is weather-dependent — West Texas generally offers excellent flying conditions year-round
+          </div>
+          <div class="avail-note">
+            <span class="avail-icon">✓</span> Rescheduling for weather is always at no charge
+          </div>
+          <div class="avail-note">
+            <span class="avail-icon">✓</span> Flexible pacing — train on your schedule, not a fixed syllabus calendar
+          </div>
+          <div class="avail-note">
+            <span class="avail-icon">✓</span> Out-of-town students: Lamesa is easily accessible from Lubbock, Midland/Odessa, and Amarillo
+          </div>
+
+          <div style="margin-top: 1.5rem;">
+            <a href="#start-training" class="btn btn-gold">Check Availability</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FAQ
+  ============================================================ -->
+  <section class="section faq-section">
+    <div class="container">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-headline">Training Questions</h2>
+
+      <div class="faq-list">
+
+        <!-- Q1 -->
+        <div class="faq-item">
+          <input type="checkbox" class="faq-toggle" id="tfaq-1" />
+          <label class="faq-label" for="tfaq-1">
+            Do I need any flying experience to start training?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </label>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Zero experience required to start. Most of my students have never touched an aircraft control before their first lesson, and that's fine — in some ways it's easier because you're not unlearning habits from another aircraft type. We'll cover everything from the ground up, starting with how a gyroplane flies before we ever start the engine.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="faq-item">
+          <input type="checkbox" class="faq-toggle" id="tfaq-2" />
+          <label class="faq-label" for="tfaq-2">
+            How long does it take to get a sport pilot certificate?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </label>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              The FAA minimum is 20 flight hours, but most students take somewhere between 25 and 40 hours to reach checkride readiness. The pace depends on how often you can fly, how quickly skills solidify for you, and weather. Flying consistently — even two or three times a week — gets you there much faster than once-a-month sessions. I never push students to the checkride before they're genuinely ready.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="faq-item">
+          <input type="checkbox" class="faq-toggle" id="tfaq-3" />
+          <label class="faq-label" for="tfaq-3">
+            Can I train on your aircraft or do I need to own one?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </label>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              You train on my aircraft — you don't need to own anything to earn your certificate. Once you have your certificate, if you decide you want your own Magni, that's a conversation we can have. But plenty of students train, get their certificate, and fly with me on a rental basis for years. Aircraft ownership is a separate decision from learning to fly.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="faq-item">
+          <input type="checkbox" class="faq-toggle" id="tfaq-4" />
+          <label class="faq-label" for="tfaq-4">
+            What if I already have a fixed-wing pilot certificate?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </label>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Transition training is a great path for fixed-wing pilots. You'll have credit for some of your aeronautical knowledge and general airmanship, but the gyroplane has its own flight characteristics that you need to experience firsthand — rotor pre-rotation, power-off descent behavior, and landing technique are all different enough that you need dedicated instruction. Most fixed-wing pilots are surprised by how quickly they adapt. Helicopter pilots take a bit more un-learning, but they get there too.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="faq-item">
+          <input type="checkbox" class="faq-toggle" id="tfaq-5" />
+          <label class="faq-label" for="tfaq-5">
+            Do you offer ground school or only flight instruction?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </label>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Ground instruction is part of every training program — you can't fly well without understanding what's happening and why. We cover aerodynamics, systems, weather, regulations, and navigation. I can work through ground lessons in person before or after flight lessons, or we can schedule dedicated ground sessions. I'll also point you toward good self-study materials so you're not paying me to read regulations out loud.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="faq-item">
+          <input type="checkbox" class="faq-toggle" id="tfaq-6" />
+          <label class="faq-label" for="tfaq-6">
+            What is the checkride like for a gyroplane?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </label>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              The checkride has two parts: an oral exam and a practical (flight) test, both administered by an FAA Designated Pilot Examiner. The oral covers everything from regulations to weather to aerodynamics — it's a conversation, not a multiple-choice test. The practical covers maneuvers from the PTS: takeoffs, landings, turns, emergency procedures, and more. We'll do a full mock checkride before you schedule the real thing so there are no surprises. The goal is to walk in there confident, not hoping for the best.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       START YOUR TRAINING CTA
+  ============================================================ -->
+  <section class="start-training" id="start-training">
+    <div class="container">
+      <div class="start-training-inner">
+        <span class="section-label section-label--light">Get Started</span>
+        <h2>Ready to fly?</h2>
+        <p>Schedule a training consultation with Matt. We'll talk through which certificate path fits your goals, what the timeline looks like, and answer every question you've got.</p>
+      </div>
+
+      <div class="booking-widget-wrap">
+        <!-- CALENDLY INLINE WIDGET -->
+        <div class="calendly-inline-widget" data-url="https://calendly.com/rebelredsgyros/training-consultation" style="min-width:320px;height:700px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <!-- END CALENDLY INLINE WIDGET -->
+
+        <noscript>
+          <div style="text-align:center; padding: 2rem; background: rgba(255,255,255,0.08); border-radius: 8px; margin-top: 1rem;">
+            <p style="font-size: 1rem; color: rgba(255,255,255,0.70); margin-bottom: 0.75rem;">JavaScript is required to display the booking calendar.</p>
+            <p style="font-size: 1.1rem; font-weight: 600; color: #FFFFFF;">Call Matt to schedule: <a href="tel:4325170693" style="color: #F5EED8;">432-517-0693</a></p>
+          </div>
+        </noscript>
+      </div>
+
+      <p class="start-phone">
+        Or call Matt directly: <a href="tel:4325170693">432-517-0693</a> &mdash; <a href="mailto:matt@rebelredsgyros.com">matt@rebelredsgyros.com</a>
+      </p>
+    </div>
+  </section>
+
+</body>
+</html>

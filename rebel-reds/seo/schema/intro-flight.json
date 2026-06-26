@@ -1,0 +1,58 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Gyroplane Intro Flight Experience",
+  "description": "Experience your first gyroplane flight with FAA-certified instructor Matt Snell. 30-minute intro flight over West Texas for $275. Book online today.",
+  "url": "https://www.rebelredsgyros.com/intro-flight",
+  "image": "https://www.rebelredsgyros.com/images/gyroplane-intro-flight-west-texas.jpg",
+  "serviceType": "Discovery Flight / Introductory Flight Experience",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Rebel Red's Gyros",
+    "url": "https://www.rebelredsgyros.com",
+    "telephone": "+14325170693",
+    "email": "matt@rebelredsgyros.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "1744 County Rd N",
+      "addressLocality": "Lamesa",
+      "addressRegion": "TX",
+      "postalCode": "79331",
+      "addressCountry": "US"
+    }
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Lamesa",
+      "containedInPlace": {
+        "@type": "State",
+        "name": "Texas"
+      }
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "West Texas"
+    }
+  ],
+  "offers": {
+    "@type": "Offer",
+    "name": "30-Minute Gyroplane Intro Flight",
+    "price": "275",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2026-01-01",
+    "url": "https://www.rebelredsgyros.com/intro-flight"
+  },
+  "instructor": {
+    "@type": "Person",
+    "name": "Matt Snell",
+    "jobTitle": "FAA Certified Flight Instructor",
+    "hasCredential": [
+      "CFI",
+      "CFII",
+      "Sport Pilot CFI",
+      "MagniGyro Factory Certified"
+    ]
+  }
+}

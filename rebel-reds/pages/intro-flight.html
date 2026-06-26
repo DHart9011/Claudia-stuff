@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intro Gyroplane Flight — $275 | Rebel Red's Gyros | Lamesa, TX</title>
+  <meta name="description" content="Book a 30-minute intro gyroplane flight with CFI Matt Snell in Lamesa, TX. No experience needed. $275. MagniGyro certified dealer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       DESIGN TOKENS
+    ============================================================ */
+    :root {
+      --color-bg: #F8F5F0;
+      --color-card: #FFFFFF;
+      --color-inset: #EDEAE4;
+      --color-border: #D8D2C8;
+      --color-text: #0E0C0A;
+      --color-text-sub: #3A3530;
+      --color-text-mute: #6A6058;
+      --color-gold: #8A6A00;
+      --color-gold-bg: #F5EED8;
+      --color-red: #8B1A1A;
+      --color-red-bg: #FDF0F0;
+      --color-green: #1A5C2A;
+
+      --font-display: Georgia, 'Times New Roman', serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+
+      --radius: 8px;
+      --radius-lg: 14px;
+      --shadow: 0 2px 8px rgba(14,12,10,0.10);
+      --shadow-md: 0 4px 18px rgba(14,12,10,0.13);
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      line-height: 1.2;
+    }
+
+    a { color: inherit; }
+
+    /* ============================================================
+       UTILITY
+    ============================================================ */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-headline {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      color: var(--color-text);
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 1.1rem;
+      color: var(--color-text-sub);
+      max-width: 640px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+
+    .btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: var(--color-gold);
+      color: #FFFFFF;
+    }
+
+    .btn-white {
+      background: #FFFFFF;
+      color: var(--color-red);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: #FFFFFF;
+      border: 2px solid rgba(255,255,255,0.55);
+    }
+
+    .btn-ghost:hover { background: rgba(255,255,255,0.10); }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      background-color: var(--color-red);
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          rgba(0,0,0,0.03) 0px,
+          rgba(0,0,0,0.03) 1px,
+          transparent 1px,
+          transparent 12px
+        );
+      color: #FFFFFF;
+      padding: 5.5rem 0 4rem;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      color: #FFFFFF;
+      margin-bottom: 1.25rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-sub {
+      font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+      color: rgba(255,255,255,0.85);
+      max-width: 600px;
+      margin: 0 auto 2.25rem;
+    }
+
+    .hero-cta {
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta .btn {
+      font-size: 1.1rem;
+      padding: 1rem 2.5rem;
+      background: #FFFFFF;
+      color: var(--color-red);
+    }
+
+    .trust-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255,255,255,0.22);
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.80);
+      font-weight: 500;
+    }
+
+    .trust-item::before {
+      content: "✓";
+      font-size: 0.75rem;
+      background: rgba(255,255,255,0.22);
+      border-radius: 50%;
+      width: 1.25rem;
+      height: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       WHAT YOU'LL EXPERIENCE
+    ============================================================ */
+    .experience {
+      background: var(--color-bg);
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .experience-card {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .exp-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: #FFFFFF;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      flex-shrink: 0;
+    }
+
+    .experience-card h3 {
+      font-size: 1.1rem;
+      color: var(--color-text);
+      margin-bottom: 0.6rem;
+    }
+
+    .experience-card p {
+      font-size: 0.95rem;
+      color: var(--color-text-sub);
+    }
+
+    /* ============================================================
+       THE DETAILS
+    ============================================================ */
+    .details {
+      background: var(--color-inset);
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .details-block {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .details-block h3 {
+      font-size: 1.2rem;
+      color: var(--color-text);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--color-inset);
+    }
+
+    .detail-row {
+      display: flex;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--color-inset);
+      font-size: 0.95rem;
+    }
+
+    .detail-row:last-child { border-bottom: none; }
+
+    .detail-label {
+      font-weight: 600;
+      color: var(--color-text);
+      min-width: 130px;
+      flex-shrink: 0;
+    }
+
+    .detail-value {
+      color: var(--color-text-sub);
+    }
+
+    .right-for-me {
+      background: var(--color-gold-bg);
+      border: 1px solid #D4B870;
+    }
+
+    .right-for-me h3 {
+      border-bottom-color: #D4B870;
+    }
+
+    .right-item {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      padding: 0.6rem 0;
+      font-size: 0.95rem;
+      color: var(--color-text-sub);
+    }
+
+    .right-check {
+      color: var(--color-green);
+      font-size: 1rem;
+      margin-top: 0.1rem;
+      flex-shrink: 0;
+    }
+
+    .not-right {
+      color: var(--color-text-mute);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #D4B870;
+    }
+
+    /* ============================================================
+       YOUR PILOT
+    ============================================================ */
+    .pilot {
+      background: var(--color-bg);
+    }
+
+    .pilot-inner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      align-items: center;
+      margin-top: 2.5rem;
+    }
+
+    .pilot-photo-wrap {
+      background: var(--color-inset);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: var(--color-text-mute);
+      text-align: center;
+      padding: 1rem;
+      min-height: 320px;
+    }
+
+    .pilot-photo-label {
+      font-size: 0.78rem;
+      color: var(--color-text-mute);
+      font-family: var(--font-body);
+      line-height: 1.4;
+    }
+
+    .pilot-content h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      margin-bottom: 0.5rem;
+    }
+
+    .pilot-name-sub {
+      font-size: 1rem;
+      color: var(--color-text-mute);
+      margin-bottom: 1.5rem;
+    }
+
+    .credential-list {
+      list-style: none;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .credential-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+      color: var(--color-text-sub);
+    }
+
+    .cred-badge {
+      background: var(--color-red-bg);
+      border: 1px solid #E8C8C8;
+      border-radius: 4px;
+      padding: 0.15rem 0.55rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-red);
+      white-space: nowrap;
+    }
+
+    .pilot-bio {
+      font-size: 1rem;
+      color: var(--color-text-sub);
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       WHAT HAPPENS NEXT
+    ============================================================ */
+    .next-steps {
+      background: var(--color-inset);
+    }
+
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+      margin-top: 2.5rem;
+      position: relative;
+    }
+
+    .step-card {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 1.25rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: #FFFFFF;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .step-card h3 {
+      font-size: 1rem;
+      color: var(--color-text);
+      margin-bottom: 0.4rem;
+    }
+
+    .step-card p {
+      font-size: 0.88rem;
+      color: var(--color-text-mute);
+    }
+
+    /* ============================================================
+       BOOKING
+    ============================================================ */
+    .booking {
+      background: var(--color-bg);
+    }
+
+    .booking-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .booking-header .section-headline {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+    }
+
+    .booking-widget-wrap {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+
+    .booking-fallback {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--color-text-mute);
+    }
+
+    .booking-fallback a {
+      color: var(--color-red);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .booking-fallback a:hover { text-decoration: underline; }
+
+    /* ============================================================
+       FAQ ACCORDION (CSS-only checkbox hack)
+    ============================================================ */
+    .faq-section {
+      background: var(--color-inset);
+    }
+
+    .faq-list {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .faq-item {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    /* Hide the checkbox visually but keep accessible */
+    .faq-toggle {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+    }
+
+    .faq-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.15rem 1.5rem;
+      cursor: pointer;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--color-text);
+      user-select: none;
+      transition: background 0.15s;
+    }
+
+    .faq-label:hover { background: var(--color-inset); }
+
+    .faq-icon {
+      flex-shrink: 0;
+      width: 1.4rem;
+      height: 1.4rem;
+      border-radius: 50%;
+      background: var(--color-inset);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--color-red);
+      line-height: 1;
+      transition: transform 0.2s, background 0.15s;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 1.5rem 1.25rem;
+      font-size: 0.97rem;
+      color: var(--color-text-sub);
+      line-height: 1.7;
+    }
+
+    /* Open state */
+    .faq-toggle:checked ~ .faq-label .faq-icon {
+      transform: rotate(45deg);
+      background: var(--color-red-bg);
+    }
+
+    .faq-toggle:checked ~ .faq-answer {
+      max-height: 600px;
+    }
+
+    /* ============================================================
+       TRUST FOOTER
+    ============================================================ */
+    .trust-footer {
+      background: var(--color-text);
+      color: rgba(255,255,255,0.80);
+      padding: 3rem 0 2rem;
+    }
+
+    .trust-footer-inner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .logo-placeholder {
+      width: 160px;
+      height: 56px;
+      background: rgba(255,255,255,0.10);
+      border: 1px dashed rgba(255,255,255,0.30);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.45);
+      font-family: var(--font-body);
+    }
+
+    .footer-tagline {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .magni-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(138,106,0,0.25);
+      border: 1px solid rgba(138,106,0,0.55);
+      border-radius: var(--radius);
+      padding: 0.6rem 1rem;
+      font-size: 0.82rem;
+      color: #F5EED8;
+      font-weight: 600;
+    }
+
+    .footer-contact p {
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .footer-contact a {
+      color: #F5EED8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer-contact a:hover { text-decoration: underline; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 1.25rem;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.40);
+      text-align: center;
+    }
+
+    /* ============================================================
+       RESPONSIVE TWEAKS
+    ============================================================ */
+    @media (max-width: 600px) {
+      .section { padding: 3.5rem 0; }
+      .hero { padding: 4rem 0 3rem; }
+      .trust-bar { gap: 0.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero">
+    <div class="container">
+      <span class="hero-eyebrow">Rebel Red's Gyros · Lamesa, Texas</span>
+      <h1>Fly a Gyroplane Over West Texas — $275</h1>
+      <p class="hero-sub">30 minutes in the seat with CFI Matt Snell. No experience needed. Just show up.</p>
+      <div class="hero-cta">
+        <a href="#booking" class="btn">Book My Intro Flight</a>
+      </div>
+      <div class="trust-bar">
+        <span class="trust-item">FAA Certified Instructor</span>
+        <span class="trust-item">MagniGyro Dealer</span>
+        <span class="trust-item">No Experience Needed</span>
+        <span class="trust-item">Lamesa, TX</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHAT YOU'LL EXPERIENCE
+  ============================================================ -->
+  <section class="section experience">
+    <div class="container">
+      <span class="section-label">The Experience</span>
+      <h2 class="section-headline">Here's exactly what happens</h2>
+      <p class="section-sub">From the moment you pull up to the moment you land, here's your intro flight from start to finish.</p>
+
+      <div class="experience-grid">
+
+        <div class="experience-card">
+          <div class="exp-number">1</div>
+          <h3>Pre-Flight Briefing on the Ground</h3>
+          <p>Before we ever start the engine, Matt walks you through how a gyroplane actually flies — the rotor, the controls, what to expect in the air. This isn't a boring lecture. It's a 10-minute conversation so nothing surprises you once we're up.</p>
+        </div>
+
+        <div class="experience-card">
+          <div class="exp-number">2</div>
+          <h3>You Climb In and We Taxi Out</h3>
+          <p>You'll sit in the front seat of a Magni gyroplane with Matt right behind you. He handles the radio and ground communications while you get used to the cockpit. Then we taxi to the runway and spool up the rotor — that's when it gets real.</p>
+        </div>
+
+        <div class="experience-card">
+          <div class="exp-number">3</div>
+          <h3>15–20 Minutes of Actual Flying</h3>
+          <p>Once airborne, Matt may hand you the controls so you can feel how responsive and stable a gyroplane is. You'll see the West Texas landscape like you never have before — wide open, no traffic, just sky. It's genuinely hard to describe until you do it.</p>
+        </div>
+
+        <div class="experience-card">
+          <div class="exp-number">4</div>
+          <h3>Land, Debrief, and Ask Everything</h3>
+          <p>After we land, Matt debriefs you on what you saw and felt. This is your chance to ask every question you've had about gyroplanes, training, or ownership. No pressure, no sales pitch — just straight answers from someone who flies these things every week.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       THE DETAILS
+  ============================================================ -->
+  <section class="section details">
+    <div class="container">
+      <span class="section-label">Logistics</span>
+      <h2 class="section-headline">The Details</h2>
+
+      <div class="details-grid">
+
+        <div class="details-block">
+          <h3>Flight Details</h3>
+          <div class="detail-row">
+            <span class="detail-label">Price</span>
+            <span class="detail-value">$275 — paid at time of booking</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Total time</span>
+            <span class="detail-value">Approximately 30–45 minutes (15–20 min flight time)</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Location</span>
+            <span class="detail-value">1744 County Rd N, Lamesa TX 79331</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">What to wear</span>
+            <span class="detail-value">Closed-toe shoes, comfortable clothes, sunglasses</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">What's included</span>
+            <span class="detail-value">Pre-flight briefing, cockpit orientation, flight time, post-flight debrief</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Minimum age</span>
+            <span class="detail-value">16 (parental consent required for those under 18)</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Weight limit</span>
+            <span class="detail-value">[VERIFY: confirm weight limit with Matt]</span>
+          </div>
+        </div>
+
+        <div class="details-block right-for-me">
+          <h3>Is This Right for Me?</h3>
+
+          <div class="right-item">
+            <span class="right-check">✓</span>
+            <span>You've always been curious about gyroplanes but don't know where to start</span>
+          </div>
+          <div class="right-item">
+            <span class="right-check">✓</span>
+            <span>You want to feel what flying one actually feels like before committing to training</span>
+          </div>
+          <div class="right-item">
+            <span class="right-check">✓</span>
+            <span>You're considering buying a Magni and want to know if it's a good fit</span>
+          </div>
+          <div class="right-item">
+            <span class="right-check">✓</span>
+            <span>You want a genuinely memorable experience — not a theme park ride</span>
+          </div>
+          <div class="right-item">
+            <span class="right-check">✓</span>
+            <span>You have zero flying experience and want to try something new</span>
+          </div>
+          <div class="right-item">
+            <span class="right-check">✓</span>
+            <span>You're a fixed-wing or helicopter pilot curious about how gyroplanes compare</span>
+          </div>
+
+          <p class="not-right">If you want a commercial airline experience or a fast-moving aerobatic thrill ride, this isn't that. It's calm, controlled, and genuinely cool. More "wow" than "whoa."</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       YOUR PILOT
+  ============================================================ -->
+  <section class="section pilot">
+    <div class="container">
+      <span class="section-label">Your Instructor</span>
+
+      <div class="pilot-inner">
+
+        <div class="pilot-photo-wrap">
+          <!-- IMAGE: matt-snell-cfii-portrait.jpg | alt: "Matt Snell FAA certified flight instructor and MagniGyro dealer Lamesa Texas" -->
+          <p class="pilot-photo-label">[IMAGE: matt-snell-cfii-portrait.jpg<br>alt: "Matt Snell FAA certified flight instructor and MagniGyro dealer Lamesa Texas"]</p>
+        </div>
+
+        <div class="pilot-content">
+          <h2>Matt Snell</h2>
+          <p class="pilot-name-sub">Your CFI — Certified Flight Instructor</p>
+
+          <ul class="credential-list">
+            <li><span class="cred-badge">CFI</span> Certified Flight Instructor — Rotorcraft/Gyroplane</li>
+            <li><span class="cred-badge">CFII</span> Certified Flight Instructor, Instrument</li>
+            <li><span class="cred-badge">Sport CFI</span> Sport Pilot Certified Flight Instructor</li>
+            <li><span class="cred-badge">Factory</span> MagniGyro Factory Certified</li>
+          </ul>
+
+          <p class="pilot-bio">
+            I've been flying gyroplanes out here in West Texas long enough to know there's nothing quite like it — the stability, the visibility, the way you can slow down and actually see the land below you. As a Magni factory-certified instructor and FAA-certified CFI, I've introduced a lot of people to this aircraft, and the reaction after that first flight is almost always the same: they want to do it again. My goal for your intro flight isn't to impress you or sell you anything — it's to give you an honest feel for what this machine is and what it can do, so you can make up your own mind.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WHAT HAPPENS NEXT
+  ============================================================ -->
+  <section class="section next-steps">
+    <div class="container">
+      <span class="section-label">The Process</span>
+      <h2 class="section-headline">What Happens Next</h2>
+      <p class="section-sub">Four simple steps from here to airborne.</p>
+
+      <div class="steps-row">
+
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>Book Online</h3>
+          <p>Pick a date and time that works. Takes about 2 minutes using the booking form below.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>Get a Confirmation Email</h3>
+          <p>You'll receive an email with your appointment details, the address, and what to expect.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>Show Up Ready</h3>
+          <p>Arrive at 1744 County Rd N, Lamesa TX wearing closed-toe shoes and sunglasses. That's it.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <h3>Take Your Flight</h3>
+          <p>Meet Matt, get your briefing, climb in, and fly over West Texas. It's really that simple.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BOOKING
+  ============================================================ -->
+  <section class="section booking" id="booking">
+    <div class="container">
+      <div class="booking-header">
+        <span class="section-label">Schedule Your Flight</span>
+        <h2 class="section-headline">Book Your Intro Flight</h2>
+        <p class="section-sub" style="margin: 0 auto;">Pick a date and time below. $275 paid at booking. Weather cancellations are always rescheduled at no charge.</p>
+      </div>
+
+      <div class="booking-widget-wrap">
+        <!-- CALENDLY INLINE WIDGET -->
+        <div class="calendly-inline-widget" data-url="https://calendly.com/rebelredsgyros/intro-flight" style="min-width:320px;height:700px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <!-- END CALENDLY INLINE WIDGET -->
+
+        <noscript>
+          <div style="text-align:center; padding: 2rem; background: var(--color-inset); border-radius: var(--radius); margin-top: 1rem;">
+            <p style="font-size: 1rem; color: var(--color-text-sub); margin-bottom: 0.75rem;">JavaScript is required to display the booking calendar.</p>
+            <p style="font-size: 1.1rem; font-weight: 600; color: var(--color-text);">Call Matt to book: <a href="tel:4325170693" style="color: var(--color-red);">432-517-0693</a></p>
+          </div>
+        </noscript>
+      </div>
+
+      <p class="booking-fallback">
+        Prefer to call? Reach Matt at <a href="tel:4325170693">432-517-0693</a> — he picks up.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FAQ STRIP
+  ============================================================ -->
+  <section class="section faq-section">
+    <div class="container">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-headline">Common Questions</h2>
+
+      <div class="faq-list">
+
+        <!-- Q1 -->
+        <div class="faq-item">
+          <input type="checkbox" class="faq-toggle" id="faq-1" />
+          <label class="faq-label" for="faq-1">
+            Do I need any experience to take an intro flight?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </label>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              None whatsoever. I've taken people up who'd never been in a small aircraft of any kind, and they did just fine. The whole point of the intro flight is to let you feel what a gyroplane is like before you decide whether you want to pursue training. You're there to experience it — I handle all the flying unless you want to take the controls, and even then I'm right behind you the whole time.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="faq-item">
+          <input type="checkbox" class="faq-toggle" id="faq-2" />
+          <label class="faq-label" for="faq-2">
+            Is flying a gyroplane dangerous?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </label>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Gyroplanes are among the most inherently stable aircraft available. The freewheeling rotor can't stall the way a fixed-wing can, and if the engine quits, the rotor keeps spinning and you descend in a controlled autorotation — no different than a normal landing in terms of what the pilot does. That said, like any aircraft, proper training and sound judgment matter. On your intro flight, you'll be flying with an FAA-certified CFI who's done this hundreds of times.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="faq-item">
+          <input type="checkbox" class="faq-toggle" id="faq-3" />
+          <label class="faq-label" for="faq-3">
+            What should I wear?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </label>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Closed-toe shoes are required — no sandals or flip-flops. Comfortable clothes you can move in, and sunglasses are a good idea. Avoid loose scarves or anything that could catch in the rotor area. West Texas sun is no joke, so if we're flying in summer, a hat that fits under a headset is handy too.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="faq-item">
+          <input type="checkbox" class="faq-toggle" id="faq-4" />
+          <label class="faq-label" for="faq-4">
+            Can I bring someone to watch?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </label>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Absolutely — come with family, friends, whoever you want. They can watch from the ground near the aircraft area. The gyroplane is a two-seater, so the flight itself is just you and me, but having your people there to see you land is half the fun. Some folks have brought kids who then couldn't stop asking when they can go up too.
+            </div>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="faq-item">
+          <input type="checkbox" class="faq-toggle" id="faq-5" />
+          <label class="faq-label" for="faq-5">
+            What if the weather is bad?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </label>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              We fly in good weather and we don't fly in bad weather — it's that simple. If conditions aren't right on your scheduled day, I'll contact you to reschedule, and we'll get you a new date at no charge. West Texas has excellent flying weather the majority of the year, so rescheduling for weather is the exception rather than the rule. I'd rather push a day than rush a flight.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TRUST FOOTER
+  ============================================================ -->
+  <footer class="trust-footer">
+    <div class="container">
+      <div class="trust-footer-inner">
+
+        <div class="footer-logo-block">
+          <!-- LOGO PLACEHOLDER: rebel-reds-gyros-logo.png -->
+          <div class="logo-placeholder">[LOGO: rebel-reds-gyros-logo.png]</div>
+          <p class="footer-tagline">Gyroplane Sales, Training &amp; Intro Flights<br>Lamesa, Texas</p>
+        </div>
+
+        <div>
+          <div class="magni-badge">★ MagniGyro Certified Dealer</div>
+          <p style="font-size: 0.82rem; color: rgba(255,255,255,0.45); margin-top: 0.75rem;">Matt Snell: CFI · CFII · Sport CFI<br>MagniGyro Factory Certified</p>
+        </div>
+
+        <div class="footer-contact">
+          <p>Questions? Call Matt:</p>
+          <p><a href="tel:4325170693">432-517-0693</a></p>
+          <p style="margin-top: 0.5rem;"><a href="mailto:matt@rebelredsgyros.com">matt@rebelredsgyros.com</a></p>
+          <p style="margin-top: 0.5rem; font-size: 0.88rem; color: rgba(255,255,255,0.50);">1744 County Rd N, Lamesa TX 79331</p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        &copy; 2026 Rebel Red's Gyros. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

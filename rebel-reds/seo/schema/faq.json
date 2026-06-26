@@ -1,0 +1,86 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a gyroplane?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A gyroplane (also called an autogyro) is a type of rotorcraft that uses an unpowered, freely spinning rotor for lift and an engine-driven propeller for thrust. Unlike a helicopter, the rotor is not powered during flight — it spins due to the airflow through it, a process called autorotation. Gyroplanes are known for their excellent slow-speed stability and short takeoff and landing capabilities."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a gyroplane safe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Gyroplanes are considered one of the safest aircraft categories. Because the rotor autorotates continuously, a gyroplane can never stall or spin the way a fixed-wing airplane can. In the event of an engine failure, the gyroplane descends steeply but under full control and can land in a very short distance — even in a small field. Proper training with a qualified instructor like FAA-certified CFI Matt Snell at Rebel Red's Gyros is essential to fly safely."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a gyroplane cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "New Magni gyroplanes typically range from approximately $60,000 to over $100,000 depending on the model and options selected. At Rebel Red's Gyros, we carry the Magni M16, M22, M24, and M26. Contact Matt Snell at 432-517-0693 or matt@rebelredsgyros.com for current pricing and availability."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a license to fly a gyroplane?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. In the United States, you need at minimum an FAA Sport Pilot Certificate with a gyroplane category rating, or an FAA Private Pilot Certificate with a gyroplane rating. The FAA regulates gyroplanes as light sport aircraft or as standard category aircraft depending on the model. Rebel Red's Gyros offers both Sport Pilot and Private Pilot gyroplane training with CFI Matt Snell in Lamesa, TX."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to learn to fly a gyroplane?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most students can solo a gyroplane in 10–15 hours of flight training. Earning an FAA Sport Pilot Certificate typically requires a minimum of 20 flight hours, while a Private Pilot Certificate requires at least 40 hours. The total time to certification depends on the student's aptitude, weather, and how frequently they train. Intensive training programs at Rebel Red's Gyros can accelerate your progress significantly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is an intro flight?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A gyroplane intro flight (also called a discovery flight) is a short introductory flying experience where you take the controls of a real gyroplane with a certified flight instructor. At Rebel Red's Gyros, the intro flight is approximately 30 minutes and is designed to give you a taste of gyroplane flying before committing to a full training program. It's a great way to see if gyroplane flight is right for you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does the intro flight cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The gyroplane intro flight at Rebel Red's Gyros is $275. This includes approximately 30 minutes of flight time with FAA-certified CFI Matt Snell over the West Texas landscape near Lamesa, TX. To book your intro flight, call 432-517-0693 or email matt@rebelredsgyros.com."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a MagniGyro certified dealer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A MagniGyro certified dealer is an authorized dealer trained and certified by Magni Gyro, the Italian manufacturer of the Magni line of gyroplanes. Factory certification means the dealer has completed manufacturer-approved training on Magni gyroplane sales, specifications, and support. Rebel Red's Gyros owner Matt Snell is MagniGyro factory certified, making Rebel Red's Gyros one of the few authorized Magni dealers in Texas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What gyroplane models does Rebel Red's Gyros sell?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rebel Red's Gyros sells the full current Magni Gyro lineup: the M16 (two-seat tandem open gyroplane), the M22 (two-seat enclosed-cabin gyroplane), the M24 (two-seat side-by-side open gyroplane), and the M26 (premium two-seat gyroplane). Contact Matt Snell at 432-517-0693 for specifications, availability, and pricing on any Magni model."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is Rebel Red's Gyros located?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rebel Red's Gyros is located at 1744 County Rd N, Lamesa, TX 79331 in West Texas. We serve gyroplane buyers and flight training students from across Texas and the surrounding region. To get directions or schedule a visit, call 432-517-0693 or email matt@rebelredsgyros.com."
+      }
+    }
+  ]
+}

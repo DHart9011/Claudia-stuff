@@ -1,0 +1,147 @@
+{
+  "pages": [
+    {
+      "page": "Homepage",
+      "url": "/",
+      "title": "Rebel Red's Gyros | Gyroplane Dealer Texas",
+      "metaDescription": "Texas's MagniGyro certified gyroplane dealer. Buy new Magni gyroplanes, book an intro flight, or start training in Lamesa, TX. Call 432-517-0693 today.",
+      "h1": "Texas's Premier Gyroplane Dealer — New Magni Gyroplanes, Intro Flights & Training",
+      "primaryKeyword": "gyroplane dealer Texas",
+      "secondaryKeywords": [
+        "Magni gyroplane for sale",
+        "gyroplane flight training Texas",
+        "MagniGyro certified dealer"
+      ]
+    },
+    {
+      "page": "New Gyro Models",
+      "url": "/models",
+      "title": "Magni Gyroplanes for Sale in Texas | Rebel Red's",
+      "metaDescription": "Shop new Magni M16, M22, M24, and M26 gyroplanes for sale in Texas. MagniGyro certified dealer in Lamesa, TX. Contact Matt Snell at 432-517-0693 to order.",
+      "h1": "New Magni Gyroplanes for Sale — M16, M22, M24 & M26",
+      "primaryKeyword": "Magni gyroplane for sale Texas",
+      "secondaryKeywords": [
+        "Magni M16 for sale",
+        "Magni M22 for sale",
+        "gyroplane dealer Texas"
+      ]
+    },
+    {
+      "page": "Services",
+      "url": "/services",
+      "title": "Gyroplane Services | Sales, Training & Maintenance TX",
+      "metaDescription": "Rebel Red's Gyros offers gyroplane flight instruction, new Magni sales, and maintenance in Texas. FAA-certified CFI Matt Snell. Call 432-517-0693 now.",
+      "h1": "Gyroplane Flight Instruction, Sales & Maintenance in Texas",
+      "primaryKeyword": "gyroplane flight instruction Texas",
+      "secondaryKeywords": [
+        "gyroplane maintenance Texas",
+        "Magni gyroplane dealer",
+        "FAA certified gyroplane instructor"
+      ]
+    },
+    {
+      "page": "About",
+      "url": "/about",
+      "title": "About Rebel Red's Gyros | MagniGyro Dealer Texas",
+      "metaDescription": "Meet Matt Snell — FAA CFI, CFII, Sport Pilot CFI, and MagniGyro factory-certified dealer in Lamesa, TX. Trusted gyroplane expert serving all of West Texas.",
+      "h1": "About Rebel Red's Gyros — MagniGyro Certified Dealer in West Texas",
+      "primaryKeyword": "MagniGyro certified dealer Texas",
+      "secondaryKeywords": [
+        "Matt Snell CFI gyroplane",
+        "Magni gyroplane Texas",
+        "gyroplane dealer Lamesa TX"
+      ]
+    },
+    {
+      "page": "Intro Flight",
+      "url": "/intro-flight",
+      "title": "Gyroplane Intro Flight Texas | $275 | Rebel Red's",
+      "metaDescription": "Take a gyroplane intro flight over West Texas for just $275. Fly with FAA-certified CFI Matt Snell in Lamesa, TX. Book your experience at 432-517-0693 now.",
+      "h1": "Gyroplane Intro Flight in West Texas — $275 with CFI Matt Snell",
+      "primaryKeyword": "gyroplane intro flight Texas",
+      "secondaryKeywords": [
+        "gyroplane discovery flight",
+        "intro gyroplane ride Texas",
+        "Lamesa TX gyroplane flight"
+      ]
+    },
+    {
+      "page": "Flight Training",
+      "url": "/flight-training",
+      "title": "Gyroplane Flight Training Texas | Rebel Red's Gyros",
+      "metaDescription": "Earn your sport pilot or private pilot gyroplane certificate with FAA-certified CFI Matt Snell in Lamesa, TX. Structured training programs. Call 432-517-0693.",
+      "h1": "Gyroplane Flight Training in Texas — Sport Pilot, Private Pilot & Transition Courses",
+      "primaryKeyword": "gyroplane flight training Texas",
+      "secondaryKeywords": [
+        "sport pilot gyroplane certificate",
+        "private pilot gyroplane Texas",
+        "gyroplane CFI instruction"
+      ]
+    },
+    {
+      "page": "FAQ",
+      "url": "/faq",
+      "title": "Gyroplane FAQ | Common Questions Answered | TX",
+      "metaDescription": "Get answers to the most common gyroplane questions — cost, safety, licensing, training time, and more. Rebel Red's Gyros, Lamesa TX. Call 432-517-0693 today.",
+      "h1": "Gyroplane Questions Answered — Your Complete FAQ Guide",
+      "primaryKeyword": "gyroplane questions answered",
+      "secondaryKeywords": [
+        "is a gyroplane safe",
+        "gyroplane license requirements",
+        "how much does a gyroplane cost"
+      ]
+    },
+    {
+      "page": "M16 Model",
+      "url": "/models/m16",
+      "title": "Magni M16 Gyroplane for Sale | Rebel Red's Gyros TX",
+      "metaDescription": "Buy a new Magni M16 two-seat gyroplane in Texas. MagniGyro certified dealer Rebel Red's Gyros in Lamesa, TX. Contact Matt Snell at 432-517-0693 for pricing.",
+      "h1": "Magni M16 Gyroplane for Sale — Two-Seat Sport Gyro in Texas",
+      "primaryKeyword": "Magni M16 gyroplane for sale",
+      "secondaryKeywords": [
+        "M16 gyroplane Texas",
+        "Magni two-seat gyroplane",
+        "buy Magni M16"
+      ]
+    },
+    {
+      "page": "M22 Model",
+      "url": "/models/m22",
+      "title": "Magni M22 Gyroplane for Sale | Rebel Red's Gyros TX",
+      "metaDescription": "Buy a new Magni M22 enclosed-cabin gyroplane in Texas. MagniGyro certified dealer in Lamesa, TX. Call Matt Snell at 432-517-0693 for specs and pricing now.",
+      "h1": "Magni M22 Gyroplane for Sale — Enclosed Cabin Gyroplane in Texas",
+      "primaryKeyword": "Magni M22 gyroplane for sale",
+      "secondaryKeywords": [
+        "M22 enclosed gyroplane Texas",
+        "Magni M22 cabin gyro",
+        "buy Magni M22"
+      ]
+    },
+    {
+      "page": "M24 Model",
+      "url": "/models/m24",
+      "title": "Magni M24 Gyroplane for Sale | Rebel Red's Gyros TX",
+      "metaDescription": "Buy a new Magni M24 gyroplane in Texas. Side-by-side seating, sport performance. MagniGyro certified dealer in Lamesa, TX. Call 432-517-0693 for details.",
+      "h1": "Magni M24 Gyroplane for Sale — Side-by-Side Sport Gyro in Texas",
+      "primaryKeyword": "Magni M24 gyroplane for sale",
+      "secondaryKeywords": [
+        "M24 side-by-side gyroplane",
+        "Magni M24 Texas",
+        "buy Magni M24"
+      ]
+    },
+    {
+      "page": "M26 Model",
+      "url": "/models/m26",
+      "title": "Magni M26 Gyroplane for Sale | Rebel Red's Gyros TX",
+      "metaDescription": "Buy a new Magni M26 gyroplane in Texas. Top-of-line Magni model with premium features. MagniGyro certified dealer Lamesa, TX. Call 432-517-0693 for pricing.",
+      "h1": "Magni M26 Gyroplane for Sale — Premium Gyroplane in Texas",
+      "primaryKeyword": "Magni M26 gyroplane for sale",
+      "secondaryKeywords": [
+        "M26 premium gyroplane Texas",
+        "Magni M26 specs",
+        "buy Magni M26"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "New Magni Gyroplane Sales",
+      "serviceType": "Aircraft Dealer",
+      "description": "Rebel Red's Gyros is a MagniGyro factory-certified dealer offering new Magni M16, M22, M24, and M26 gyroplanes for sale in Texas. Owner Matt Snell is factory certified to sell and support the full Magni gyroplane lineup.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Rebel Red's Gyros",
+        "url": "https://www.rebelredsgyros.com",
+        "telephone": "+14325170693"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Texas"
+      },
+      "url": "https://www.rebelredsgyros.com/models",
+      "brand": {
+        "@type": "Brand",
+        "name": "Magni Gyro"
+      }
+    },
+    {
+      "@type": "Service",
+      "name": "Gyroplane Flight Instruction",
+      "serviceType": "Flight Instruction",
+      "description": "Rebel Red's Gyros offers gyroplane intro flights for $275 and structured flight training programs toward FAA Sport Pilot and Private Pilot certificates. Instructor Matt Snell holds CFI, CFII, and Sport Pilot CFI certificates with specialized gyroplane expertise.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Rebel Red's Gyros",
+        "url": "https://www.rebelredsgyros.com",
+        "telephone": "+14325170693"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Texas"
+      },
+      "url": "https://www.rebelredsgyros.com/flight-training",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Gyroplane Intro Flight",
+          "price": "275",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://www.rebelredsgyros.com/intro-flight"
+        }
+      ],
+      "hasCredential": [
+        "FAA Certified Flight Instructor (CFI)",
+        "FAA Certified Flight Instructor Instrument (CFII)",
+        "Sport Pilot CFI"
+      ]
+    },
+    {
+      "@type": "Service",
+      "name": "Gyroplane Maintenance and Annual Inspection",
+      "serviceType": "Aircraft Maintenance",
+      "description": "Rebel Red's Gyros provides gyroplane maintenance and annual condition inspections for Magni gyroplane owners in Texas. MagniGyro factory-certified expertise ensures your gyroplane is serviced to manufacturer standards.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Rebel Red's Gyros",
+        "url": "https://www.rebelredsgyros.com",
+        "telephone": "+14325170693"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Texas"
+      },
+      "url": "https://www.rebelredsgyros.com/services"
+    }
+  ]
+}

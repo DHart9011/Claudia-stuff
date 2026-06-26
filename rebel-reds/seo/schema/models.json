@@ -1,0 +1,106 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Magni Gyroplanes for Sale at Rebel Red's Gyros",
+  "description": "Browse new Magni gyroplane models available for purchase at Rebel Red's Gyros, MagniGyro certified dealer in Lamesa, TX. Models include the M16, M22, M24, and M26.",
+  "url": "https://www.rebelredsgyros.com/models",
+  "numberOfItems": 4,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "Product",
+        "name": "Magni M16 Gyroplane",
+        "description": "The Magni M16 is a two-seat, tandem open gyroplane ideal for sport flying and flight training. Available new at Rebel Red's Gyros in Lamesa, TX.",
+        "url": "https://www.rebelredsgyros.com/models/m16",
+        "image": "https://www.rebelredsgyros.com/images/magni-m16-exterior-side-view.jpg",
+        "brand": {
+          "@type": "Brand",
+          "name": "Magni Gyro"
+        },
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "USD",
+          "seller": {
+            "@type": "LocalBusiness",
+            "name": "Rebel Red's Gyros"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "Product",
+        "name": "Magni M22 Gyroplane",
+        "description": "The Magni M22 features a fully enclosed cabin for two, offering comfort and all-weather capability. Available new at Rebel Red's Gyros in Lamesa, TX.",
+        "url": "https://www.rebelredsgyros.com/models/m22",
+        "image": "https://www.rebelredsgyros.com/images/magni-m22-exterior-front-view.jpg",
+        "brand": {
+          "@type": "Brand",
+          "name": "Magni Gyro"
+        },
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "USD",
+          "seller": {
+            "@type": "LocalBusiness",
+            "name": "Rebel Red's Gyros"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "Product",
+        "name": "Magni M24 Gyroplane",
+        "description": "The Magni M24 offers side-by-side seating in a sport open gyroplane configuration. Available new at Rebel Red's Gyros in Lamesa, TX.",
+        "url": "https://www.rebelredsgyros.com/models/m24",
+        "image": "https://www.rebelredsgyros.com/images/magni-m24-exterior-side-view.jpg",
+        "brand": {
+          "@type": "Brand",
+          "name": "Magni Gyro"
+        },
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "USD",
+          "seller": {
+            "@type": "LocalBusiness",
+            "name": "Rebel Red's Gyros"
+          }
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "Product",
+        "name": "Magni M26 Gyroplane",
+        "description": "The Magni M26 is Magni Gyro's top-of-the-line model, featuring premium construction and advanced performance. Available new at Rebel Red's Gyros in Lamesa, TX.",
+        "url": "https://www.rebelredsgyros.com/models/m26",
+        "image": "https://www.rebelredsgyros.com/images/magni-m26-exterior-three-quarter-view.jpg",
+        "brand": {
+          "@type": "Brand",
+          "name": "Magni Gyro"
+        },
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "USD",
+          "seller": {
+            "@type": "LocalBusiness",
+            "name": "Rebel Red's Gyros"
+          }
+        }
+      }
+    }
+  ]
+}
