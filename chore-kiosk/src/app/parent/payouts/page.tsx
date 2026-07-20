@@ -1,8 +1,10 @@
+import Link from "next/link";
 import { db } from "@/lib/db";
 import { requireParent } from "@/lib/auth";
 import { getOrCreateActiveWeekPeriod } from "@/lib/week";
 import { formatCents } from "@/lib/money";
 import { generatePayoutSummary, settleWeek } from "@/actions/payout-actions";
+import { SendToQuickBooksButton } from "@/components/SendToQuickBooksButton";
 
 function formatRange(start: Date, end: Date) {
   const opts: Intl.DateTimeFormatOptions = { month: "short", day: "numeric" };
@@ -11,7 +13,10 @@ function formatRange(start: Date, end: Date) {
 
 export default async function PayoutsPage() {
   const session = await requireParent();
-  const activeWeekPeriod = await getOrCreateActiveWeekPeriod(session.householdId);
+  const [activeWeekPeriod, quickBooksConnection] = await Promise.all([
+    getOrCreateActiveWeekPeriod(session.householdId),
+    db.quickBooksConnection.findUnique({ where: { householdId: session.householdId } }),
+  ]);
 
   const summaries = await db.payoutSummary.findMany({
     where: { weekPeriod: { householdId: session.householdId } },
@@ -20,6 +25,7 @@ export default async function PayoutsPage() {
   });
 
   const activeHasSummary = summaries.some((s) => s.weekPeriodId === activeWeekPeriod.id);
+  const quickBooksReady = Boolean(quickBooksConnection?.expenseAccountId);
 
   return (
     <div className="flex flex-col gap-8">
@@ -63,20 +69,35 @@ export default async function PayoutsPage() {
                 {summary.lineItems.map((li) => (
                   <div key={li.id} className="flex items-center justify-between py-2">
                     <span className="text-slate-700">{li.kid.name}</span>
-                    <span className="font-semibold text-slate-800">{formatCents(li.totalCents)}</span>
+                    <div className="flex items-center gap-3">
+                      {li.quickbooksBillId && (
+                        <span className="text-xs text-slate-400">QBO bill #{li.quickbooksBillId}</span>
+                      )}
+                      <span className="font-semibold text-slate-800">{formatCents(li.totalCents)}</span>
+                    </div>
                   </div>
                 ))}
               </div>
 
-              {summary.status === "DRAFT" && (
+              {(summary.status === "DRAFT" || summary.status === "SENT_TO_QUICKBOOKS") && (
                 <div className="flex flex-wrap items-center gap-3 border-t border-slate-100 pt-4">
-                  <button
-                    disabled
-                    title="Connect QuickBooks Online to send bills automatically (see README)"
-                    className="rounded-xl bg-slate-100 px-4 py-3 font-medium text-slate-400"
-                  >
-                    Send to QuickBooks (not connected)
-                  </button>
+                  {summary.status === "DRAFT" &&
+                    (quickBooksReady ? (
+                      <SendToQuickBooksButton payoutSummaryId={summary.id} />
+                    ) : (
+                      <Link
+                        href="/parent/quickbooks"
+                        title="Connect QuickBooks and choose an expense account to send bills automatically"
+                        className="rounded-xl bg-slate-100 px-4 py-3 font-medium text-slate-500 active:scale-95"
+                      >
+                        Send to QuickBooks (set up first)
+                      </Link>
+                    ))}
+                  {summary.status === "SENT_TO_QUICKBOOKS" && (
+                    <p className="text-sm text-slate-500">
+                      Bills created in QuickBooks. Release the ACH payment there, then settle below.
+                    </p>
+                  )}
                   <form action={settleWeek.bind(null, summary.id)}>
                     <button className="rounded-xl bg-emerald-600 px-4 py-3 font-semibold text-white active:scale-95">
                       Mark settled & start new week

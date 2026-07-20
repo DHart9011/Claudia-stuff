@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { href: "/parent/chores", label: "Chores" },
   { href: "/parent/profiles", label: "Kids & Parents" },
   { href: "/parent/payouts", label: "Payouts" },
+  { href: "/parent/quickbooks", label: "QuickBooks" },
 ];
 
 export default async function ParentLayout({ children }: { children: React.ReactNode }) {

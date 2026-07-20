@@ -3,8 +3,8 @@
 A touchscreen kiosk app for turning chores into weekly payouts. Kids claim
 and complete chores on a big-tile board; a parent reviews and approves each
 one before it counts toward that kid's balance; at the end of the week the
-app produces a payout summary that (eventually) becomes QuickBooks Online
-bills for a parent to release manually.
+app produces a payout summary that becomes QuickBooks Online bills — one
+per kid — for a parent to release manually via ACH inside QuickBooks.
 
 ## Stack
 
@@ -23,7 +23,7 @@ See `prisma/schema.prisma` (the comments at the top walk through the design). Sh
 - `WeekPeriod` — one Sunday–Saturday cycle. Claims and payouts are scoped to it; "reset for the new week" is just starting a new one.
 - `ChoreClaim` — the kid-facing lifecycle: `CLAIMED → COMPLETED → APPROVED | REJECTED`. **Nothing touches a balance until a claim reaches `APPROVED`** — that's the approval gate from the spec, enforced structurally rather than just by convention.
 - `PayoutSummary` / `PayoutLineItem` — one summary per week, one line item per kid, generated from approved claims only.
-- `QuickBooksConnection` — encrypted OAuth token storage for a future QuickBooks connection. Nothing reads or writes real QuickBooks data yet (see below).
+- `QuickBooksConnection` — encrypted OAuth token storage, one per household, plus which QBO expense account bills post against.
 
 ## Getting started
 
@@ -68,27 +68,39 @@ Node 20.9+ (Railway, Render, Fly.io, a VPS, etc.) with a Postgres database
 No secrets are hard-coded anywhere in the repo — everything sensitive
 comes from environment variables (see `.env.example`).
 
-## QuickBooks integration (not built yet, by design)
+## QuickBooks integration
 
-Per the brief, this was scaffolded first: `src/lib/quickbooks/` has the
-types (`types.ts`), the config reader (`config.ts`), and a client module
-(`client.ts`) whose functions currently just `throw` with a clear message.
-The `QuickBooksConnection` model and the `PayoutLineItem.quickbooksBillId` /
-`quickbooksSyncStatus` fields are ready for it. Nothing here makes a
-network call to Intuit yet.
+`src/lib/quickbooks/` implements OAuth 2.0 + the Bills API against
+QuickBooks Online directly over `fetch` (no SDK), so exactly what's
+sent/received is visible in the code rather than hidden in a client
+library:
 
-The planned flow, when we build it:
+- `client.ts` — `authorizeUrl`, `exchangeCodeForTokens`, `refreshTokens`, `createBillsForPayout`.
+- `connection.ts` — persists tokens encrypted (`src/lib/crypto.ts`, AES-256-GCM, key from `TOKEN_ENCRYPTION_KEY`) on `QuickBooksConnection`, one row per household, and transparently refreshes the access token when it's close to expiring.
+- `api.ts` — `fetchVendors` / `fetchExpenseAccounts`, used to populate the mapping dropdowns.
+- `oauth-state.ts` — CSRF protection for the OAuth round trip (random `state`, stashed in a short-lived httpOnly cookie, verified on callback).
+- `src/app/api/quickbooks/authorize` and `.../callback` — the two Route Handlers that carry out the browser redirect dance with Intuit.
 
-1. **Connect**: parent starts OAuth 2.0 from a settings page; Intuit redirects back with a code; exchange it for an access + refresh token pair.
-2. **Store**: encrypt both tokens (`src/lib/crypto.ts`, AES-256-GCM, key from `TOKEN_ENCRYPTION_KEY`) and save them on `QuickBooksConnection`, one per household. Refresh silently when they're close to expiring.
-3. **Map kids to vendors**: each kid profile gets a `quickbooksVendorId`, set once against an existing QBO vendor record for that kid.
-4. **Send a payout**: from `/parent/payouts`, "Send to QuickBooks" creates one Bill per kid vendor for their approved weekly total (`PayoutLineItem.totalCents`), then records the resulting `quickbooksBillId`.
-5. **Manual release stays manual**: this app never touches ACH — releasing the actual payment is a one-tap approval inside QuickBooks itself, which is the fraud safeguard called out in the brief. Once that's done in QBO, "Mark settled & start new week" here just closes the books on this app's side and rolls balances over.
+**Setup**: register an app at https://developer.intuit.com (start with a
+sandbox company), then set `QBO_CLIENT_ID`, `QBO_CLIENT_SECRET`, and
+`QBO_REDIRECT_URI` in `.env` (see `.env.example` — redirect URI must match
+what you register with Intuit exactly, including the `/api/quickbooks/callback`
+path). Restart the app, then as a parent go to the **QuickBooks** tab:
 
-To pick this up: register an app at https://developer.intuit.com, fill in
-`QBO_CLIENT_ID` / `QBO_CLIENT_SECRET` / `QBO_REDIRECT_URI` in `.env`
-(sandbox first), then implement `authorizeUrl`, `exchangeCodeForTokens`,
-`refreshTokens`, and `createBillsForPayout` in `src/lib/quickbooks/client.ts`.
+1. **Connect** — redirects to Intuit's consent screen and stores the resulting tokens.
+2. **Choose an expense account** — every Bill needs one; pick whichever account (e.g. "Allowance") should absorb these.
+3. **Map each kid to a vendor** — kids must already exist as vendors in your QuickBooks company; pick the matching one for each.
+4. From **Payouts**, once a weekly summary is generated, **Send to QuickBooks** creates one Bill per kid vendor for their approved total and records the resulting `quickbooksBillId`.
+5. **The ACH release itself stays manual, inside QuickBooks** — this app never touches money movement. That's the deliberate fraud safeguard from the brief. Once you've released payment there, come back and **Mark settled & start new week** to close the books here and roll balances over.
+
+This hasn't been exercised against a real Intuit sandbox company from this
+environment (no credentials were available to test with) — the OAuth
+redirect, CSRF state check, token refresh, and every UI error path
+(unconfigured, not connected, QBO API unreachable, kid unmapped, missing
+expense account) are verified, but the actual token exchange and Bill
+creation calls have only been checked against Intuit's documented request/
+response shapes, not a live round trip. Worth a first real run against a
+sandbox company before trusting it with production data.
 
 ## Known simplifications (MVP scope)
 

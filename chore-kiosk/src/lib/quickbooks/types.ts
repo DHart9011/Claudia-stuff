@@ -1,6 +1,5 @@
-// Shape of the data this app will eventually exchange with QuickBooks
-// Online. No network calls happen anywhere in this module yet — see
-// README "QuickBooks integration" for the planned OAuth 2.0 + Bills flow.
+// Shape of the data this app exchanges with QuickBooks Online. See README
+// "QuickBooks integration" for the OAuth 2.0 + Bills flow this supports.
 
 export type QuickBooksEnvironment = "sandbox" | "production";
 
@@ -23,4 +22,22 @@ export interface PendingBill {
 export interface CreatedBill {
   quickbooksBillId: string;
   kidProfileId: string;
+}
+
+/** Everything createBillsForPayout needs beyond the bills themselves. */
+export interface QuickBooksApiContext {
+  accessToken: string;
+  realmId: string;
+  environment: QuickBooksEnvironment;
+  expenseAccountId: string;
+}
+
+export interface QuickBooksVendor {
+  id: string;
+  displayName: string;
+}
+
+export interface QuickBooksAccount {
+  id: string;
+  name: string;
 }

@@ -235,9 +235,10 @@ model PayoutLineItem {
 // ---------------------------------------------------------------------------
 // QuickBooks Online connection (OAuth 2.0)
 // ---------------------------------------------------------------------------
-// Scaffolding only — no integration code calls this yet. Tokens are stored
-// encrypted (see src/lib/crypto.ts) and the encryption key comes from an
-// env var, never committed to the repo.
+// One connection per household. Tokens are stored encrypted (see
+// src/lib/crypto.ts); the encryption key comes from an env var, never
+// committed to the repo. See src/lib/quickbooks/ for the OAuth + Bills API
+// integration that reads/writes this table.
 
 enum QuickBooksEnvironment {
   SANDBOX
@@ -258,6 +259,11 @@ model QuickBooksConnection {
   encryptedRefreshToken String
   accessTokenExpiresAt  DateTime
   refreshTokenExpiresAt DateTime
+
+  // Every Bill needs an expense account line; the parent picks one QBO
+  // expense account (e.g. "Allowance") to post all payout bills against.
+  expenseAccountId   String?
+  expenseAccountName String?
 
   connectedAt DateTime @default(now())
   updatedAt   DateTime @updatedAt

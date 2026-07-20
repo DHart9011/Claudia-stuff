@@ -20,3 +20,8 @@ export function getQuickBooksAppConfig() {
 
   return { clientId, clientSecret, redirectUri, environment };
 }
+
+/** Non-throwing check for UI branches ("show Connect button" vs "show setup instructions"). */
+export function isQuickBooksConfigured(): boolean {
+  return Boolean(process.env.QBO_CLIENT_ID && process.env.QBO_CLIENT_SECRET && process.env.QBO_REDIRECT_URI);
+}
