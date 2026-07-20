@@ -1,0 +1,270 @@
+// Data model for the family chore-to-payout kiosk app.
+//
+// Design notes (see README for the full write-up):
+// - Money is always stored in integer cents to avoid floating point drift.
+// - A Household is the single-family tenant boundary; every other model
+//   hangs off it so the schema doesn't have to change if this ever runs
+//   for more than one family.
+// - Profile covers both parent and kid logins (tap avatar + PIN). PINs are
+//   stored as bcrypt hashes only, never in plain text.
+// - Chore is a reusable template ("library" entry). ChoreClaim is the
+//   per-week instance of a kid claiming/completing/getting approved for a
+//   chore. Nothing touches KidBalance until a ChoreClaim reaches APPROVED.
+// - WeekPeriod scopes claims and payouts to a single Sun-Sat cycle so
+//   "reset balances for the new week" is just "start a new WeekPeriod."
+// - QuickBooksConnection/PayoutLineItem model the QBO side of payout but
+//   store only encrypted OAuth tokens; no integration code lives here yet.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ---------------------------------------------------------------------------
+// Household & profiles
+// ---------------------------------------------------------------------------
+
+model Household {
+  id        String    @id @default(cuid())
+  name      String
+  timezone  String    @default("America/New_York")
+  weekStart WeekStart @default(SUNDAY)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  profiles             Profile[]
+  chores               Chore[]
+  weekPeriods          WeekPeriod[]
+  quickBooksConnection QuickBooksConnection?
+}
+
+enum WeekStart {
+  SUNDAY
+  MONDAY
+}
+
+enum ProfileRole {
+  PARENT
+  KID
+}
+
+model Profile {
+  id          String    @id @default(cuid())
+  householdId String
+  household   Household @relation(fields: [householdId], references: [id], onDelete: Cascade)
+
+  role        ProfileRole
+  name        String
+  avatarEmoji String      @default("🙂")
+  avatarColor String      @default("#6366f1")
+
+  // Bcrypt hash of a short numeric PIN. Never store the raw PIN.
+  pinHash String
+
+  // Soft-disable instead of deleting, so history (claims, payouts) is preserved.
+  active Boolean @default(true)
+
+  // Kid-only: vendor mapping for QuickBooks Online (populated once QBO is wired up).
+  quickbooksVendorId String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Kid side of the relationship
+  claims          ChoreClaim[]     @relation("ClaimedByKid")
+  payoutLineItems PayoutLineItem[] @relation("PayoutForKid")
+
+  // Parent side of the relationship
+  choresCreated Chore[]      @relation("ChoreCreatedByParent")
+  claimsDecided ChoreClaim[] @relation("ClaimDecidedByParent")
+
+  @@index([householdId, role])
+}
+
+// ---------------------------------------------------------------------------
+// Chores
+// ---------------------------------------------------------------------------
+
+model Chore {
+  id          String    @id @default(cuid())
+  householdId String
+  household   Household @relation(fields: [householdId], references: [id], onDelete: Cascade)
+
+  name        String
+  description String @default("")
+  valueCents  Int
+
+  // Recurring chores respawn onto the board every week automatically.
+  // One-off chores are retired (active = false) the moment they're approved.
+  isRecurring Boolean @default(true)
+  active      Boolean @default(true)
+
+  createdById String
+  createdBy   Profile @relation("ChoreCreatedByParent", fields: [createdById], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  claims ChoreClaim[]
+
+  @@index([householdId, active])
+}
+
+// ---------------------------------------------------------------------------
+// Weekly cycle
+// ---------------------------------------------------------------------------
+
+enum WeekPeriodStatus {
+  ACTIVE // current week, kids can claim/complete
+  PENDING_PAYOUT // week ended, payout summary generated, awaiting settlement
+  SETTLED // paid out (or manually closed), balances reset
+}
+
+model WeekPeriod {
+  id          String    @id @default(cuid())
+  householdId String
+  household   Household @relation(fields: [householdId], references: [id], onDelete: Cascade)
+
+  // Local calendar boundaries for this cycle (start inclusive, end inclusive).
+  startDate DateTime
+  endDate   DateTime
+
+  status WeekPeriodStatus @default(ACTIVE)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  claims        ChoreClaim[]
+  payoutSummary PayoutSummary?
+
+  @@unique([householdId, startDate])
+  @@index([householdId, status])
+}
+
+// ---------------------------------------------------------------------------
+// Chore claims (the kid-facing lifecycle: claim -> complete -> approve/reject)
+// ---------------------------------------------------------------------------
+
+enum ChoreClaimStatus {
+  CLAIMED // kid tapped it on the board, not yet marked done
+  COMPLETED // kid marked done, sitting in the parent's approval queue
+  APPROVED // parent approved (awardedValueCents may be < chore.valueCents)
+  REJECTED // parent sent it back; chore becomes available again this week
+}
+
+model ChoreClaim {
+  id String @id @default(cuid())
+
+  choreId String
+  chore   Chore  @relation(fields: [choreId], references: [id], onDelete: Cascade)
+
+  weekPeriodId String
+  weekPeriod   WeekPeriod @relation(fields: [weekPeriodId], references: [id], onDelete: Cascade)
+
+  kidId String
+  kid   Profile @relation("ClaimedByKid", fields: [kidId], references: [id])
+
+  status ChoreClaimStatus @default(CLAIMED)
+
+  claimedAt   DateTime  @default(now())
+  completedAt DateTime?
+
+  // Set when a parent approves or rejects.
+  decidedAt   DateTime?
+  decidedById String?
+  decidedBy   Profile?  @relation("ClaimDecidedByParent", fields: [decidedById], references: [id])
+
+  // Populated on APPROVED; equals chore.valueCents unless the parent reduced it.
+  awardedValueCents Int?
+  decisionNote      String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([weekPeriodId, status])
+  @@index([kidId, weekPeriodId])
+  @@index([choreId, weekPeriodId])
+}
+
+// ---------------------------------------------------------------------------
+// Payouts
+// ---------------------------------------------------------------------------
+
+enum PayoutStatus {
+  DRAFT // generated, not yet sent anywhere
+  SENT_TO_QUICKBOOKS // bills created in QBO, awaiting the parent's ACH release
+  SETTLED // parent has settled the week; balances reset
+}
+
+model PayoutSummary {
+  id String @id @default(cuid())
+
+  weekPeriodId String     @unique
+  weekPeriod   WeekPeriod @relation(fields: [weekPeriodId], references: [id], onDelete: Cascade)
+
+  status PayoutStatus @default(DRAFT)
+
+  generatedAt DateTime  @default(now())
+  settledAt   DateTime?
+
+  lineItems PayoutLineItem[]
+}
+
+model PayoutLineItem {
+  id String @id @default(cuid())
+
+  payoutSummaryId String
+  payoutSummary   PayoutSummary @relation(fields: [payoutSummaryId], references: [id], onDelete: Cascade)
+
+  kidId String
+  kid   Profile @relation("PayoutForKid", fields: [kidId], references: [id])
+
+  totalCents Int
+
+  // Populated once the QuickBooks integration creates a bill for this line item.
+  quickbooksBillId     String?
+  quickbooksSyncStatus String  @default("NOT_SYNCED")
+
+  @@unique([payoutSummaryId, kidId])
+}
+
+// ---------------------------------------------------------------------------
+// QuickBooks Online connection (OAuth 2.0)
+// ---------------------------------------------------------------------------
+// One connection per household. Tokens are stored encrypted (see
+// src/lib/crypto.ts); the encryption key comes from an env var, never
+// committed to the repo. See src/lib/quickbooks/ for the OAuth + Bills API
+// integration that reads/writes this table.
+
+enum QuickBooksEnvironment {
+  SANDBOX
+  PRODUCTION
+}
+
+model QuickBooksConnection {
+  id String @id @default(cuid())
+
+  householdId String    @unique
+  household   Household @relation(fields: [householdId], references: [id], onDelete: Cascade)
+
+  environment QuickBooksEnvironment @default(SANDBOX)
+  realmId     String
+
+  // AES-GCM encrypted at rest; see src/lib/crypto.ts. Never store raw tokens.
+  encryptedAccessToken  String
+  encryptedRefreshToken String
+  accessTokenExpiresAt  DateTime
+  refreshTokenExpiresAt DateTime
+
+  // Every Bill needs an expense account line; the parent picks one QBO
+  // expense account (e.g. "Allowance") to post all payout bills against.
+  expenseAccountId   String?
+  expenseAccountName String?
+
+  connectedAt DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
